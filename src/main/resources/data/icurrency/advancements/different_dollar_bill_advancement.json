@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "icurrency:hundred_dollar_bill"
+    },
+    "title": {
+      "translate": "advancements.different_dollar_bill_advancement.title"
+    },
+    "description": {
+      "translate": "advancements.different_dollar_bill_advancement.descr"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "different_dollar_bill_advancement": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "icurrency:i_currency"
+}

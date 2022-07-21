@@ -1,0 +1,77 @@
+{
+  "_fv": 28,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 120,
+    "height": 120,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "label",
+        "data": {
+          "text": "Welcome Customer!",
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "name": "Welcome Customer!",
+          "x": 168,
+          "y": 74
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "text": "Deposit",
+          "onClick": {
+            "name": "OpenATMDeposit"
+          },
+          "width": 61,
+          "height": 20,
+          "name": "Deposit",
+          "x": 183,
+          "y": 91
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "text": "Withdraw",
+          "onClick": {
+            "name": "OpenATMWithdraw"
+          },
+          "width": 67,
+          "height": 20,
+          "name": "Withdraw",
+          "x": 180,
+          "y": 117
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "text": "Send Money",
+          "onClick": {
+            "name": "OpenATMPay"
+          },
+          "width": 77,
+          "height": 20,
+          "name": "Send Money",
+          "x": 175,
+          "y": 144
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

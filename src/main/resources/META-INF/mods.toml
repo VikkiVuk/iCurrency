@@ -1,0 +1,25 @@
+modLoader="javafml"
+loaderVersion="[40,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="icurrency"
+version="1.0.0"
+displayName="iCurrency"
+credits="All credits go to our sponsor, you!"
+displayURL="https://vikkivuk.xyz"
+authors="VikkiVuk"
+description='''
+Real-life(ish) Economy but in Minecraft
+'''
+
+[[dependencies.icurrency]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.18.2]"
+    ordering="NONE"
+    side="BOTH"
+
+
+
+

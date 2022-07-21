@@ -1,0 +1,71 @@
+{
+  "_fv": 28,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 176,
+    "height": 110,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": true,
+    "components": [
+      {
+        "type": "button",
+        "data": {
+          "text": "Pay",
+          "onClick": {
+            "name": "PayProcedure"
+          },
+          "width": 40,
+          "height": 20,
+          "name": "Pay",
+          "x": 192,
+          "y": 145
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "Amount to pay",
+          "width": 120,
+          "height": 20,
+          "name": "amount",
+          "x": 153,
+          "y": 115
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "Player Username",
+          "width": 120,
+          "height": 20,
+          "name": "player_username",
+          "x": 153,
+          "y": 89
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "text": "Pay",
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "name": "Pay",
+          "x": 133,
+          "y": 72
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

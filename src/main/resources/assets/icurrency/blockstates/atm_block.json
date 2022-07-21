@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "icurrency:block/atm_block"
+    },
+    "facing=east": {
+      "model": "icurrency:block/atm_block",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "icurrency:block/atm_block",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "icurrency:block/atm_block",
+      "y": 270
+    }
+  }
+}

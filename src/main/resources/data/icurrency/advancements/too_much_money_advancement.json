@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "icurrency:fifty_dollar_bill"
+    },
+    "title": {
+      "translate": "advancements.too_much_money_advancement.title"
+    },
+    "description": {
+      "translate": "advancements.too_much_money_advancement.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "too_much_money_advancement": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "icurrency:the_path_to_being_rich_advancement"
+}

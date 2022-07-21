@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "icurrency:one_dollar_bill",
+    "icurrency:twenty_dollar_bill",
+    "icurrency:five_dollar_bill",
+    "icurrency:hundred_dollar_bill",
+    "icurrency:dollar_ten",
+    "icurrency:fifty_dollar_bill"
+  ]
+}

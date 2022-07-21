@@ -1,0 +1,13 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "black_concrete",
+        "1": "gray_concrete",
+        "2": "white_concrete",
+        "3": "diamond_block"
+      },
+      "name": "default"
+    }
+  }
+}

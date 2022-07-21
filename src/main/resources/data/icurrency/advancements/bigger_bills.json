@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "icurrency:fifty_dollar_bill"
+    },
+    "title": {
+      "translate": "advancements.bigger_bills.title"
+    },
+    "description": {
+      "translate": "advancements.bigger_bills.descr"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "bigger_bills": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 20
+  },
+  "parent": "icurrency:different_dollar_bill_advancement"
+}

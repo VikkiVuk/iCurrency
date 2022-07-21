@@ -1,0 +1,7 @@
+{
+  "_fv": 28,
+  "_type": "procedure",
+  "definition": {
+    "procedurexml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"event_trigger\" deletable=\"false\" x=\"40\" y=\"40\"><field name=\"trigger\">player_log_out</field><next><block type=\"entity_nbt_num_set\"><value name=\"entity\"><block type=\"entity_from_deps\"></block></value><value name=\"tagName\"><block type=\"text\"><field name=\"TEXT\">account_balance_tag</field></block></value><value name=\"tagValue\"><block type=\"variables_get_number\"><mutation xmlns=\"http://www.w3.org/1999/xhtml\" is_player_var=\"false\" has_entity=\"false\"></mutation><field name=\"VAR\">global:account_balance</field></block></value></block></next></block></xml>"
+  }
+}
