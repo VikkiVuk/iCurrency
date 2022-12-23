@@ -1,25 +1,31 @@
 modLoader="javafml"
 loaderVersion="[40,)"
-license="All Rights Reserved"
+license="All rights reserved"
+#issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/"
 
 [[mods]]
 modId="icurrency"
-version="1.0.0"
+version="${file.jarVersion}"
 displayName="iCurrency"
-credits="All credits go to our sponsor, you!"
-displayURL="https://vikkivuk.xyz"
+#updateJSONURL="https://change.me.example.invalid/updates.json"
+#displayURL="https://change.me.to.your.mods.homepage.example.invalid/"
+#logoFile="icurrency.png"
+credits="Thanks to Forge Forums, Github Copilot and VikkiVuk!"
 authors="VikkiVuk"
 description='''
-Real-life(ish) Economy but in Minecraft
+iCurrency is a mod that adds a currency system to Minecraft, using bank accounts and notes.
 '''
+
+[[dependencies.icurrency]]
+    modId="forge" #mandatory
+    mandatory=true #mandatory
+    versionRange="[40,)" #mandatory
+    ordering="NONE"
+    side="BOTH"
 
 [[dependencies.icurrency]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.18.2]"
+    versionRange="[1.18.2,1.19)"
     ordering="NONE"
     side="BOTH"
-
-
-
-
