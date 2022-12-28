@@ -1,0 +1,8 @@
+{
+  "parent": "icurrency:custom/atm",
+  "textures": {
+    "all": "icurrency:blocks/atm",
+    "particle": "icurrency:blocks/white_concrete",
+    "2": "icurrency:blocks/atm"
+  }
+}

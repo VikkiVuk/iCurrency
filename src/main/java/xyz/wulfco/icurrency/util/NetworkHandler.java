@@ -13,7 +13,7 @@ import javax.json.JsonReader;
 import java.io.IOException;
 import java.io.StringReader;
 
-public class NetworkUtils {
+public class NetworkHandler {
     public static JsonObject decodeJson(String json) {
         try {
             JsonReader jsonReader = Json.createReader(new StringReader(json));

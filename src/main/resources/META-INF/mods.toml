@@ -5,7 +5,7 @@ license="All rights reserved"
 
 [[mods]]
 modId="icurrency"
-version="${file.jarVersion}"
+version="1.18.2-1.0.0"
 displayName="iCurrency"
 #updateJSONURL="https://change.me.example.invalid/updates.json"
 #displayURL="https://change.me.to.your.mods.homepage.example.invalid/"

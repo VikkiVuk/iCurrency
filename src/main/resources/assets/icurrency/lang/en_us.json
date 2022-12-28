@@ -1,0 +1,12 @@
+{
+  "itemGroup.icurrency": "iCurrency",
+  "block.icurrency.atm_block": "ATM",
+  "item.icurrency.card": "Card",
+  "item.icurrency.dollar_ten": "10 Zlatniks",
+  "item.icurrency.dollar_twenty": "20 Zlatniks",
+  "item.icurrency.dollar_fifty": "50 Zlatniks",
+  "item.icurrency.dollar_hundred": "100 Zlatniks",
+  "item.icurrency.dollar_two_hundred": "200 Zlatniks",
+  "item.icurrency.dollar_five_hundred": "500 Zlatniks",
+  "item.icurrency.dollar_thousand": "1000 Zlatniks"
+}

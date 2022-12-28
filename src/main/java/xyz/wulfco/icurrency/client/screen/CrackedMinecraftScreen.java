@@ -1,4 +1,4 @@
-package xyz.wulfco.icurrency.client.screens;
+package xyz.wulfco.icurrency.client.screen;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.ChatFormatting;
@@ -9,7 +9,8 @@ import net.minecraft.network.chat.TextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.gui.widget.ExtendedButton;
-import xyz.wulfco.icurrency.util.NetworkUtils;
+import xyz.wulfco.icurrency.util.FileHandler;
+import xyz.wulfco.icurrency.util.NetworkHandler;
 
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -67,10 +68,23 @@ public class CrackedMinecraftScreen extends ErrorScreen {
                     .add("password", password.getValue())
                     .build();
 
-            final JsonObject response = NetworkUtils.post("https://icurrency.wulfco.xyz/login/cracked", json);
+            final JsonObject response = NetworkHandler.post("https://icurrency.wulfco.xyz/login/cracked", json);
+
             assert response != null;
             if (response.getString("status").equals("ok")) {
+                String session = response.getString("session");
+                String icid = response.getString("icid");
+
+                FileHandler.write("_ic-session.json", "{\"icid\":\"" + icid + "\",\"session\":\"" + session + "\"}");
+
                 Minecraft.getInstance().setScreen(new TitleScreen());
+            } else if(response.getString("status").equals("new")) {
+                String session = response.getString("session");
+                String icid = response.getString("icid");
+
+                FileHandler.write("_ic-session.json", "{\"icid\":\"" + icid + "\",\"session\":\"" + session + "\"}");
+
+                Minecraft.getInstance().setScreen(new ErrorScreen(new TextComponent(ChatFormatting.GREEN + "Success"), new TextComponent(response.getString("message")), null));
             } else {
                 Minecraft.getInstance().setScreen(new ErrorScreen(new TextComponent(ChatFormatting.RED + "Error"), new TextComponent(response.getString("message")), b1 -> Minecraft.getInstance().setScreen(new CrackedMinecraftScreen())));
             }
