@@ -31,25 +31,30 @@ public class BalanceCommand {
 			return 0;
 
 		if (entity instanceof Player player) {
-			if (iCurrency.cracked) {
-				JsonObject response;
+			JsonObject response;
+
+			if (iCurrency.isCracked) {
 				if (Objects.requireNonNull(Minecraft.getInstance().getSingleplayerServer()).isSingleplayer()) {
 					response = NetworkHandler.get("https://icurrency.wulfco.xyz/balance/cracked?username=" + player.getName().getString() + "&singleplayer=true");
 				} else {
 					response = NetworkHandler.get("https://icurrency.wulfco.xyz/balance/cracked?username=" + player.getName().getString() + "&singleplayer=false" + "&server=" + Objects.requireNonNull(Minecraft.getInstance().getCurrentServer()).ip);
 				}
-
-				if (response != null) {
-					if (response.getString("status").equals("ok")) {
-						player.displayClientMessage(new TextComponent(ChatFormatting.GREEN + "Balance: " + response.getString("balance")), false);
-					} else {
-						player.displayClientMessage(new TextComponent(ChatFormatting.RED + "Error: " + response.getString("error")), false);
-					}
+			} else {
+				if (Objects.requireNonNull(Minecraft.getInstance().getSingleplayerServer()).isSingleplayer()) {
+					response = NetworkHandler.get("https://icurrency.wulfco.xyz/balance/premium?uuid=" + player.getStringUUID() + "&singleplayer=true");
 				} else {
-					player.displayClientMessage(new TextComponent(ChatFormatting.RED + "Error: Could not connect to server"), false);
+					response = NetworkHandler.get("https://icurrency.wulfco.xyz/balance/premium?uuid=" + player.getStringUUID() + "&singleplayer=false" + "&server=" + Objects.requireNonNull(Minecraft.getInstance().getCurrentServer()).ip);
+				}
+			}
+
+			if (response != null) {
+				if (response.getString("status").equals("ok")) {
+					player.displayClientMessage(new TextComponent(ChatFormatting.GREEN + "Balance: " + response.getString("balance")), false);
+				} else {
+					player.displayClientMessage(new TextComponent(ChatFormatting.RED + "Error: " + response.getString("error")), false);
 				}
 			} else {
-				player.displayClientMessage(new TextComponent(ChatFormatting.RED + "Error: Premium isn't supported yet."), false);
+				player.displayClientMessage(new TextComponent(ChatFormatting.RED + "Error: Could not connect to server"), false);
 			}
 		}
 

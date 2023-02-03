@@ -12,7 +12,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import xyz.wulfco.icurrency.iCurrency;
-import xyz.wulfco.icurrency.objects.blocks.ATMBlock;
+import xyz.wulfco.icurrency.objects.blocks.atm.ATMBlock;
 
 public class BlockRegistry {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, iCurrency.MOD_ID);

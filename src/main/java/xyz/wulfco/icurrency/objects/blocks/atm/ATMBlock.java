@@ -1,8 +1,9 @@
 
-package xyz.wulfco.icurrency.objects.blocks;
+package xyz.wulfco.icurrency.objects.blocks.atm;
 
 import io.netty.buffer.Unpooled;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
@@ -22,6 +23,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -32,15 +34,30 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import xyz.wulfco.icurrency.iCurrency;
+import xyz.wulfco.icurrency.objects.blocks.atm.capability.ATMCapability;
+import xyz.wulfco.icurrency.objects.blocks.atm.capability.ATMCapabilityAttacher;
+import xyz.wulfco.icurrency.objects.blocks.atm.capability.ATMCapabilityInterface;
 import xyz.wulfco.icurrency.objects.items.Card;
 import xyz.wulfco.icurrency.registry.BlockRegistry;
 import xyz.wulfco.icurrency.registry.ItemRegistry;
+import xyz.wulfco.icurrency.util.NetworkHandler;
 import xyz.wulfco.icurrency.world.inventory.EnterCVCMenu;
 
-public class ATMBlock extends Block {
+import javax.json.*;
+import java.util.EnumMap;
+import java.util.Map;
+import java.util.Objects;
+
+public class ATMBlock extends Block implements EntityBlock {
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
+	private final Map<Direction, LazyOptional<ATMCapabilityInterface>> cache = new EnumMap<>(Direction.class);
 
 	public ATMBlock() {
 		super(BlockBehaviour.Properties.of(Material.HEAVY_METAL).sound(SoundType.METAL).strength(1f, 10f).lightLevel((state) -> 3));
@@ -51,6 +68,49 @@ public class ATMBlock extends Block {
 	public @NotNull VoxelShape getShape(@NotNull BlockState state, @NotNull BlockGetter world, @NotNull BlockPos pos, @NotNull CollisionContext context) {
 		return box(0, 0, 0, 16, 32, 16);
 	}
+
+	@Nullable
+	@Override
+	public BlockEntity newBlockEntity(@NotNull BlockPos blockPos, @NotNull BlockState blockState) {
+		return new ATMBlockEntity(blockPos, blockState);
+	}
+
+	@Override
+	public void onPlace(@NotNull BlockState state, @NotNull Level world, @NotNull BlockPos pos, @NotNull BlockState blockState, boolean p_60570_) {
+		if (!world.isClientSide()) {
+			BlockEntity blockEntity = world.getBlockEntity(pos);
+			Player player = world.getNearestPlayer(pos.getX(), pos.getY(), pos.getZ(), 10, false);
+
+			if (blockEntity == null) {System.out.println("Provider is null!"); world.removeBlock(pos, false); return; }
+			if (player == null) {System.out.println("Player is null!"); world.removeBlock(pos, false); return; }
+
+			final LazyOptional<ATMCapabilityInterface> capability = blockEntity.getCapability(ATMCapability.INSTANCE);
+			if (capability.isPresent()) {
+				capability.ifPresent((cap) -> {
+					JsonObject response;
+
+					if (iCurrency.isCracked) {
+						response = NetworkHandler.post("https://icurrency.wulfco.xyz/atm/new/cracked", Json.createObjectBuilder().add("server", (Objects.requireNonNull(Minecraft.getInstance().getSingleplayerServer()).isSingleplayer()) ? Objects.requireNonNull(Minecraft.getInstance().getCurrentServer()).ip : "false").add("player-name", player.getName().getString()).build());
+					} else {
+						response = NetworkHandler.post("https://icurrency.wulfco.xyz/atm/new/premium", Json.createObjectBuilder().add("server", (Objects.requireNonNull(Minecraft.getInstance().getSingleplayerServer()).isSingleplayer()) ? Objects.requireNonNull(Minecraft.getInstance().getCurrentServer()).ip : "false").add("player-uuid", player.getStringUUID()).build());
+					}
+
+					assert response != null;
+					if (response.getBoolean("success")) {
+						cap.setAtmId(response.getString("atmId"));
+						cap.setPrivateKey(response.getString("privateKey"));
+					} else {
+						world.removeBlock(pos, false);
+						player.displayClientMessage(new TextComponent("§c" + response.getString("message")), true);
+					}
+				});
+			} else {
+				world.removeBlock(pos, false);
+				player.displayClientMessage(new TextComponent("§cSomething went wrong while setting the ATM up!"), true);
+			}
+		}
+	}
+
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {

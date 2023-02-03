@@ -1,6 +1,7 @@
 package xyz.wulfco.icurrency.objects.items;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.InteractionResult;
@@ -54,7 +55,9 @@ public class Card extends Item {
             final JsonObject session = NetworkHandler.decodeJson(FileHandler.read("_ic-session.json"));
             if (session == null) { return InteractionResult.FAIL; }
             final JsonObject cardResponse;
-            if (iCurrency.cracked) {
+            boolean cracked = Objects.isNull(Minecraft.getInstance().getGame().getCurrentSession());
+
+            if (cracked) {
                 cardResponse = NetworkHandler.post("https://icurrency.wulfco.xyz/card/cracked", Json.createObjectBuilder().add("icid", session.getString("icid")).add("session", session.getString("session")).build());
             } else {
                 cardResponse = NetworkHandler.post("https://icurrency.wulfco.xyz/card/premium", Json.createObjectBuilder().add("icid", session.getString("icid")).add("session", session.getString("session")).build());

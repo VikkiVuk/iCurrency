@@ -83,11 +83,18 @@ public class DepositMessage {
 					return;
 				}
 
-				if (iCurrency.cracked) {
-					final JsonObject sessionFile = NetworkHandler.decodeJson(FileHandler.read("_ic-session.json"));
-					final String icid = sessionFile.getString("icid");
-					final String session = sessionFile.getString("session");
+				final JsonObject sessionFile = NetworkHandler.decodeJson(FileHandler.read("_ic-session.json"));
+				if (sessionFile == null) {
+					player.displayClientMessage(new TextComponent("You are not logged in!").withStyle(ChatFormatting.RED), false);
+					return;
+				}
 
+				boolean cracked = Objects.isNull(Minecraft.getInstance().getGame().getCurrentSession());
+
+				final String icid = sessionFile.getString("icid");
+				final String session = sessionFile.getString("session");
+
+				if (cracked) {
 					JsonObject response;
 					if (Objects.requireNonNull(Minecraft.getInstance().getSingleplayerServer()).isSingleplayer()) {
 						response = NetworkHandler.post("https://icurrency.wulfco.xyz/deposit/cracked", Json.createObjectBuilder().add("amount", totalAmount).add("icid", icid).add("singleplayer", true).add("session", session).build());

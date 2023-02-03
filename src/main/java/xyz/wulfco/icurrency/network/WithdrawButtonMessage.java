@@ -72,10 +72,17 @@ public class WithdrawButtonMessage {
 			if (player == null)
 				return;
 
-			if (iCurrency.cracked) {
+			boolean cracked = Objects.isNull(Minecraft.getInstance().getGame().getCurrentSession());
+
+			if (cracked) {
 				JsonObject response;
 				final JsonObject session = NetworkHandler.decodeJson(FileHandler.read("_ic-session.json"));
 				final EditBox amount = (EditBox) guistate.get("text:amount");
+
+				if (session == null) {
+					player.displayClientMessage(new TextComponent("You are not logged in!").withStyle(ChatFormatting.RED), false);
+					return;
+				}
 
 				if (Integer.parseInt(amount.getValue()) < 10) {
 					player.displayClientMessage(new TextComponent("You can't withdraw less than 10 Zlatniks!").withStyle(ChatFormatting.RED), false);
@@ -104,35 +111,35 @@ public class WithdrawButtonMessage {
 						namount = response.getString("amountwithdrawn").equals("null") ? 0 : Double.parseDouble(response.getString("amountwithdrawn"));
 
 						// Thousand bills
-						ItemStack setstack1 = new ItemStack(ItemRegistry.DOLLAR_THOUSAND.get());
-						setstack1.setCount((int) Math.floor(namount / 1000));
-						ItemHandlerHelper.giveItemToPlayer(player, setstack1);
-						namount -= setstack1.getCount() * 1000;
+						ItemStack stack1 = new ItemStack(ItemRegistry.DOLLAR_THOUSAND.get());
+						stack1.setCount((int) Math.floor(namount / 1000));
+						ItemHandlerHelper.giveItemToPlayer(player, stack1);
+						namount -= stack1.getCount() * 1000;
 						// Five Hundred bills
-						ItemStack setstack2 = new ItemStack(ItemRegistry.DOLLAR_FIVE_HUNDRED.get());
-						setstack2.setCount((int) Math.floor(namount / 500));
-						ItemHandlerHelper.giveItemToPlayer(player, setstack2);
-						namount -= setstack2.getCount() * 500;
+						ItemStack stack2 = new ItemStack(ItemRegistry.DOLLAR_FIVE_HUNDRED.get());
+						stack2.setCount((int) Math.floor(namount / 500));
+						ItemHandlerHelper.giveItemToPlayer(player, stack2);
+						namount -= stack2.getCount() * 500;
 						// Hundred bills
-						ItemStack setstack3 = new ItemStack(ItemRegistry.DOLLAR_HUNDRED.get());
-						setstack3.setCount((int) Math.floor(namount / 100));
-						ItemHandlerHelper.giveItemToPlayer(player, setstack3);
-						namount -= setstack3.getCount() * 100;
+						ItemStack stack3 = new ItemStack(ItemRegistry.DOLLAR_HUNDRED.get());
+						stack3.setCount((int) Math.floor(namount / 100));
+						ItemHandlerHelper.giveItemToPlayer(player, stack3);
+						namount -= stack3.getCount() * 100;
 						// Fifty bills
-						ItemStack setstack4 = new ItemStack(ItemRegistry.DOLLAR_FIFTY.get());
-						setstack4.setCount((int) Math.floor(namount / 50));
-						ItemHandlerHelper.giveItemToPlayer(player, setstack4);
-						namount -= setstack4.getCount() * 50;
+						ItemStack stack4 = new ItemStack(ItemRegistry.DOLLAR_FIFTY.get());
+						stack4.setCount((int) Math.floor(namount / 50));
+						ItemHandlerHelper.giveItemToPlayer(player, stack4);
+						namount -= stack4.getCount() * 50;
 						// Twenty bills
-						ItemStack setstack5 = new ItemStack(ItemRegistry.DOLLAR_TWENTY.get());
-						setstack5.setCount((int) Math.floor(namount / 20));
-						ItemHandlerHelper.giveItemToPlayer(player, setstack5);
-						namount -= setstack5.getCount() * 20;
+						ItemStack stack5 = new ItemStack(ItemRegistry.DOLLAR_TWENTY.get());
+						stack5.setCount((int) Math.floor(namount / 20));
+						ItemHandlerHelper.giveItemToPlayer(player, stack5);
+						namount -= stack5.getCount() * 20;
 						// Ten bills
-						ItemStack setstack6 = new ItemStack(ItemRegistry.DOLLAR_TEN.get());
-						setstack6.setCount((int) Math.floor(namount / 10));
-						ItemHandlerHelper.giveItemToPlayer(player, setstack6);
-						namount -= setstack6.getCount() * 10;
+						ItemStack stack6 = new ItemStack(ItemRegistry.DOLLAR_TEN.get());
+						stack6.setCount((int) Math.floor(namount / 10));
+						ItemHandlerHelper.giveItemToPlayer(player, stack6);
+						namount -= stack6.getCount() * 10;
 
 						player.displayClientMessage(new TextComponent("Withdrawal successful.").withStyle(ChatFormatting.GREEN), false);
 					} else {

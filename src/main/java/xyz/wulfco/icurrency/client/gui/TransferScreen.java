@@ -157,7 +157,7 @@ public class TransferScreen extends AbstractContainerScreen<TransferMenu> {
 					setSuggestion(null);
 			}
 		};
-		guistate.put("text:player_username", player_username);
+		guistate.put("text:receiver", player_username);
 		player_username.setMaxLength(32767);
 		this.addWidget(this.player_username);
 	}

@@ -1,7 +1,13 @@
 
 package xyz.wulfco.icurrency.client.gui;
 
+import io.netty.buffer.Unpooled;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
@@ -16,10 +22,14 @@ import java.util.HashMap;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.NotNull;
 import xyz.wulfco.icurrency.iCurrency;
 import xyz.wulfco.icurrency.network.ATMButtonMessage;
 import xyz.wulfco.icurrency.world.inventory.ATMMenu;
+import xyz.wulfco.icurrency.world.inventory.DepositMenu;
+import xyz.wulfco.icurrency.world.inventory.TransferMenu;
+import xyz.wulfco.icurrency.world.inventory.WithdrawMenu;
 
 public class ATMScreen extends AbstractContainerScreen<ATMMenu> {
 	private final static HashMap<String, Object> guistate = ATMMenu.guistate;
@@ -90,16 +100,43 @@ public class ATMScreen extends AbstractContainerScreen<ATMMenu> {
 		assert this.minecraft != null;
 		this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
 		this.addRenderableWidget(new Button(this.leftPos + 29, this.topPos + 31, 61, 20, new TextComponent("Deposit"), e -> {
-			iCurrency.PACKET_HANDLER.sendToServer(new ATMButtonMessage(0, x, y, z));
-			ATMButtonMessage.handleButtonAction(entity, 0, x, y, z);
+			NetworkHooks.openGui((ServerPlayer) entity, new MenuProvider() {
+				@Override
+				public @NotNull Component getDisplayName() {
+					return new TextComponent("Deposit");
+				}
+
+				@Override
+				public AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
+					return new DepositMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(new BlockPos(x, y, z)));
+				}
+			}, new BlockPos(x, y, z));
 		}));
 		this.addRenderableWidget(new Button(this.leftPos + 26, this.topPos + 57, 67, 20, new TextComponent("Withdraw"), e -> {
-			iCurrency.PACKET_HANDLER.sendToServer(new ATMButtonMessage(1, x, y, z));
-			ATMButtonMessage.handleButtonAction(entity, 1, x, y, z);
+			NetworkHooks.openGui((ServerPlayer) entity, new MenuProvider() {
+				@Override
+				public @NotNull Component getDisplayName() {
+					return new TextComponent("Withdraw");
+				}
+
+				@Override
+				public AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
+					return new WithdrawMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(new BlockPos(x, y, z)));
+				}
+			}, new BlockPos(x, y, z));
 		}));
 		this.addRenderableWidget(new Button(this.leftPos + 21, this.topPos + 84, 77, 20, new TextComponent("Send Money"), e -> {
-			iCurrency.PACKET_HANDLER.sendToServer(new ATMButtonMessage(2, x, y, z));
-			ATMButtonMessage.handleButtonAction(entity, 2, x, y, z);
+			NetworkHooks.openGui((ServerPlayer) entity, new MenuProvider() {
+				@Override
+				public Component getDisplayName() {
+					return new TextComponent("Transfer Money");
+				}
+
+				@Override
+				public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+					return new TransferMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(new BlockPos(x, y, z)));
+				}
+			}, new BlockPos(x, y, z));
 		}));
 	}
 }

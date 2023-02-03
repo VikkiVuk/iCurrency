@@ -43,9 +43,11 @@ public class GiveMoneyCommand {
 		if (entity == null)
 			return 0;
 
+		boolean cracked = Objects.isNull(Minecraft.getInstance().getGame().getCurrentSession());
+
 		if (entity instanceof Player player) {
 			final int amount = IntegerArgumentType.getInteger(ctx, "amount");
-			if (iCurrency.cracked) {
+			if (cracked) {
 				JsonObject response;
 				if (Objects.requireNonNull(Minecraft.getInstance().getSingleplayerServer()).isSingleplayer()) {
 					response = NetworkHandler.get("https://icurrency.wulfco.xyz/add-balance/cracked/" + player.getName().getString() + "?amount=" + amount);
