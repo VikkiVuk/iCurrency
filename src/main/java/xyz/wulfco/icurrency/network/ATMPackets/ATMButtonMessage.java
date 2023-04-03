@@ -1,4 +1,4 @@
-package xyz.wulfco.icurrency.network;
+package xyz.wulfco.icurrency.network.ATMPackets;
 
 import io.netty.buffer.Unpooled;
 import net.minecraft.network.chat.Component;
@@ -14,19 +14,16 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
-import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 import org.jetbrains.annotations.NotNull;
 import xyz.wulfco.icurrency.iCurrency;
 import xyz.wulfco.icurrency.world.inventory.DepositMenu;
-import xyz.wulfco.icurrency.world.inventory.ATMMenu;
 import xyz.wulfco.icurrency.world.inventory.TransferMenu;
 import xyz.wulfco.icurrency.world.inventory.WithdrawMenu;
 
 import java.util.function.Supplier;
-import java.util.HashMap;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ATMButtonMessage {

@@ -13,7 +13,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import xyz.wulfco.icurrency.iCurrency;
-import xyz.wulfco.icurrency.network.DepositMessage;
+import xyz.wulfco.icurrency.network.ATMPackets.DepositMessage;
 import xyz.wulfco.icurrency.world.inventory.DepositMenu;
 
 import java.util.HashMap;

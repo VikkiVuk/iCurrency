@@ -1,14 +1,14 @@
 modLoader="javafml"
 loaderVersion="[40,)"
 license="All rights reserved"
-#issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/"
+issueTrackerURL="https://www.curseforge.com/minecraft/mc-mods/icurrency/issues"
 
 [[mods]]
 modId="icurrency"
 version="1.18.2-1.0.0"
 displayName="iCurrency"
-#updateJSONURL="https://change.me.example.invalid/updates.json"
-#displayURL="https://change.me.to.your.mods.homepage.example.invalid/"
+updateJSONURL="https://gist.githubusercontent.com/VikkiVuk/a8a781b2bedec54534ca3e25191f41b1/raw/200ea8dea2595414f664273f86a4aa2cd6cf2697/icurrency_updates.json"
+DisplayURL="https://www.curseforge.com/minecraft/mc-mods/icurrency"
 #logoFile="icurrency.png"
 credits="Thanks to Forge Forums, Github Copilot and VikkiVuk!"
 authors="VikkiVuk"
@@ -17,9 +17,9 @@ iCurrency is a mod that adds a currency system to Minecraft, using bank accounts
 '''
 
 [[dependencies.icurrency]]
-    modId="forge" #mandatory
-    mandatory=true #mandatory
-    versionRange="[40,)" #mandatory
+    modId="forge"
+    mandatory=true
+    versionRange="[40,)"
     ordering="NONE"
     side="BOTH"
 

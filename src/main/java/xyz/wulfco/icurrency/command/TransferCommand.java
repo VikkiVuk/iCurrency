@@ -42,7 +42,7 @@ public class TransferCommand {
 
 		if (entity instanceof ServerPlayer _ent) {
 			BlockPos bpos = new BlockPos(x, y, z);
-			NetworkHooks.openGui((ServerPlayer) _ent, new MenuProvider() {
+			NetworkHooks.openGui(_ent, new MenuProvider() {
 				@Override
 				public @NotNull Component getDisplayName() {
 					return new TextComponent("Transfer Money");

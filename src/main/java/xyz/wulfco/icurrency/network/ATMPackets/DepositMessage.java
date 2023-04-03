@@ -1,8 +1,7 @@
 
-package xyz.wulfco.icurrency.network;
+package xyz.wulfco.icurrency.network.ATMPackets;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.inventory.Slot;
@@ -12,21 +11,13 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
-import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.core.BlockPos;
+import xyz.wulfco.icurrency.capabilities.Wallet.WalletCapabilityProvider;
 import xyz.wulfco.icurrency.iCurrency;
-import xyz.wulfco.icurrency.util.FileHandler;
-import xyz.wulfco.icurrency.util.NetworkHandler;
-import xyz.wulfco.icurrency.world.inventory.DepositMenu;
 
-import javax.json.Json;
-import javax.json.JsonObject;
 import java.util.Map;
-import java.util.Objects;
 import java.util.function.Supplier;
-import java.util.HashMap;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DepositMessage {
@@ -83,34 +74,10 @@ public class DepositMessage {
 					return;
 				}
 
-				final JsonObject sessionFile = NetworkHandler.decodeJson(FileHandler.read("_ic-session.json"));
-				if (sessionFile == null) {
-					player.displayClientMessage(new TextComponent("You are not logged in!").withStyle(ChatFormatting.RED), false);
-					return;
-				}
-
-				boolean cracked = Objects.isNull(Minecraft.getInstance().getGame().getCurrentSession());
-
-				final String icid = sessionFile.getString("icid");
-				final String session = sessionFile.getString("session");
-
-				if (cracked) {
-					JsonObject response;
-					if (Objects.requireNonNull(Minecraft.getInstance().getSingleplayerServer()).isSingleplayer()) {
-						response = NetworkHandler.post("https://icurrency.wulfco.xyz/deposit/cracked", Json.createObjectBuilder().add("amount", totalAmount).add("icid", icid).add("singleplayer", true).add("session", session).build());
-					} else {
-						response = NetworkHandler.post("https://icurrency.wulfco.xyz/deposit/cracked", Json.createObjectBuilder().add("amount", totalAmount).add("icid", icid).add("singleplayer", false).add("session", session).add("server-ip", Objects.requireNonNull(Minecraft.getInstance().getCurrentServer()).ip).build());
-					}
-
-					assert response != null;
-					if (response.getString("status").equals("ok")) {
-						player.displayClientMessage(new TextComponent("§aSuccessfully deposited §6" + totalAmount + "§a!"), false);
-					} else {
-						player.displayClientMessage(new TextComponent("§cFailed to deposit §6" + totalAmount + "§c!"), false);
-					}
-				} else {
-					player.displayClientMessage(new TextComponent(ChatFormatting.RED + "Error: Premium isn't supported yet."), false);
-				}
+				entity.getCapability(WalletCapabilityProvider.WALLET_CAPABILITY).ifPresent(wallet -> {
+					wallet.updateWalletAmount((double) totalAmount);
+					player.displayClientMessage(new TextComponent(ChatFormatting.GREEN + "You have deposited " + totalAmount + " zlatniks into your wallet!"), false);
+				});
 
 				// Cleanup
 				slot1.set(ItemStack.EMPTY);

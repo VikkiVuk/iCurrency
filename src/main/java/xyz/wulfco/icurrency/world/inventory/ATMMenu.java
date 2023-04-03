@@ -12,6 +12,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
+import org.jetbrains.annotations.NotNull;
 import xyz.wulfco.icurrency.registry.MenuRegistry;
 
 import java.util.function.Supplier;
@@ -42,7 +43,7 @@ public class ATMMenu extends AbstractContainerMenu implements Supplier<Map<Integ
 	}
 
 	@Override
-	public boolean stillValid(Player player) {
+	public boolean stillValid(@NotNull Player player) {
 		return true;
 	}
 

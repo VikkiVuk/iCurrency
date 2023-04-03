@@ -17,7 +17,7 @@ import java.util.HashMap;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import xyz.wulfco.icurrency.iCurrency;
-import xyz.wulfco.icurrency.network.WithdrawButtonMessage;
+import xyz.wulfco.icurrency.network.ATMPackets.WithdrawButtonMessage;
 import xyz.wulfco.icurrency.world.inventory.WithdrawMenu;
 
 public class WithdrawScreen extends AbstractContainerScreen<WithdrawMenu> {
@@ -61,6 +61,7 @@ public class WithdrawScreen extends AbstractContainerScreen<WithdrawMenu> {
 	@Override
 	public boolean keyPressed(int key, int b, int c) {
 		if (key == 256) {
+			assert this.minecraft != null;
 			this.minecraft.player.closeContainer();
 			return true;
 		}
@@ -117,10 +118,8 @@ public class WithdrawScreen extends AbstractContainerScreen<WithdrawMenu> {
 		amount.setMaxLength(32767);
 		this.addWidget(this.amount);
 		this.addRenderableWidget(new Button(this.leftPos + 52, this.topPos + 52, 67, 20, new TextComponent("Withdraw"), e -> {
-			if (true) {
-				iCurrency.PACKET_HANDLER.sendToServer(new WithdrawButtonMessage(0, x, y, z));
-				WithdrawButtonMessage.handleButtonAction(entity, 0, x, y, z);
-			}
+			iCurrency.PACKET_HANDLER.sendToServer(new WithdrawButtonMessage(0, x, y, z));
+			WithdrawButtonMessage.handleButtonAction(entity, 0, x, y, z);
 		}));
 	}
 }

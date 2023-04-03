@@ -18,7 +18,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import org.jetbrains.annotations.NotNull;
 import xyz.wulfco.icurrency.iCurrency;
-import xyz.wulfco.icurrency.network.TransferButtonMessage;
+import xyz.wulfco.icurrency.network.ATMPackets.TransferButtonMessage;
 import xyz.wulfco.icurrency.world.inventory.TransferMenu;
 
 public class TransferScreen extends AbstractContainerScreen<TransferMenu> {

@@ -44,36 +44,24 @@ public class Card extends Item {
         if (used) return InteractionResult.PASS;
 
         if (Objects.requireNonNull(context.getPlayer()).isShiftKeyDown()) {
-            if (context.getItemInHand().getOrCreateTag().get("owner_icid") != null) {
-                Objects.requireNonNull(context.getPlayer()).displayClientMessage(new TextComponent(ChatFormatting.RED + "You cannot change the owner of a card!"), true);
+            used = true;
+
+            if (context.getItemInHand().getOrCreateTag().get("owner_uuid") != null) {
+                context.getPlayer().displayClientMessage(new TextComponent("This card belongs to " + ChatFormatting.GREEN + context.getItemInHand().getOrCreateTag().getString("owner_name") + ChatFormatting.WHITE + ". Your CVC is " + ChatFormatting.GREEN + context.getItemInHand().getOrCreateTag().getString("card_cvc")), false);
+                used = false;
 
                 return InteractionResult.SUCCESS;
             }
 
-            used = true;
+            String cvc = String.valueOf((int) (Math.random() * 900) + 100);
 
-            final JsonObject session = NetworkHandler.decodeJson(FileHandler.read("_ic-session.json"));
-            if (session == null) { return InteractionResult.FAIL; }
-            final JsonObject cardResponse;
-            boolean cracked = Objects.isNull(Minecraft.getInstance().getGame().getCurrentSession());
+            context.getItemInHand().getOrCreateTag().putString("owner_name", context.getPlayer().getName().getString());
+            context.getItemInHand().getOrCreateTag().putString("owner_uuid", context.getPlayer().getStringUUID());
+            context.getItemInHand().getOrCreateTag().putString("card_id", context.getPlayer().getStringUUID() + "-" + System.currentTimeMillis());
+            context.getItemInHand().getOrCreateTag().putString("card_cvc", cvc);
 
-            if (cracked) {
-                cardResponse = NetworkHandler.post("https://icurrency.wulfco.xyz/card/cracked", Json.createObjectBuilder().add("icid", session.getString("icid")).add("session", session.getString("session")).build());
-            } else {
-                cardResponse = NetworkHandler.post("https://icurrency.wulfco.xyz/card/premium", Json.createObjectBuilder().add("icid", session.getString("icid")).add("session", session.getString("session")).build());
-            }
+            context.getPlayer().displayClientMessage(new TextComponent("Card owner set to " + ChatFormatting.GREEN + context.getPlayer().getName().getString() + ChatFormatting.WHITE + ". Your CVC is " + ChatFormatting.GREEN + cvc), false);
 
-            if (cardResponse == null) { return InteractionResult.FAIL; }
-            if (cardResponse.getString("status").equals("fail")) {
-                Objects.requireNonNull(context.getPlayer()).displayClientMessage(new TextComponent(ChatFormatting.RED + cardResponse.getString("message")), true);
-            } else {
-                context.getItemInHand().getOrCreateTag().putString("owner_name", context.getPlayer().getName().getString());
-                context.getItemInHand().getOrCreateTag().putString("owner_icid", session.getString("icid"));
-                context.getItemInHand().getOrCreateTag().putString("card_id", cardResponse.getString("card_id"));
-                context.getItemInHand().getOrCreateTag().putString("card_cvc", cardResponse.getString("card_cvc"));
-
-                context.getPlayer().displayClientMessage(new TextComponent("Card owner set to " + ChatFormatting.GREEN + context.getPlayer().getName().getString() + ChatFormatting.WHITE + ". Your CVC is " + ChatFormatting.GREEN + cardResponse.getString("card_cvc")), false);
-            }
             used = false;
             return InteractionResult.SUCCESS;
         }
@@ -82,26 +70,14 @@ public class Card extends Item {
     }
 
     public static String getOwner(ItemStack itemStack) {
-        if (itemStack.getOrCreateTag().get("owner_icid") == null) {
-            return null;
+        if (itemStack.getOrCreateTag().getString("owner_uuid") == null) {
+           if (itemStack.getOrCreateTag().getString("owner_name") == null) {
+               return null;
+           } else {
+               return itemStack.getOrCreateTag().getString("owner_name");
+           }
         } else {
-            return itemStack.getOrCreateTag().getString("owner_icid");
-        }
-    }
-
-    public static String getCardId(ItemStack itemStack) {
-        if (itemStack.getOrCreateTag().get("card_id") == null) {
-            return null;
-        } else {
-            return itemStack.getOrCreateTag().getString("card_id");
-        }
-    }
-
-    public static String getCardCvc(ItemStack itemStack) {
-        if (itemStack.getOrCreateTag().get("card_cvc") == null) {
-            return null;
-        } else {
-            return itemStack.getOrCreateTag().getString("card_cvc");
+            return itemStack.getOrCreateTag().getString("owner_uuid");
         }
     }
 

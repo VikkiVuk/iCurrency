@@ -34,7 +34,6 @@ public class DepositCommand {
 	}
 
 	private static int execute(CommandContext<CommandSourceStack> ctx) {
-		ServerLevel world = ctx.getSource().getLevel();
 		double x = ctx.getSource().getPosition().x();
 		double y = ctx.getSource().getPosition().y();
 		double z = ctx.getSource().getPosition().z();

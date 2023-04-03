@@ -15,8 +15,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import xyz.wulfco.icurrency.iCurrency;
-import xyz.wulfco.icurrency.network.ATMButtonMessage;
-import xyz.wulfco.icurrency.network.EnterCVCMessage;
+import xyz.wulfco.icurrency.network.ATMPackets.EnterCVCMessage;
 import xyz.wulfco.icurrency.world.inventory.EnterCVCMenu;
 
 import java.util.HashMap;

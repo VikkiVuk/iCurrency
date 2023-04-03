@@ -1,4 +1,4 @@
-package xyz.wulfco.icurrency.network;
+package xyz.wulfco.icurrency.network.ATMPackets;
 
 import io.netty.buffer.Unpooled;
 import net.minecraft.ChatFormatting;
@@ -9,7 +9,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.MenuProvider;
-import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;

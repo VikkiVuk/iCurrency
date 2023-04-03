@@ -3,7 +3,6 @@ package xyz.wulfco.icurrency.objects.blocks.atm;
 
 import io.netty.buffer.Unpooled;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
@@ -34,30 +33,23 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import xyz.wulfco.icurrency.iCurrency;
-import xyz.wulfco.icurrency.objects.blocks.atm.capability.ATMCapability;
-import xyz.wulfco.icurrency.objects.blocks.atm.capability.ATMCapabilityAttacher;
-import xyz.wulfco.icurrency.objects.blocks.atm.capability.ATMCapabilityInterface;
+import xyz.wulfco.icurrency.capabilities.ATM.ATMCapability;
+import xyz.wulfco.icurrency.capabilities.ATM.ATMCapabilityProvider;
 import xyz.wulfco.icurrency.objects.items.Card;
 import xyz.wulfco.icurrency.registry.BlockRegistry;
 import xyz.wulfco.icurrency.registry.ItemRegistry;
-import xyz.wulfco.icurrency.util.NetworkHandler;
 import xyz.wulfco.icurrency.world.inventory.EnterCVCMenu;
 
-import javax.json.*;
 import java.util.EnumMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class ATMBlock extends Block implements EntityBlock {
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
-	private final Map<Direction, LazyOptional<ATMCapabilityInterface>> cache = new EnumMap<>(Direction.class);
+	private final Map<Direction, LazyOptional<ATMCapability>> cache = new EnumMap<>(Direction.class);
 
 	public ATMBlock() {
 		super(BlockBehaviour.Properties.of(Material.HEAVY_METAL).sound(SoundType.METAL).strength(1f, 10f).lightLevel((state) -> 3));
@@ -84,30 +76,13 @@ public class ATMBlock extends Block implements EntityBlock {
 			if (blockEntity == null) {System.out.println("Provider is null!"); world.removeBlock(pos, false); return; }
 			if (player == null) {System.out.println("Player is null!"); world.removeBlock(pos, false); return; }
 
-			final LazyOptional<ATMCapabilityInterface> capability = blockEntity.getCapability(ATMCapability.INSTANCE);
-			if (capability.isPresent()) {
-				capability.ifPresent((cap) -> {
-					JsonObject response;
+			blockEntity.getCapability(ATMCapabilityProvider.ATM_CAPABILITY).ifPresent(cap -> {
+				cap.setOwner(player.getDisplayName().getString());
+				cap.setAtmId(String.valueOf(Math.random() * 1000000));
+				cap.setAtmKey(String.valueOf(Math.random() * 1000000) + "-" + String.valueOf(Math.random() * 1000000) + player.getDisplayName().getString());
+			});
 
-					if (iCurrency.isCracked) {
-						response = NetworkHandler.post("https://icurrency.wulfco.xyz/atm/new/cracked", Json.createObjectBuilder().add("server", (Objects.requireNonNull(Minecraft.getInstance().getSingleplayerServer()).isSingleplayer()) ? Objects.requireNonNull(Minecraft.getInstance().getCurrentServer()).ip : "false").add("player-name", player.getName().getString()).build());
-					} else {
-						response = NetworkHandler.post("https://icurrency.wulfco.xyz/atm/new/premium", Json.createObjectBuilder().add("server", (Objects.requireNonNull(Minecraft.getInstance().getSingleplayerServer()).isSingleplayer()) ? Objects.requireNonNull(Minecraft.getInstance().getCurrentServer()).ip : "false").add("player-uuid", player.getStringUUID()).build());
-					}
-
-					assert response != null;
-					if (response.getBoolean("success")) {
-						cap.setAtmId(response.getString("atmId"));
-						cap.setPrivateKey(response.getString("privateKey"));
-					} else {
-						world.removeBlock(pos, false);
-						player.displayClientMessage(new TextComponent("§c" + response.getString("message")), true);
-					}
-				});
-			} else {
-				world.removeBlock(pos, false);
-				player.displayClientMessage(new TextComponent("§cSomething went wrong while setting the ATM up!"), true);
-			}
+			world.setBlockAndUpdate(pos, state.setValue(FACING, player.getDirection()));
 		}
 	}
 
