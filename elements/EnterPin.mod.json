@@ -1,0 +1,63 @@
+{
+  "_fv": 60,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 142,
+    "height": 77,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "label",
+        "data": {
+          "name": "label_set_card_pin",
+          "text": {
+            "fixedValue": "Enter Card Pin"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 176,
+          "y": 91
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "Pin",
+          "name": "pin",
+          "width": 120,
+          "height": 20,
+          "x": 154,
+          "y": 105
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_empty",
+          "text": "Confirm",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "CheckCardPin"
+          },
+          "width": 119,
+          "height": 20,
+          "x": 155,
+          "y": 130
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

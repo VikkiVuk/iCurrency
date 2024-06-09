@@ -1,0 +1,112 @@
+{
+  "_fv": 60,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 166,
+    "height": 166,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "button",
+        "data": {
+          "name": "button_empty",
+          "text": "Check Balance",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "CheckBalance"
+          },
+          "width": 145,
+          "height": 20,
+          "x": 141,
+          "y": 47
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_empty1",
+          "text": "Deposit Money",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "AEPDepositMoneyClicked"
+          },
+          "width": 145,
+          "height": 20,
+          "x": 141,
+          "y": 72
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_empty2",
+          "text": "Withdraw Money",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "AEPWithdrawMoneyClicked"
+          },
+          "width": 145,
+          "height": 20,
+          "x": 141,
+          "y": 97
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_empty3",
+          "text": "Transfer Money",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "AEPTransferMoneyClicked"
+          },
+          "width": 145,
+          "height": 20,
+          "x": 141,
+          "y": 122
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_empty4",
+          "text": "Exchange Money",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "AEPExchangeMoneyClicked"
+          },
+          "width": 145,
+          "height": 20,
+          "x": 141,
+          "y": 147
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_empty5",
+          "text": "Card Overview",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "AEPCardOverviewClicked"
+          },
+          "width": 145,
+          "height": 20,
+          "x": 141,
+          "y": 172
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 2,
+      "sy": 5,
+      "ox": 51,
+      "oy": 13,
+      "snapOnGrid": false
+    }
+  }
+}

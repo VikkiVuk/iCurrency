@@ -1,0 +1,11 @@
+{
+  "_fv": 60,
+  "_type": "tab",
+  "definition": {
+    "name": "iCurrency",
+    "icon": {
+      "value": "CUSTOM:DebitCard"
+    },
+    "showSearch": true
+  }
+}

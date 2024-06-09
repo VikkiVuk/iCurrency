@@ -1,0 +1,316 @@
+{
+  "_fv": 60,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 176,
+    "height": 170,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "label",
+        "data": {
+          "name": "label_your_cards",
+          "text": {
+            "fixedValue": "Your Cards"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 134,
+          "y": 42
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "card_tile.png",
+          "use1Xscale": true,
+          "displayCondition": {
+            "name": "COShowCardOne"
+          },
+          "x": 132,
+          "y": 48
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "card_tile.png",
+          "use1Xscale": true,
+          "displayCondition": {
+            "name": "COShowCardTwo"
+          },
+          "x": 213,
+          "y": 48
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "card_tile.png",
+          "use1Xscale": true,
+          "displayCondition": {
+            "name": "COShowCardThree"
+          },
+          "x": 132,
+          "y": 104
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "card_tile.png",
+          "use1Xscale": true,
+          "displayCondition": {
+            "name": "COShowCardFour"
+          },
+          "x": 213,
+          "y": 104
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_empty",
+          "text": "Request another card",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "RequestCardClicked"
+          },
+          "width": 156,
+          "height": 20,
+          "x": 135,
+          "y": 172
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_trash",
+          "image": "trash.png",
+          "hoveredImage": "trash_hover.png",
+          "onClick": {
+            "name": "TrashCardOne"
+          },
+          "displayCondition": {
+            "name": "COShowCardOne"
+          },
+          "x": 190,
+          "y": 87
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_4417_4557",
+          "text": {
+            "fixedValue": "4417 4557",
+            "name": "COCardOneNumber"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "displayCondition": {
+            "name": "COShowCardOne"
+          },
+          "x": 147,
+          "y": 63
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_4417_4657",
+          "text": {
+            "fixedValue": "4417 4657",
+            "name": "COCardTwoNumber"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "displayCondition": {
+            "name": "COShowCardTwo"
+          },
+          "x": 228,
+          "y": 63
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_1147_3324",
+          "text": {
+            "fixedValue": "1147 3324",
+            "name": "COCardThreeNumber"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "displayCondition": {
+            "name": "COShowCardThree"
+          },
+          "x": 147,
+          "y": 119
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_4414_4778",
+          "text": {
+            "fixedValue": "4414 4778",
+            "name": "COCardFourNumber"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "displayCondition": {
+            "name": "COShowCardFour"
+          },
+          "x": 228,
+          "y": 119
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_trash1",
+          "image": "trash.png",
+          "hoveredImage": "trash_hover.png",
+          "onClick": {
+            "name": "TrashCardTwo"
+          },
+          "displayCondition": {
+            "name": "COShowCardTwo"
+          },
+          "x": 271,
+          "y": 87
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_trash2",
+          "image": "trash.png",
+          "hoveredImage": "trash_hover.png",
+          "onClick": {
+            "name": "TrashCardThree"
+          },
+          "displayCondition": {
+            "name": "COShowCardThree"
+          },
+          "x": 190,
+          "y": 143
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_trash3",
+          "image": "trash.png",
+          "hoveredImage": "trash_hover.png",
+          "onClick": {
+            "name": "TrashCardFour"
+          },
+          "displayCondition": {
+            "name": "COShowCardFour"
+          },
+          "x": 271,
+          "y": 143
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_114",
+          "text": {
+            "fixedValue": "114",
+            "name": "COCardOneCVC"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "displayCondition": {
+            "name": "COShowCardOne"
+          },
+          "x": 148,
+          "y": 75
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_441",
+          "text": {
+            "fixedValue": "441",
+            "name": "COCardTwoCVC"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "displayCondition": {
+            "name": "COShowCardTwo"
+          },
+          "x": 229,
+          "y": 75
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_314",
+          "text": {
+            "fixedValue": "314",
+            "name": "COCardThreeCVC"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "displayCondition": {
+            "name": "COShowCardThree"
+          },
+          "x": 148,
+          "y": 131
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_123",
+          "text": {
+            "fixedValue": "123",
+            "name": "COCardFourCVC"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "displayCondition": {
+            "name": "COShowCardFour"
+          },
+          "x": 229,
+          "y": 131
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 16,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

@@ -1,0 +1,2341 @@
+{
+  "mod_elements": [
+    {
+      "name": "DebitCard",
+      "type": "item",
+      "sortid": 2,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "debit_card",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/icurrency/models/item/debit_card.json",
+          "src/main/java/com/vikkivuk/icurrency/item/DebitCardItem.java"
+        ]
+      }
+    },
+    {
+      "name": "ModTab",
+      "type": "tab",
+      "sortid": 1,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mod_tab",
+      "metadata": {
+        "files": []
+      }
+    },
+    {
+      "name": "DollarTen",
+      "type": "item",
+      "sortid": 3,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dollar_ten",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/item/DollarTenItem.java",
+          "src/main/resources/assets/icurrency/models/item/dollar_ten.json"
+        ]
+      }
+    },
+    {
+      "name": "DollarTwenty",
+      "type": "item",
+      "sortid": 4,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dollar_twenty",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/icurrency/models/item/dollar_twenty.json",
+          "src/main/java/com/vikkivuk/icurrency/item/DollarTwentyItem.java"
+        ]
+      }
+    },
+    {
+      "name": "DollarFifty",
+      "type": "item",
+      "sortid": 5,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dollar_fifty",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/item/DollarFiftyItem.java",
+          "src/main/resources/assets/icurrency/models/item/dollar_fifty.json"
+        ]
+      }
+    },
+    {
+      "name": "DollarHundred",
+      "type": "item",
+      "sortid": 6,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dollar_hundred",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/item/DollarHundredItem.java",
+          "src/main/resources/assets/icurrency/models/item/dollar_hundred.json"
+        ]
+      }
+    },
+    {
+      "name": "DollarTwoHundred",
+      "type": "item",
+      "sortid": 7,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dollar_two_hundred",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/icurrency/models/item/dollar_two_hundred.json",
+          "src/main/java/com/vikkivuk/icurrency/item/DollarTwoHundredItem.java"
+        ]
+      }
+    },
+    {
+      "name": "DollarFiveHundred",
+      "type": "item",
+      "sortid": 8,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dollar_five_hundred",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/item/DollarFiveHundredItem.java",
+          "src/main/resources/assets/icurrency/models/item/dollar_five_hundred.json"
+        ]
+      }
+    },
+    {
+      "name": "DollarThousand",
+      "type": "item",
+      "sortid": 9,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dollar_thousand",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/item/DollarThousandItem.java",
+          "src/main/resources/assets/icurrency/models/item/dollar_thousand.json"
+        ]
+      }
+    },
+    {
+      "name": "ATM",
+      "type": "block",
+      "sortid": 10,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "atm",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/icurrency/loot_tables/blocks/atm.json",
+          "src/main/resources/assets/icurrency/models/block/atm.json",
+          "src/main/java/com/vikkivuk/icurrency/block/ATMBlock.java",
+          "src/main/resources/assets/icurrency/blockstates/atm.json",
+          "src/main/resources/assets/icurrency/models/item/atm.json",
+          "src/main/java/com/vikkivuk/icurrency/block/entity/ATMBlockEntity.java"
+        ]
+      }
+    },
+    {
+      "name": "ATMEntryPoint",
+      "type": "gui",
+      "sortid": 11,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "atm_entry_point",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/network/ATMEntryPointButtonMessage.java",
+          "src/main/java/com/vikkivuk/icurrency/client/gui/ATMEntryPointScreen.java",
+          "src/main/java/com/vikkivuk/icurrency/world/inventory/ATMEntryPointMenu.java"
+        ]
+      }
+    },
+    {
+      "name": "DebitCardRightclicked",
+      "type": "procedure",
+      "sortid": 12,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "debit_card_rightclicked",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/DebitCardRightclickedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ATMSetup",
+      "type": "gui",
+      "sortid": 13,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "atm_setup",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/world/inventory/ATMSetupMenu.java",
+          "src/main/java/com/vikkivuk/icurrency/client/gui/ATMSetupScreen.java",
+          "src/main/java/com/vikkivuk/icurrency/network/ATMSetupButtonMessage.java"
+        ]
+      }
+    },
+    {
+      "name": "CardTooltip",
+      "type": "procedure",
+      "sortid": 14,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "card_tooltip",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/CardTooltipProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "tooltip",
+            "type": "tooltip"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ATMOnBlockRightClicked",
+      "type": "procedure",
+      "sortid": 15,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "atm_on_block_right_clicked",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/ATMOnBlockRightClickedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ATMSetupButtonConfirm",
+      "type": "procedure",
+      "sortid": 16,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "atm_setup_button_confirm",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/ATMSetupButtonConfirmProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "guistate",
+            "type": "map"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CheckBalance",
+      "type": "procedure",
+      "sortid": 17,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "check_balance",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/CheckBalanceProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DepositMoney",
+      "type": "gui",
+      "sortid": 18,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "deposit_money",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/world/inventory/DepositMoneyMenu.java",
+          "src/main/java/com/vikkivuk/icurrency/client/gui/DepositMoneyScreen.java",
+          "src/main/java/com/vikkivuk/icurrency/network/DepositMoneyButtonMessage.java"
+        ]
+      }
+    },
+    {
+      "name": "WithdrawMoney",
+      "type": "gui",
+      "sortid": 19,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "withdraw_money",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/client/gui/WithdrawMoneyScreen.java",
+          "src/main/java/com/vikkivuk/icurrency/network/WithdrawMoneyButtonMessage.java",
+          "src/main/java/com/vikkivuk/icurrency/world/inventory/WithdrawMoneyMenu.java"
+        ]
+      }
+    },
+    {
+      "name": "TransferMoney",
+      "type": "gui",
+      "sortid": 20,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "transfer_money",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/client/gui/TransferMoneyScreen.java",
+          "src/main/java/com/vikkivuk/icurrency/world/inventory/TransferMoneyMenu.java",
+          "src/main/java/com/vikkivuk/icurrency/network/TransferMoneyButtonMessage.java"
+        ]
+      }
+    },
+    {
+      "name": "ExchangeMoney",
+      "type": "gui",
+      "sortid": 21,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "exchange_money",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/network/ExchangeMoneyButtonMessage.java",
+          "src/main/java/com/vikkivuk/icurrency/world/inventory/ExchangeMoneyMenu.java",
+          "src/main/java/com/vikkivuk/icurrency/client/gui/ExchangeMoneyScreen.java"
+        ]
+      }
+    },
+    {
+      "name": "CardOverview",
+      "type": "gui",
+      "sortid": 22,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "card_overview",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/network/CardOverviewButtonMessage.java",
+          "src/main/java/com/vikkivuk/icurrency/world/inventory/CardOverviewMenu.java",
+          "src/main/java/com/vikkivuk/icurrency/client/gui/CardOverviewScreen.java"
+        ]
+      }
+    },
+    {
+      "name": "COShowCardOne",
+      "type": "procedure",
+      "sortid": 23,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "co_show_card_one",
+      "metadata": {
+        "return_type": "logic",
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/COShowCardOneProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "COShowCardTwo",
+      "type": "procedure",
+      "sortid": 24,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "co_show_card_two",
+      "metadata": {
+        "return_type": "logic",
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/COShowCardTwoProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "COShowCardThree",
+      "type": "procedure",
+      "sortid": 25,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "co_show_card_three",
+      "metadata": {
+        "return_type": "logic",
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/COShowCardThreeProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "COShowCardFour",
+      "type": "procedure",
+      "sortid": 26,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "co_show_card_four",
+      "metadata": {
+        "return_type": "logic",
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/COShowCardFourProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RequestCardClicked",
+      "type": "procedure",
+      "sortid": 27,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "request_card_clicked",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/RequestCardClickedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "COCardOneNumber",
+      "type": "procedure",
+      "sortid": 28,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "co_card_one_number",
+      "metadata": {
+        "return_type": "string",
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/COCardOneNumberProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "COCardTwoNumber",
+      "type": "procedure",
+      "sortid": 29,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "co_card_two_number",
+      "metadata": {
+        "return_type": "string",
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/COCardTwoNumberProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "COCardThreeNumber",
+      "type": "procedure",
+      "sortid": 30,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "co_card_three_number",
+      "metadata": {
+        "return_type": "string",
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/COCardThreeNumberProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "COCardFourNumber",
+      "type": "procedure",
+      "sortid": 31,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "co_card_four_number",
+      "metadata": {
+        "return_type": "string",
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/COCardFourNumberProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "COCardOneCVC",
+      "type": "procedure",
+      "sortid": 32,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "co_card_one_cvc",
+      "metadata": {
+        "return_type": "string",
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/COCardOneCVCProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "COCardTwoCVC",
+      "type": "procedure",
+      "sortid": 33,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "co_card_two_cvc",
+      "metadata": {
+        "return_type": "string",
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/COCardTwoCVCProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "COCardFourCVC",
+      "type": "procedure",
+      "sortid": 34,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "co_card_four_cvc",
+      "metadata": {
+        "return_type": "string",
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/COCardFourCVCProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "COCardThreeCVC",
+      "type": "procedure",
+      "sortid": 35,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "co_card_three_cvc",
+      "metadata": {
+        "return_type": "string",
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/COCardThreeCVCProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TrashCardOne",
+      "type": "procedure",
+      "sortid": 36,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "trash_card_one",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/TrashCardOneProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TrashCardTwo",
+      "type": "procedure",
+      "sortid": 37,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "trash_card_two",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/TrashCardTwoProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TrashCardThree",
+      "type": "procedure",
+      "sortid": 38,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "trash_card_three",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/TrashCardThreeProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TrashCardFour",
+      "type": "procedure",
+      "sortid": 39,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "trash_card_four",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/TrashCardFourProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AEPDepositMoneyClicked",
+      "type": "procedure",
+      "sortid": 40,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "aep_deposit_money_clicked",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/AEPDepositMoneyClickedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AEPWithdrawMoneyClicked",
+      "type": "procedure",
+      "sortid": 41,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "aep_withdraw_money_clicked",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/AEPWithdrawMoneyClickedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AEPTransferMoneyClicked",
+      "type": "procedure",
+      "sortid": 42,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "aep_transfer_money_clicked",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/AEPTransferMoneyClickedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AEPExchangeMoneyClicked",
+      "type": "procedure",
+      "sortid": 43,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "aep_exchange_money_clicked",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/AEPExchangeMoneyClickedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AEPCardOverviewClicked",
+      "type": "procedure",
+      "sortid": 44,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "aep_card_overview_clicked",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/AEPCardOverviewClickedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DollarTenItemInInventoryTick",
+      "type": "procedure",
+      "sortid": 45,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dollar_ten_item_in_inventory_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/DollarTenItemInInventoryTickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DollarTwentyItemInInventoryTick",
+      "type": "procedure",
+      "sortid": 46,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dollar_twenty_item_in_inventory_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/DollarTwentyItemInInventoryTickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DollarFiftyItemInInventoryTick",
+      "type": "procedure",
+      "sortid": 47,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dollar_fifty_item_in_inventory_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/DollarFiftyItemInInventoryTickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DollarHundredItemInInventoryTick",
+      "type": "procedure",
+      "sortid": 48,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dollar_hundred_item_in_inventory_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/DollarHundredItemInInventoryTickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DollarTwoHundredItemInInventoryTick",
+      "type": "procedure",
+      "sortid": 49,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dollar_two_hundred_item_in_inventory_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/DollarTwoHundredItemInInventoryTickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DollarFiveHundredItemInInventoryTick",
+      "type": "procedure",
+      "sortid": 50,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dollar_five_hundred_item_in_inventory_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/DollarFiveHundredItemInInventoryTickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DollarThousandItemInInventoryTick",
+      "type": "procedure",
+      "sortid": 51,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dollar_thousand_item_in_inventory_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/DollarThousandItemInInventoryTickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DepositMoneyClicked",
+      "type": "procedure",
+      "sortid": 52,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "deposit_money_clicked",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/DepositMoneyClickedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AddMoneyCommand",
+      "type": "procedure",
+      "sortid": 53,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "add_money_command",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/AddMoneyCommandProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          },
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RemoveMoneyCommand",
+      "type": "procedure",
+      "sortid": 54,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "remove_money_command",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/RemoveMoneyCommandProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          },
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SetMoneyCommand",
+      "type": "procedure",
+      "sortid": 55,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "set_money_command",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/SetMoneyCommandProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          },
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "GetMoneyCommand",
+      "type": "procedure",
+      "sortid": 56,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "get_money_command",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/GetMoneyCommandProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          },
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Money",
+      "type": "command",
+      "sortid": 57,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "money",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/command/MoneyCommand.java"
+        ]
+      }
+    },
+    {
+      "name": "WithdrawMoneyClicked",
+      "type": "procedure",
+      "sortid": 58,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "withdraw_money_clicked",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/WithdrawMoneyClickedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "guistate",
+            "type": "map"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TransferMoneyClicked",
+      "type": "procedure",
+      "sortid": 59,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "transfer_money_clicked",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/TransferMoneyClickedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "guistate",
+            "type": "map"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CashRegister",
+      "type": "block",
+      "sortid": 60,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cash_register",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/block/CashRegisterBlock.java",
+          "src/main/java/com/vikkivuk/icurrency/block/entity/CashRegisterBlockEntity.java",
+          "src/main/resources/assets/icurrency/models/item/cash_register.json",
+          "src/main/resources/assets/icurrency/blockstates/cash_register.json",
+          "src/main/resources/assets/icurrency/models/block/cash_register.json",
+          "src/main/resources/data/icurrency/loot_tables/blocks/cash_register.json"
+        ]
+      }
+    },
+    {
+      "name": "CashRegisterGUI",
+      "type": "gui",
+      "sortid": 61,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cash_register_gui",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/client/gui/CashRegisterGUIScreen.java",
+          "src/main/java/com/vikkivuk/icurrency/network/CashRegisterGUIButtonMessage.java",
+          "src/main/java/com/vikkivuk/icurrency/world/inventory/CashRegisterGUIMenu.java"
+        ]
+      }
+    },
+    {
+      "name": "Receipt",
+      "type": "item",
+      "sortid": 62,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "receipt",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/icurrency/models/item/receipt.json",
+          "src/main/java/com/vikkivuk/icurrency/item/ReceiptItem.java"
+        ]
+      }
+    },
+    {
+      "name": "CashRegisterPayCard",
+      "type": "gui",
+      "sortid": 63,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cash_register_pay_card",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/world/inventory/CashRegisterPayCardMenu.java",
+          "src/main/java/com/vikkivuk/icurrency/client/gui/CashRegisterPayCardScreen.java",
+          "src/main/java/com/vikkivuk/icurrency/network/CashRegisterPayCardButtonMessage.java"
+        ]
+      }
+    },
+    {
+      "name": "CashRegisterPayCash",
+      "type": "gui",
+      "sortid": 64,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cash_register_pay_cash",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/network/CashRegisterPayCashButtonMessage.java",
+          "src/main/java/com/vikkivuk/icurrency/world/inventory/CashRegisterPayCashMenu.java",
+          "src/main/java/com/vikkivuk/icurrency/client/gui/CashRegisterPayCashScreen.java"
+        ]
+      }
+    },
+    {
+      "name": "ShowCashEnabledCRP",
+      "type": "procedure",
+      "sortid": 65,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "show_cash_enabled_crp",
+      "metadata": {
+        "return_type": "logic",
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/ShowCashEnabledCRPProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ShowCashDisabledCRP",
+      "type": "procedure",
+      "sortid": 66,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "show_cash_disabled_crp",
+      "metadata": {
+        "return_type": "logic",
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/ShowCashDisabledCRPProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CashRegisterSetup",
+      "type": "gui",
+      "sortid": 67,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cash_register_setup",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/world/inventory/CashRegisterSetupMenu.java",
+          "src/main/java/com/vikkivuk/icurrency/client/gui/CashRegisterSetupScreen.java",
+          "src/main/java/com/vikkivuk/icurrency/network/CashRegisterSetupButtonMessage.java"
+        ]
+      }
+    },
+    {
+      "name": "CashRegisterOverview",
+      "type": "gui",
+      "sortid": 68,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cash_register_overview",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/client/gui/CashRegisterOverviewScreen.java",
+          "src/main/java/com/vikkivuk/icurrency/world/inventory/CashRegisterOverviewMenu.java",
+          "src/main/java/com/vikkivuk/icurrency/network/CashRegisterOverviewButtonMessage.java"
+        ]
+      }
+    },
+    {
+      "name": "OpenCashRegisterCheck",
+      "type": "gui",
+      "sortid": 69,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "open_cash_register_check",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/client/gui/OpenCashRegisterCheckScreen.java",
+          "src/main/java/com/vikkivuk/icurrency/world/inventory/OpenCashRegisterCheckMenu.java",
+          "src/main/java/com/vikkivuk/icurrency/network/OpenCashRegisterCheckButtonMessage.java"
+        ]
+      }
+    },
+    {
+      "name": "CashRegisterSafe",
+      "type": "gui",
+      "sortid": 70,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cash_register_safe",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/world/inventory/CashRegisterSafeMenu.java",
+          "src/main/java/com/vikkivuk/icurrency/client/gui/CashRegisterSafeScreen.java"
+        ]
+      }
+    },
+    {
+      "name": "ShowLoadMoreEnabled",
+      "type": "procedure",
+      "sortid": 71,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "show_load_more_enabled",
+      "metadata": {
+        "return_type": "logic",
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/ShowLoadMoreEnabledProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ShowLoadMoreDisabled",
+      "type": "procedure",
+      "sortid": 72,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "show_load_more_disabled",
+      "metadata": {
+        "return_type": "logic",
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/ShowLoadMoreDisabledProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CashRegisterOnBlockRightClicked",
+      "type": "procedure",
+      "sortid": 73,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cash_register_on_block_right_clicked",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/CashRegisterOnBlockRightClickedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CashRegisterFinishSetup",
+      "type": "procedure",
+      "sortid": 74,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cash_register_finish_setup",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/CashRegisterFinishSetupProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "guistate",
+            "type": "map"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CashRegisterOverviewOpenCheckout",
+      "type": "procedure",
+      "sortid": 75,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cash_register_overview_open_checkout",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/CashRegisterOverviewOpenCheckoutProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CashRegisterOverviewOpenSafe",
+      "type": "procedure",
+      "sortid": 76,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cash_register_overview_open_safe",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/CashRegisterOverviewOpenSafeProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "OpenCashRegisterCheckCheck",
+      "type": "procedure",
+      "sortid": 77,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "open_cash_register_check_check",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/OpenCashRegisterCheckCheckProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "guistate",
+            "type": "map"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CashRegisterGUIWhileThisGUIIsOpenTick",
+      "type": "procedure",
+      "sortid": 78,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cash_register_gui_while_this_gui_is_open_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/CashRegisterGUIWhileThisGUIIsOpenTickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "guistate",
+            "type": "map"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ShowCardEnabledCRP",
+      "type": "procedure",
+      "sortid": 79,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "show_card_enabled_crp",
+      "metadata": {
+        "return_type": "logic",
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/ShowCardEnabledCRPProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ShowCardDisabledCRP",
+      "type": "procedure",
+      "sortid": 80,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "show_card_disabled_crp",
+      "metadata": {
+        "return_type": "logic",
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/ShowCardDisabledCRPProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "StartCashTransactionCR",
+      "type": "procedure",
+      "sortid": 81,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "start_cash_transaction_cr",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/StartCashTransactionCRProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "guistate",
+            "type": "map"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "StartCardTransactionCR",
+      "type": "procedure",
+      "sortid": 82,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "start_card_transaction_cr",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/StartCardTransactionCRProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "guistate",
+            "type": "map"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CashRegisterPayCardValue",
+      "type": "procedure",
+      "sortid": 83,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cash_register_pay_card_value",
+      "metadata": {
+        "return_type": "string",
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/CashRegisterPayCardValueProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "VoidTransaction",
+      "type": "procedure",
+      "sortid": 84,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "void_transaction",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/VoidTransactionProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AcknowledgeTransactionResultCR",
+      "type": "gui",
+      "sortid": 85,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "acknowledge_transaction_result_cr",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/network/AcknowledgeTransactionResultCRButtonMessage.java",
+          "src/main/java/com/vikkivuk/icurrency/client/gui/AcknowledgeTransactionResultCRScreen.java",
+          "src/main/java/com/vikkivuk/icurrency/world/inventory/AcknowledgeTransactionResultCRMenu.java"
+        ]
+      }
+    },
+    {
+      "name": "SwipeCardCashRegister",
+      "type": "procedure",
+      "sortid": 86,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "swipe_card_cash_register",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/SwipeCardCashRegisterProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ShowTransactionResult",
+      "type": "procedure",
+      "sortid": 87,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "show_transaction_result",
+      "metadata": {
+        "return_type": "string",
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/ShowTransactionResultProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AcknowledgeTransactionPressed",
+      "type": "procedure",
+      "sortid": 88,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "acknowledge_transaction_pressed",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/AcknowledgeTransactionPressedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PayCashCashRegister",
+      "type": "procedure",
+      "sortid": 89,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "pay_cash_cash_register",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/PayCashCashRegisterProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ExchangeMoneyPressed",
+      "type": "procedure",
+      "sortid": 90,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "exchange_money_pressed",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/ExchangeMoneyPressedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SetCardPin",
+      "type": "gui",
+      "sortid": 91,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "set_card_pin",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/world/inventory/SetCardPinMenu.java",
+          "src/main/java/com/vikkivuk/icurrency/client/gui/SetCardPinScreen.java",
+          "src/main/java/com/vikkivuk/icurrency/network/SetCardPinButtonMessage.java"
+        ]
+      }
+    },
+    {
+      "name": "SetCardPinConfirm",
+      "type": "procedure",
+      "sortid": 92,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "set_card_pin_confirm",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/SetCardPinConfirmProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "guistate",
+            "type": "map"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "EnterPin",
+      "type": "gui",
+      "sortid": 93,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "enter_pin",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/world/inventory/EnterPinMenu.java",
+          "src/main/java/com/vikkivuk/icurrency/client/gui/EnterPinScreen.java",
+          "src/main/java/com/vikkivuk/icurrency/network/EnterPinButtonMessage.java"
+        ]
+      }
+    },
+    {
+      "name": "CheckCardPin",
+      "type": "procedure",
+      "sortid": 94,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "check_card_pin",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/CheckCardPinProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "guistate",
+            "type": "map"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ReceiptRightclicked",
+      "type": "procedure",
+      "sortid": 95,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "receipt_rightclicked",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/ReceiptRightclickedProcedure.java"
+        ],
+        "dependencies": []
+      }
+    },
+    {
+      "name": "CashRegisterGiveReceipt",
+      "type": "procedure",
+      "sortid": 96,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cash_register_give_receipt",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/CashRegisterGiveReceiptProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    }
+  ],
+  "variable_elements": [
+    {
+      "name": "money",
+      "type": "number",
+      "scope": "player_persistent",
+      "value": "0"
+    },
+    {
+      "name": "cards",
+      "type": "vectormap",
+      "scope": "player_persistent",
+      "value": "new HashMap\u003cString, Vec3\u003e()"
+    },
+    {
+      "name": "transactions",
+      "type": "vectorlist",
+      "scope": "player_persistent",
+      "value": "new ArrayList\u003cVec3\u003e()"
+    },
+    {
+      "name": "refresh_cards",
+      "type": "logic",
+      "scope": "player_lifetime",
+      "value": "false"
+    },
+    {
+      "name": "cash_disabled",
+      "type": "logic",
+      "scope": "player_lifetime",
+      "value": "false"
+    },
+    {
+      "name": "load_more_disabled",
+      "type": "logic",
+      "scope": "player_lifetime",
+      "value": "true"
+    },
+    {
+      "name": "card_disabled",
+      "type": "logic",
+      "scope": "player_lifetime",
+      "value": "false"
+    },
+    {
+      "name": "do_crtick",
+      "type": "logic",
+      "scope": "player_lifetime",
+      "value": "false"
+    },
+    {
+      "name": "card_selected",
+      "type": "vector",
+      "scope": "player_lifetime",
+      "value": "Vec3.ZERO"
+    },
+    {
+      "name": "selected_card_holder",
+      "type": "string",
+      "scope": "player_lifetime",
+      "value": "\"\""
+    },
+    {
+      "name": "set_pin",
+      "type": "number",
+      "scope": "player_lifetime",
+      "value": "0"
+    }
+  ],
+  "sound_elements": [],
+  "tag_elements": {},
+  "language_map": {
+    "en_us": {
+      "gui.icurrency.atm_setup.label_bank_owner": "Bank Owner",
+      "gui.icurrency.cash_register_gui.label_tip_max_50": "Tip, max 50%",
+      "gui.icurrency.cash_register_pay_card.button_swipe_card": "Swipe Card",
+      "gui.icurrency.enter_pin.pin": "Pin",
+      "gui.icurrency.card_overview.label_your_cards": "Your Cards",
+      "gui.icurrency.cash_register_overview.button_empty1": "Open the cash register",
+      "gui.icurrency.cash_register_setup.label_please_setup_the_cash_register": "please setup the cash register!",
+      "gui.icurrency.cash_register_setup.password": "",
+      "item.icurrency.dollar_ten": "10 Zlatniks",
+      "gui.icurrency.cash_register_setup.deposit_account": "Deposit into my account",
+      "gui.icurrency.transfer_money.label_receiver": "Receiver",
+      "gui.icurrency.cash_register_gui.cost": "Price",
+      "gui.icurrency.open_cash_register_check.button_open_cash_register": "Open cash register",
+      "gui.icurrency.set_card_pin.label_set_card_pin": "Set Card Pin",
+      "gui.icurrency.cash_register_gui.product": "Product",
+      "item.icurrency.debit_card": "Debit Card",
+      "gui.icurrency.cash_register_setup.tooltip_note_this_will_only_work_if_you": "This will only work if you are online when the transaction is made.",
+      "gui.icurrency.atm_setup.bank_owner": "",
+      "gui.icurrency.cash_register_setup.button_empty": "Finish Setup",
+      "item.icurrency.dollar_thousand": "1000 Zlatniks",
+      "gui.icurrency.cash_register_gui.label_cash": "Cash",
+      "gui.icurrency.deposit_money.label_deposit_money": "Deposit Money",
+      "gui.icurrency.card_overview.label_114": "114",
+      "gui.icurrency.atm_setup.bank_name": "",
+      "gui.icurrency.atm_setup.label_to_start_using_this_atm_you_nee": "to start using this ATM you need to set it up. Please",
+      "gui.icurrency.transfer_money.button_empty": "Transfer",
+      "gui.icurrency.cash_register_overview.button_empty": "Checkout a customer",
+      "gui.icurrency.card_overview.label_1147_3324": "1147 3324",
+      "gui.icurrency.cash_register_safe.button_load_more": "Load more",
+      "gui.icurrency.withdraw_money.amount": "Amount",
+      "gui.icurrency.card_overview.label_123": "123",
+      "item.icurrency.dollar_two_hundred": "200 Zlatniks",
+      "gui.icurrency.atm_setup.label_financial_features_to_your_custo": "financial features to your customers! For your customers",
+      "gui.icurrency.transfer_money.label_amount": "Amount",
+      "gui.icurrency.cash_register_gui.label_checkout": "Product",
+      "gui.icurrency.cash_register_gui.label_card": "Card",
+      "gui.icurrency.exchange_money.label_exchange_money": "Exchange Money",
+      "gui.icurrency.cash_register_pay_cash.label_cash_payment": "Cash Payment",
+      "gui.icurrency.cash_register_setup.label_hi_to_start_serving_your_custom": "Hi! To start serving your customers,",
+      "gui.icurrency.cash_register_setup.tooltip_this_will_make_it_so_that_custom": "This will make it so that customers can only pay using their cards.",
+      "gui.icurrency.transfer_money.receiver": "",
+      "gui.icurrency.card_overview.label_4417_4557": "4417 4557",
+      "gui.icurrency.card_overview.button_empty": "Request another card",
+      "gui.icurrency.enter_pin.label_set_card_pin": "Enter Card Pin",
+      "gui.icurrency.cash_register_safe.label_load_more": "Load more",
+      "block.icurrency.atm": "ATM",
+      "gui.icurrency.open_cash_register_check.pin": "Pin",
+      "gui.icurrency.set_card_pin.pin": "Pin",
+      "gui.icurrency.cash_register_gui.tooltip_anything_over_z570000_can_only_b": "Anything over Ƶ500000 can only be paid using card!",
+      "item_group.icurrency.mod_tab": "iCurrency",
+      "gui.icurrency.cash_register_pay_card.tooltip_void_the_transaction": "Void the transaction",
+      "gui.icurrency.cash_register_gui.label_price": "Price",
+      "gui.icurrency.cash_register_overview.label_welcome": "Welcome, what would you like to do",
+      "gui.icurrency.atm_setup.label_bank_name": "Bank Name",
+      "gui.icurrency.cash_register_setup.label_pin": "Password",
+      "gui.icurrency.cash_register_setup.PIN": "Pin",
+      "gui.icurrency.acknowledge_transaction_result_cr.label_last_transaction_was_completed_w": "Transaction finished with result ",
+      "gui.icurrency.card_overview.label_4414_4778": "4414 4778",
+      "gui.icurrency.card_overview.label_4417_4657": "4417 4657",
+      "gui.icurrency.card_overview.label_314": "314",
+      "gui.icurrency.atm_setup.label_hi_thank_you_for_partnering_wit": "Hi, thank you for partnering with iBank to provide",
+      "gui.icurrency.acknowledge_transaction_result_cr.button_empty": "Acknowledge",
+      "gui.icurrency.withdraw_money.button_empty": "Withdraw",
+      "gui.icurrency.atm_entry_point.button_empty": "Check Balance",
+      "gui.icurrency.transfer_money.amount": "",
+      "gui.icurrency.cash_register_pay_cash.tooltip_void_the_transaction": "Void the transaction",
+      "gui.icurrency.deposit_money.button_empty": "Deposit",
+      "gui.icurrency.open_cash_register_check.pin_check": "Pin",
+      "gui.icurrency.cash_register_gui.price": "Price",
+      "gui.icurrency.cash_register_safe.button_withdraw_all": "Withdraw all",
+      "gui.icurrency.enter_pin.button_empty": "Confirm",
+      "gui.icurrency.cash_register_pay_card.label_card_payment": "Card Payment",
+      "gui.icurrency.atm_setup.label_fill_out_the_fields_below": "fill out the fields below:",
+      "gui.icurrency.cash_register_gui.button_cash": "Cash",
+      "gui.icurrency.cash_register_setup.tooltip_to_access_the_cash_registers_ea": "To access the cash register\u0027s earnings, you will need to enter the password!",
+      "gui.icurrency.cash_register_safe.label_cash_safe": "Cash Safe",
+      "gui.icurrency.cash_register_pay_cash.button_empty": "Pay",
+      "gui.icurrency.atm_entry_point.button_empty2": "Withdraw Money",
+      "gui.icurrency.atm_entry_point.button_empty1": "Deposit Money",
+      "gui.icurrency.atm_setup.tos": "I agree to the TOS set by the iBank",
+      "gui.icurrency.open_cash_register_check.label_please_enter_the_pin": "Please enter the pin",
+      "gui.icurrency.atm_entry_point.button_empty5": "Card Overview",
+      "gui.icurrency.atm_entry_point.button_empty4": "Exchange Money",
+      "gui.icurrency.card_overview.label_441": "441",
+      "gui.icurrency.atm_entry_point.button_empty3": "Transfer Money",
+      "gui.icurrency.cash_register_setup.only_cards": "Only accept cards",
+      "gui.icurrency.set_card_pin.button_empty": "Confirm",
+      "gui.icurrency.cash_register_safe.button_empty": "Deposit into my account",
+      "gui.icurrency.atm_setup.button_empty": "Complete Setup",
+      "gui.icurrency.acknowledge_transaction_result_cr.label_success": "VOIDED",
+      "gui.icurrency.exchange_money.button_empty": "Exchange Money",
+      "gui.icurrency.open_cash_register_check.pass_check": "Password",
+      "item.icurrency.dollar_five_hundred": "500 Zlatniks",
+      "gui.icurrency.open_cash_register_check.label_pin": "Pin",
+      "gui.icurrency.cash_register_gui.button_card": "Card",
+      "gui.icurrency.withdraw_money.label_withdraw": "Withdraw Money",
+      "block.icurrency.cash_register": "Cash Register",
+      "item.icurrency.dollar_fifty": "50 Zlatniks",
+      "item.icurrency.dollar_hundred": "100 Zlatniks",
+      "item.icurrency.receipt": "Receipt",
+      "item.icurrency.dollar_twenty": "20 Zlatniks",
+      "gui.icurrency.cash_register_gui.tip": "Tip (in %)"
+    }
+  },
+  "foldersRoot": {
+    "name": "~",
+    "children": []
+  },
+  "workspaceSettings": {
+    "modid": "icurrency",
+    "modName": "iCurrency",
+    "version": "1.0.0",
+    "author": "Vikto, MCreator",
+    "websiteURL": "https://mcreator.net",
+    "license": "Not specified",
+    "serverSideOnly": false,
+    "requiredMods": [],
+    "dependencies": [],
+    "dependants": [],
+    "mcreatorDependencies": [],
+    "currentGenerator": "neoforge-1.20.4",
+    "modElementsPackage": "com.vikkivuk.icurrency"
+  },
+  "mcreatorVersion": 202400118518
+}

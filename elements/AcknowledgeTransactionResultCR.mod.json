@@ -1,0 +1,53 @@
+{
+  "_fv": 60,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 236,
+    "height": 60,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "label",
+        "data": {
+          "name": "label_success",
+          "text": {
+            "fixedValue": "VOIDED",
+            "name": "ShowTransactionResult"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 110,
+          "y": 102
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_empty",
+          "text": "Acknowledge",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "AcknowledgeTransactionPressed"
+          },
+          "width": 208,
+          "height": 20,
+          "x": 111,
+          "y": 120
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

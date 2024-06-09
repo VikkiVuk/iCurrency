@@ -1,0 +1,89 @@
+{
+  "_fv": 60,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 150,
+    "height": 120,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "",
+          "name": "receiver",
+          "width": 120,
+          "height": 20,
+          "x": 154,
+          "y": 116
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "",
+          "name": "amount",
+          "width": 120,
+          "height": 20,
+          "x": 154,
+          "y": 80
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_amount",
+          "text": {
+            "fixedValue": "Amount"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 198,
+          "y": 71
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_receiver",
+          "text": {
+            "fixedValue": "Receiver"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 194,
+          "y": 107
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_empty",
+          "text": "Transfer",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "TransferMoneyClicked"
+          },
+          "width": 119,
+          "height": 20,
+          "x": 154,
+          "y": 148
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 14,
+      "sy": 14,
+      "ox": 13,
+      "oy": 15,
+      "snapOnGrid": true
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "_fv": 60,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 152,
+    "height": 63,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "Password",
+          "name": "pass_check",
+          "width": 120,
+          "height": 20,
+          "x": 154,
+          "y": 99
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_open_cash_register",
+          "text": "Open cash register",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "OpenCashRegisterCheckCheck"
+          },
+          "width": 119,
+          "height": 20,
+          "x": 155,
+          "y": 122
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 2,
+      "oy": 8,
+      "snapOnGrid": false
+    }
+  }
+}

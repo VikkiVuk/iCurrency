@@ -1,0 +1,150 @@
+{
+  "_fv": 60,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 208,
+    "height": 145,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "label",
+        "data": {
+          "name": "label_hi_to_start_serving_your_custom",
+          "text": {
+            "fixedValue": "Hi! To start serving your customers,"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 119,
+          "y": 56
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_please_setup_the_cash_register",
+          "text": {
+            "fixedValue": "please setup the cash register!"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 119,
+          "y": 65
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "",
+          "name": "password",
+          "width": 120,
+          "height": 20,
+          "x": 119,
+          "y": 89
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_pin",
+          "text": {
+            "fixedValue": "Password"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 128,
+          "y": 80
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_to_access_the_cash_registers_ea",
+          "text": {
+            "fixedValue": "To access the cash register's earnings, you will need to enter the password!"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 128,
+          "y": 83
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "only_cards",
+          "text": "Only accept cards",
+          "x": 119,
+          "y": 114
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_this_will_make_it_so_that_custom",
+          "text": {
+            "fixedValue": "This will make it so that customers can only pay using their cards."
+          },
+          "width": 24,
+          "height": 24,
+          "x": 119,
+          "y": 114
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "deposit_account",
+          "text": "Deposit into my account",
+          "x": 119,
+          "y": 137
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_note_this_will_only_work_if_you",
+          "text": {
+            "fixedValue": "This will only work if you are online when the transaction is made."
+          },
+          "width": 24,
+          "height": 24,
+          "x": 119,
+          "y": 137
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_empty",
+          "text": "Finish Setup",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "CashRegisterFinishSetup"
+          },
+          "width": 187,
+          "height": 20,
+          "x": 119,
+          "y": 164
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 9,
+      "ox": 3,
+      "oy": 2,
+      "snapOnGrid": true
+    }
+  }
+}

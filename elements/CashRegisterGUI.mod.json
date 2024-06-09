@@ -1,0 +1,211 @@
+{
+  "_fv": 60,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 149,
+    "height": 159,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "Product",
+          "name": "product",
+          "width": 120,
+          "height": 20,
+          "x": 153,
+          "y": 64
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "Price",
+          "name": "price",
+          "width": 120,
+          "height": 20,
+          "x": 153,
+          "y": 101
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_cash",
+          "text": "Cash",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "StartCashTransactionCR"
+          },
+          "displayCondition": {
+            "name": "ShowCashEnabledCRP"
+          },
+          "width": 46,
+          "height": 20,
+          "x": 153,
+          "y": 167
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_card",
+          "text": "Card",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "StartCardTransactionCR"
+          },
+          "displayCondition": {
+            "name": "ShowCardEnabledCRP"
+          },
+          "width": 46,
+          "height": 20,
+          "x": 226,
+          "y": 167
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "Tip (in %)",
+          "name": "tip",
+          "width": 120,
+          "height": 20,
+          "x": 153,
+          "y": 137
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_checkout",
+          "text": {
+            "fixedValue": "Product"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 195,
+          "y": 52
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_tip_max_50",
+          "text": {
+            "fixedValue": "Tip, max 50%"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 182,
+          "y": 127
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_price",
+          "text": {
+            "fixedValue": "Price"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 200,
+          "y": 91
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_cash_disabled",
+          "image": "cash_disabled.png",
+          "hoveredImage": "cash_disabled.png",
+          "displayCondition": {
+            "name": "ShowCashDisabledCRP"
+          },
+          "x": 153,
+          "y": 167
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_cash",
+          "text": {
+            "fixedValue": "Cash"
+          },
+          "color": {
+            "value": -3355444,
+            "falpha": 0.0
+          },
+          "displayCondition": {
+            "name": "ShowCashDisabledCRP"
+          },
+          "x": 164,
+          "y": 173
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_anything_over_z570000_can_only_b",
+          "text": {
+            "fixedValue": "Anything over Ƶ500000 can only be paid using card!"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 200,
+          "y": 88
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_cash_disabled1",
+          "image": "cash_disabled.png",
+          "hoveredImage": "cash_disabled.png",
+          "displayCondition": {
+            "name": "ShowCardDisabledCRP"
+          },
+          "x": 226,
+          "y": 167
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_card",
+          "text": {
+            "fixedValue": "Card"
+          },
+          "color": {
+            "value": -3355444,
+            "falpha": 0.0
+          },
+          "displayCondition": {
+            "name": "ShowCardDisabledCRP"
+          },
+          "x": 237,
+          "y": 173
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

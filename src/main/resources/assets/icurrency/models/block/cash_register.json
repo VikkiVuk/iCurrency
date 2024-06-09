@@ -1,0 +1,9 @@
+{
+  "parent": "icurrency:custom/ca_wegistew",
+  "textures": {
+    "all": "icurrency:block/texture_5",
+    "particle": "icurrency:block/texture_5",
+    "1": "icurrency:block/texture_5"
+  },
+  "render_type": "solid"
+}

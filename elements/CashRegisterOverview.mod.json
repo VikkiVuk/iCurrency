@@ -1,0 +1,67 @@
+{
+  "_fv": 60,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 208,
+    "height": 86,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "label",
+        "data": {
+          "name": "label_welcome",
+          "text": {
+            "fixedValue": "Welcome, what would you like to do"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 126,
+          "y": 89
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_empty",
+          "text": "Checkout a customer",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "CashRegisterOverviewOpenCheckout"
+          },
+          "width": 193,
+          "height": 20,
+          "x": 117,
+          "y": 106
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_empty1",
+          "text": "Open the cash register",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "CashRegisterOverviewOpenSafe"
+          },
+          "width": 193,
+          "height": 20,
+          "x": 117,
+          "y": 132
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

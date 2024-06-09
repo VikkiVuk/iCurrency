@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "icurrency:items/dollarten"
+    "layer0": "icurrency:item/dollarten"
   }
 }

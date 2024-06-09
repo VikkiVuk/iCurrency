@@ -1,0 +1,158 @@
+{
+  "_fv": 60,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 330,
+    "height": 166,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "label",
+        "data": {
+          "name": "label_hi_thank_you_for_partnering_wit",
+          "text": {
+            "fixedValue": "Hi, thank you for partnering with iBank to provide"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 70,
+          "y": 53
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_financial_features_to_your_custo",
+          "text": {
+            "fixedValue": "financial features to your customers! For your customers"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 69,
+          "y": 62
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_to_start_using_this_atm_you_nee",
+          "text": {
+            "fixedValue": "to start using this ATM you need to set it up. Please"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 69,
+          "y": 71
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_fill_out_the_fields_below",
+          "text": {
+            "fixedValue": "fill out the fields below:"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 69,
+          "y": 80
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "",
+          "name": "bank_name",
+          "width": 120,
+          "height": 20,
+          "x": 69,
+          "y": 107
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_bank_name",
+          "text": {
+            "fixedValue": "Bank Name"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 105,
+          "y": 98
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "",
+          "name": "bank_owner",
+          "width": 120,
+          "height": 20,
+          "x": 237,
+          "y": 107
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_bank_owner",
+          "text": {
+            "fixedValue": "Bank Owner"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 272,
+          "y": 98
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "tos",
+          "text": "I agree to the TOS set by the iBank",
+          "x": 104,
+          "y": 134
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_empty",
+          "text": "Complete Setup",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "ATMSetupButtonConfirm"
+          },
+          "width": 245,
+          "height": 20,
+          "x": 90,
+          "y": 164
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 14,
+      "sy": 12,
+      "ox": 10,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}
