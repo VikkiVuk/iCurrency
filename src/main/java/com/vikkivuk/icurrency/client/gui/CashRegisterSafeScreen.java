@@ -1,5 +1,7 @@
 package com.vikkivuk.icurrency.client.gui;
 
+import net.neoforged.neoforge.network.PacketDistributor;
+
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
@@ -16,6 +18,8 @@ import java.util.HashMap;
 import com.vikkivuk.icurrency.world.inventory.CashRegisterSafeMenu;
 import com.vikkivuk.icurrency.procedures.ShowLoadMoreEnabledProcedure;
 import com.vikkivuk.icurrency.procedures.ShowLoadMoreDisabledProcedure;
+import com.vikkivuk.icurrency.procedures.GetCashRegisterSafeMoneyProcedure;
+import com.vikkivuk.icurrency.network.CashRegisterSafeButtonMessage;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 
@@ -38,7 +42,7 @@ public class CashRegisterSafeScreen extends AbstractContainerScreen<CashRegister
 		this.z = container.z;
 		this.entity = container.entity;
 		this.imageWidth = 176;
-		this.imageHeight = 165;
+		this.imageHeight = 178;
 	}
 
 	private static final ResourceLocation texture = new ResourceLocation("icurrency:textures/screens/cash_register_safe.png");
@@ -71,18 +75,25 @@ public class CashRegisterSafeScreen extends AbstractContainerScreen<CashRegister
 	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
 		if (ShowLoadMoreDisabledProcedure.execute(entity))
-			guiGraphics.drawString(this.font, Component.translatable("gui.icurrency.cash_register_safe.label_load_more"), 107, 41, -3355444, false);
+			guiGraphics.drawString(this.font, Component.translatable("gui.icurrency.cash_register_safe.label_load_more"), 106, 48, -3355444, false);
+		guiGraphics.drawString(this.font,
+
+				GetCashRegisterSafeMoneyProcedure.execute(world, x, y, z), 7, 6, -12829636, false);
 	}
 
 	@Override
 	public void init() {
 		super.init();
 		button_withdraw_all = Button.builder(Component.translatable("gui.icurrency.cash_register_safe.button_withdraw_all"), e -> {
-		}).bounds(this.leftPos + 7, this.topPos + 35, 87, 20).build();
+		}).bounds(this.leftPos + 7, this.topPos + 42, 87, 20).build();
 		guistate.put("button:button_withdraw_all", button_withdraw_all);
 		this.addRenderableWidget(button_withdraw_all);
 		button_load_more = Button.builder(Component.translatable("gui.icurrency.cash_register_safe.button_load_more"), e -> {
-		}).bounds(this.leftPos + 96, this.topPos + 35, 72, 20).build(builder -> new Button(builder) {
+			if (ShowLoadMoreEnabledProcedure.execute(entity)) {
+				PacketDistributor.SERVER.noArg().send(new CashRegisterSafeButtonMessage(1, x, y, z, textstate));
+				CashRegisterSafeButtonMessage.handleButtonAction(entity, 1, x, y, z, textstate);
+			}
+		}).bounds(this.leftPos + 96, this.topPos + 42, 72, 20).build(builder -> new Button(builder) {
 			@Override
 			public void renderWidget(GuiGraphics guiGraphics, int gx, int gy, float ticks) {
 				if (ShowLoadMoreEnabledProcedure.execute(entity))
@@ -92,10 +103,14 @@ public class CashRegisterSafeScreen extends AbstractContainerScreen<CashRegister
 		guistate.put("button:button_load_more", button_load_more);
 		this.addRenderableWidget(button_load_more);
 		button_empty = Button.builder(Component.translatable("gui.icurrency.cash_register_safe.button_empty"), e -> {
-		}).bounds(this.leftPos + 7, this.topPos + 58, 161, 20).build();
+			if (true) {
+				PacketDistributor.SERVER.noArg().send(new CashRegisterSafeButtonMessage(2, x, y, z, textstate));
+				CashRegisterSafeButtonMessage.handleButtonAction(entity, 2, x, y, z, textstate);
+			}
+		}).bounds(this.leftPos + 7, this.topPos + 65, 161, 20).build();
 		guistate.put("button:button_empty", button_empty);
 		this.addRenderableWidget(button_empty);
-		imagebutton_load_more_disabled = new ImageButton(this.leftPos + 96, this.topPos + 35, 72, 20,
+		imagebutton_load_more_disabled = new ImageButton(this.leftPos + 96, this.topPos + 42, 72, 20,
 				new WidgetSprites(new ResourceLocation("icurrency:textures/screens/load_more_disabled.png"), new ResourceLocation("icurrency:textures/screens/load_more_disabled.png")), e -> {
 				}) {
 			@Override

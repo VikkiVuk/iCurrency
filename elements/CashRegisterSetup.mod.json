@@ -4,7 +4,7 @@
   "definition": {
     "type": 0,
     "width": 208,
-    "height": 145,
+    "height": 166,
     "inventoryOffsetX": 0,
     "inventoryOffsetY": 0,
     "renderBgLayer": true,
@@ -22,7 +22,7 @@
             "falpha": 0.0
           },
           "x": 119,
-          "y": 56
+          "y": 47
         }
       },
       {
@@ -37,33 +37,18 @@
             "falpha": 0.0
           },
           "x": 119,
-          "y": 65
+          "y": 56
         }
       },
       {
         "type": "textfield",
         "data": {
-          "placeholder": "",
+          "placeholder": "Password",
           "name": "password",
           "width": 120,
           "height": 20,
-          "x": 119,
-          "y": 89
-        }
-      },
-      {
-        "type": "label",
-        "data": {
-          "name": "label_pin",
-          "text": {
-            "fixedValue": "Password"
-          },
-          "color": {
-            "value": -12829636,
-            "falpha": 0.0
-          },
-          "x": 128,
-          "y": 80
+          "x": 118,
+          "y": 96
         }
       },
       {
@@ -75,8 +60,8 @@
           },
           "width": 24,
           "height": 24,
-          "x": 128,
-          "y": 83
+          "x": 119,
+          "y": 96
         }
       },
       {
@@ -85,7 +70,7 @@
           "name": "only_cards",
           "text": "Only accept cards",
           "x": 119,
-          "y": 114
+          "y": 123
         }
       },
       {
@@ -98,7 +83,7 @@
           "width": 24,
           "height": 24,
           "x": 119,
-          "y": 114
+          "y": 123
         }
       },
       {
@@ -107,7 +92,7 @@
           "name": "deposit_account",
           "text": "Deposit into my account",
           "x": 119,
-          "y": 137
+          "y": 146
         }
       },
       {
@@ -120,7 +105,7 @@
           "width": 24,
           "height": 24,
           "x": 119,
-          "y": 137
+          "y": 146
         }
       },
       {
@@ -135,7 +120,31 @@
           "width": 187,
           "height": 20,
           "x": 119,
-          "y": 164
+          "y": 173
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "Cash Register Name",
+          "name": "name",
+          "width": 120,
+          "height": 20,
+          "x": 118,
+          "y": 74
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_this_will_be_shown_on_all_receip",
+          "text": {
+            "fixedValue": "This will be shown on all receipts on purchases made using this cash register"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 119,
+          "y": 69
         }
       }
     ],
@@ -144,7 +153,7 @@
       "sy": 9,
       "ox": 3,
       "oy": 2,
-      "snapOnGrid": true
+      "snapOnGrid": false
     }
   }
 }

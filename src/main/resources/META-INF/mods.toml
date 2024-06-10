@@ -1,14 +1,16 @@
 modLoader="javafml"
 loaderVersion="[2,)"
-license="Not specified"
+license="All Rights Reserved"
 
 [[mods]]
 modId="icurrency"
-version="1.0.0"
+version="1.20.41.0.0"
 displayName="iCurrency"
-displayURL="https://mcreator.net"
-credits="Created using mod maker MCreator - https://mcreator.net/about"
-authors="Vikto, MCreator"
+displayURL="https://modrinth.com/project/icurrency"
+logoFile="logo.png"
+credits="Thanks to my friend XMasterWoo for helping with some models and textures"
+authors="VikkiVuk"
+description="A minecraft banking mod"
 
 # Start of user code block mod configuration
 # End of user code block mod configuration

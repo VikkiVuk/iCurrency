@@ -100,6 +100,16 @@ public class CashRegisterGUIScreen extends AbstractContainerScreen<CashRegisterG
 	}
 
 	@Override
+	public void containerTick() {
+		super.containerTick();
+		textstate.put("textin:product", product.getValue());
+		textstate.put("textin:price", price.getValue());
+		textstate.put("textin:tip", tip.getValue());
+		PacketDistributor.SERVER.noArg().send(new CashRegisterGUIMenu.CashRegisterGUIOtherMessage(0, x, y, z, textstate));
+		CashRegisterGUIMenu.CashRegisterGUIOtherMessage.handleOtherAction(entity, 0, x, y, z, textstate);
+	}
+
+	@Override
 	public void init() {
 		super.init();
 		product = new EditBox(this.font, this.leftPos + 15, this.topPos + 24, 118, 18, Component.translatable("gui.icurrency.cash_register_gui.product")) {

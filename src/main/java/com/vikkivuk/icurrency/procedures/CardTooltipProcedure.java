@@ -42,7 +42,12 @@ public class CardTooltipProcedure {
 		} else if (itemstack.getItem() == IcurrencyModItems.RECEIPT.get()) {
 			if (itemstack.getOrCreateTag().getBoolean("valid")) {
 				tooltip.add(Component.literal(("\u00A77Cashier: " + "\u00A7f" + itemstack.getOrCreateTag().getString("cashier"))));
+				tooltip.add(Component.literal(("\u00A77Cash register: " + "\u00A7f" + itemstack.getOrCreateTag().getString("cr_name"))));
+				tooltip.add(Component.literal("\u00A77-------------------"));
 				tooltip.add(Component.literal(("\u00A77Product: " + "\u00A7f" + itemstack.getOrCreateTag().getString("product"))));
+				tooltip.add(Component.literal(("\u00A77Price: " + "\u00A7f" + itemstack.getOrCreateTag().getDouble("price"))));
+				tooltip.add(Component.literal(("\u00A77Tip: " + "\u00A7f" + Math.round(itemstack.getOrCreateTag().getDouble("tip")) + "%")));
+				tooltip.add(Component.literal("\u00A77-------------------"));
 				tooltip.add(Component.literal(("\u00A77Total: " + "\u00A7f\u01B5" + itemstack.getOrCreateTag().getDouble("total"))));
 			} else {
 				tooltip.add(Component.literal("\u00A77This receipt is missing data"));

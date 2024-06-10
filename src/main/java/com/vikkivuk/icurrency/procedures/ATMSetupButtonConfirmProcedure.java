@@ -8,7 +8,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.network.chat.Component;
 import net.minecraft.core.BlockPos;
-import net.minecraft.client.gui.components.Checkbox;
 
 import java.util.HashMap;
 
@@ -16,7 +15,7 @@ public class ATMSetupButtonConfirmProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, HashMap guistate) {
 		if (entity == null || guistate == null)
 			return;
-		if (guistate.containsKey("checkbox:tos") && ((Checkbox) guistate.get("checkbox:tos")).selected()) {
+		if (guistate.containsKey("checkboxin:tos") && ((String) guistate.get("checkboxin:tos")).equals("true") ? true : false) {
 			if (!(((guistate.containsKey("textin:bank_name") ? (String) guistate.get("textin:bank_name") : "").strip()).isEmpty() || ((guistate.containsKey("textin:bank_owner") ? (String) guistate.get("textin:bank_owner") : "").strip()).isEmpty())) {
 				if (!world.isClientSide()) {
 					BlockPos _bp = BlockPos.containing(x, y, z);

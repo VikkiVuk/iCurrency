@@ -8,6 +8,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.core.BlockPos;
 
+import java.util.ArrayList;
+
+import com.vikkivuk.icurrency.network.IcurrencyModVariables;
+
 public class AcknowledgeTransactionPressedProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
@@ -20,6 +24,45 @@ public class AcknowledgeTransactionPressedProcedure {
 				_blockEntity.getPersistentData().putBoolean("finished_transaction", false);
 			if (world instanceof Level _level)
 				_level.sendBlockUpdated(_bp, _bs, _bs, 3);
+		}
+		if (new Object() {
+			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
+				BlockEntity blockEntity = world.getBlockEntity(pos);
+				if (blockEntity != null)
+					return blockEntity.getPersistentData().getDouble(tag);
+				return -1;
+			}
+		}.getValue(world, BlockPos.containing(x, y, z), "money") != 0 && new Object() {
+			public boolean getValue(LevelAccessor world, BlockPos pos, String tag) {
+				BlockEntity blockEntity = world.getBlockEntity(pos);
+				if (blockEntity != null)
+					return blockEntity.getPersistentData().getBoolean(tag);
+				return false;
+			}
+		}.getValue(world, BlockPos.containing(x, y, z), "deposit_account")) {
+			for (Entity entityiterator : new ArrayList<>(world.players())) {
+				if ((entityiterator.getDisplayName().getString()).equals(new Object() {
+					public String getValue(LevelAccessor world, BlockPos pos, String tag) {
+						BlockEntity blockEntity = world.getBlockEntity(pos);
+						if (blockEntity != null)
+							return blockEntity.getPersistentData().getString(tag);
+						return "";
+					}
+				}.getValue(world, BlockPos.containing(x, y, z), "owner"))) {
+					{
+						IcurrencyModVariables.PlayerVariables _vars = entityiterator.getData(IcurrencyModVariables.PLAYER_VARIABLES);
+						_vars.money = entityiterator.getData(IcurrencyModVariables.PLAYER_VARIABLES).money + new Object() {
+							public double getValue(LevelAccessor world, BlockPos pos, String tag) {
+								BlockEntity blockEntity = world.getBlockEntity(pos);
+								if (blockEntity != null)
+									return blockEntity.getPersistentData().getDouble(tag);
+								return -1;
+							}
+						}.getValue(world, BlockPos.containing(x, y, z), "money");
+						_vars.syncPlayerVariables(entityiterator);
+					}
+				}
+			}
 		}
 		if (entity instanceof Player _player)
 			_player.closeContainer();

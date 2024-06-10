@@ -13,7 +13,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
-import net.minecraft.client.gui.components.Checkbox;
 
 import java.util.HashMap;
 
@@ -25,9 +24,9 @@ public class CashRegisterFinishSetupProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, HashMap guistate) {
 		if (entity == null || guistate == null)
 			return;
-		if ((guistate.containsKey("textin:password") ? (String) guistate.get("textin:password") : "").isEmpty()) {
+		if ((guistate.containsKey("textin:password") ? (String) guistate.get("textin:password") : "").isEmpty() || (guistate.containsKey("textin:name") ? (String) guistate.get("textin:name") : "").isEmpty()) {
 			if (entity instanceof Player _player && !_player.level().isClientSide())
-				_player.displayClientMessage(Component.literal("Invalid Password!"), false);
+				_player.displayClientMessage(Component.literal("Please fill out all fields!"), false);
 			if (entity instanceof Player _player)
 				_player.closeContainer();
 		} else {
@@ -45,7 +44,7 @@ public class CashRegisterFinishSetupProcedure {
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
-					_blockEntity.getPersistentData().putBoolean("only_card", (guistate.containsKey("checkbox:only_cards") && ((Checkbox) guistate.get("checkbox:only_cards")).selected()));
+					_blockEntity.getPersistentData().putBoolean("only_card", (guistate.containsKey("checkboxin:only_cards") && ((String) guistate.get("checkboxin:only_cards")).equals("true") ? true : false));
 				if (world instanceof Level _level)
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
@@ -54,7 +53,7 @@ public class CashRegisterFinishSetupProcedure {
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
-					_blockEntity.getPersistentData().putBoolean("deposit_account", (guistate.containsKey("checkbox:deposit_account") && ((Checkbox) guistate.get("checkbox:deposit_account")).selected()));
+					_blockEntity.getPersistentData().putBoolean("deposit_account", (guistate.containsKey("checkboxin:deposit_account") && ((String) guistate.get("checkboxin:deposit_account")).equals("true") ? true : false));
 				if (world instanceof Level _level)
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
@@ -64,6 +63,24 @@ public class CashRegisterFinishSetupProcedure {
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
 					_blockEntity.getPersistentData().putString("password", (guistate.containsKey("textin:password") ? (String) guistate.get("textin:password") : ""));
+				if (world instanceof Level _level)
+					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
+			}
+			if (!world.isClientSide()) {
+				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockEntity _blockEntity = world.getBlockEntity(_bp);
+				BlockState _bs = world.getBlockState(_bp);
+				if (_blockEntity != null)
+					_blockEntity.getPersistentData().putString("name", (guistate.containsKey("textin:name") ? (String) guistate.get("textin:name") : ""));
+				if (world instanceof Level _level)
+					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
+			}
+			if (!world.isClientSide()) {
+				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockEntity _blockEntity = world.getBlockEntity(_bp);
+				BlockState _bs = world.getBlockState(_bp);
+				if (_blockEntity != null)
+					_blockEntity.getPersistentData().putString("owner", (entity.getDisplayName().getString()));
 				if (world instanceof Level _level)
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}

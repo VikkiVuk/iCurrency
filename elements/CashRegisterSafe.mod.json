@@ -4,9 +4,9 @@
   "definition": {
     "type": 1,
     "width": 176,
-    "height": 165,
+    "height": 178,
     "inventoryOffsetX": 0,
-    "inventoryOffsetY": 0,
+    "inventoryOffsetY": 6,
     "renderBgLayer": true,
     "doesPauseGame": false,
     "components": [
@@ -40,6 +40,9 @@
           "name": "button_load_more",
           "text": "Load more",
           "isUndecorated": false,
+          "onClick": {
+            "name": "LoadCashInCashRegister"
+          },
           "displayCondition": {
             "name": "ShowLoadMoreEnabled"
           },
@@ -55,6 +58,9 @@
           "name": "button_empty",
           "text": "Deposit into my account",
           "isUndecorated": false,
+          "onClick": {
+            "name": "DepositIntoMyAccountSafe"
+          },
           "width": 161,
           "height": 20,
           "x": 133,
@@ -184,11 +190,30 @@
           "displayCondition": {
             "name": "ShowLoadMoreDisabled"
           },
-          "x": 233,
+          "x": 232,
           "y": 79
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_money_z500",
+          "text": {
+            "fixedValue": "Money: Z500",
+            "name": "GetCashRegisterSafeMoney"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 133,
+          "y": 37
         }
       }
     ],
+    "onOpen": {
+      "name": "CashRegisterSafeThisGUIIsOpened"
+    },
     "gridSettings": {
       "sx": 18,
       "sy": 18,

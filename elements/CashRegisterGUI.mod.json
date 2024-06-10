@@ -200,6 +200,12 @@
         }
       }
     ],
+    "onOpen": {
+      "name": "CashRegisterGUIThisGUIIsOpened"
+    },
+    "onTick": {
+      "name": "CashRegisterGUIWhileThisGUIIsOpenTick"
+    },
     "gridSettings": {
       "sx": 18,
       "sy": 18,

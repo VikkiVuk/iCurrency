@@ -1390,7 +1390,8 @@
       "metadata": {
         "files": [
           "src/main/java/com/vikkivuk/icurrency/world/inventory/CashRegisterSafeMenu.java",
-          "src/main/java/com/vikkivuk/icurrency/client/gui/CashRegisterSafeScreen.java"
+          "src/main/java/com/vikkivuk/icurrency/client/gui/CashRegisterSafeScreen.java",
+          "src/main/java/com/vikkivuk/icurrency/network/CashRegisterSafeButtonMessage.java"
         ]
       }
     },
@@ -2140,6 +2141,220 @@
           }
         ]
       }
+    },
+    {
+      "name": "CheckSlotCRSafe",
+      "type": "procedure",
+      "sortid": 97,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "check_slot_cr_safe",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/CheckSlotCRSafeProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LoadCashInCashRegister",
+      "type": "procedure",
+      "sortid": 98,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "load_cash_in_cash_register",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/LoadCashInCashRegisterProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CashRegisterSafeThisGUIIsClosed",
+      "type": "procedure",
+      "sortid": 99,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cash_register_safe_this_gui_is_closed",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/CashRegisterSafeThisGUIIsClosedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DepositIntoMyAccountSafe",
+      "type": "procedure",
+      "sortid": 100,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "deposit_into_my_account_safe",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/DepositIntoMyAccountSafeProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CashRegisterSafeThisGUIIsOpened",
+      "type": "procedure",
+      "sortid": 101,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cash_register_safe_this_gui_is_opened",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/CashRegisterSafeThisGUIIsOpenedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "GetCashRegisterSafeMoney",
+      "type": "procedure",
+      "sortid": 102,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "get_cash_register_safe_money",
+      "metadata": {
+        "return_type": "string",
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/GetCashRegisterSafeMoneyProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CashRegisterGUIThisGUIIsOpened",
+      "type": "procedure",
+      "sortid": 103,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cash_register_gui_this_gui_is_opened",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/CashRegisterGUIThisGUIIsOpenedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -2177,7 +2392,7 @@
       "name": "load_more_disabled",
       "type": "logic",
       "scope": "player_lifetime",
-      "value": "true"
+      "value": "false"
     },
     {
       "name": "card_disabled",
@@ -2204,10 +2419,16 @@
       "value": "\"\""
     },
     {
-      "name": "set_pin",
+      "name": "current_slot_cr",
       "type": "number",
       "scope": "player_lifetime",
-      "value": "0"
+      "value": "0.0"
+    },
+    {
+      "name": "max_slots_cr",
+      "type": "number",
+      "scope": "player_lifetime",
+      "value": "8.0"
     }
   ],
   "sound_elements": [],
@@ -2221,7 +2442,7 @@
       "gui.icurrency.card_overview.label_your_cards": "Your Cards",
       "gui.icurrency.cash_register_overview.button_empty1": "Open the cash register",
       "gui.icurrency.cash_register_setup.label_please_setup_the_cash_register": "please setup the cash register!",
-      "gui.icurrency.cash_register_setup.password": "",
+      "gui.icurrency.cash_register_setup.password": "Password",
       "item.icurrency.dollar_ten": "10 Zlatniks",
       "gui.icurrency.cash_register_setup.deposit_account": "Deposit into my account",
       "gui.icurrency.transfer_money.label_receiver": "Receiver",
@@ -2274,6 +2495,7 @@
       "gui.icurrency.card_overview.label_4414_4778": "4414 4778",
       "gui.icurrency.card_overview.label_4417_4657": "4417 4657",
       "gui.icurrency.card_overview.label_314": "314",
+      "gui.icurrency.cash_register_setup.tooltip_this_will_be_shown_on_all_receip": "This will be shown on all receipts on purchases made using this cash register",
       "gui.icurrency.atm_setup.label_hi_thank_you_for_partnering_wit": "Hi, thank you for partnering with iBank to provide",
       "gui.icurrency.acknowledge_transaction_result_cr.button_empty": "Acknowledge",
       "gui.icurrency.withdraw_money.button_empty": "Withdraw",
@@ -2305,6 +2527,7 @@
       "gui.icurrency.atm_setup.button_empty": "Complete Setup",
       "gui.icurrency.acknowledge_transaction_result_cr.label_success": "VOIDED",
       "gui.icurrency.exchange_money.button_empty": "Exchange Money",
+      "gui.icurrency.cash_register_setup.name": "Cash Register Name",
       "gui.icurrency.open_cash_register_check.pass_check": "Password",
       "item.icurrency.dollar_five_hundred": "500 Zlatniks",
       "gui.icurrency.open_cash_register_check.label_pin": "Pin",
@@ -2325,16 +2548,19 @@
   "workspaceSettings": {
     "modid": "icurrency",
     "modName": "iCurrency",
-    "version": "1.0.0",
-    "author": "Vikto, MCreator",
-    "websiteURL": "https://mcreator.net",
-    "license": "Not specified",
+    "version": "1.20.4-1.0.0",
+    "description": "A minecraft banking mod",
+    "author": "VikkiVuk",
+    "websiteURL": "https://modrinth.com/project/icurrency",
+    "license": "All Rights Reserved",
     "serverSideOnly": false,
+    "modPicture": "icurrency_transparent",
     "requiredMods": [],
     "dependencies": [],
     "dependants": [],
     "mcreatorDependencies": [],
     "currentGenerator": "neoforge-1.20.4",
+    "credits": "Thanks to my friend XMasterWoo for helping with some models and textures",
     "modElementsPackage": "com.vikkivuk.icurrency"
   },
   "mcreatorVersion": 202400118518

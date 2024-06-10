@@ -78,7 +78,8 @@ public class IcurrencyModVariables {
 				clone.do_crtick = original.do_crtick;
 				clone.card_selected = original.card_selected;
 				clone.selected_card_holder = original.selected_card_holder;
-				clone.set_pin = original.set_pin;
+				clone.current_slot_cr = original.current_slot_cr;
+				clone.max_slots_cr = original.max_slots_cr;
 			}
 			event.getEntity().setData(PLAYER_VARIABLES, clone);
 		}
@@ -90,12 +91,13 @@ public class IcurrencyModVariables {
 		public ArrayList<Vec3> transactions = new ArrayList<Vec3>();
 		public boolean refresh_cards = false;
 		public boolean cash_disabled = false;
-		public boolean load_more_disabled = true;
+		public boolean load_more_disabled = false;
 		public boolean card_disabled = false;
 		public boolean do_crtick = false;
 		public Vec3 card_selected = Vec3.ZERO;
 		public String selected_card_holder = "\"\"";
-		public double set_pin = 0;
+		public double current_slot_cr = 0.0;
+		public double max_slots_cr = 8.0;
 
 		@Override
 		public CompoundTag serializeNBT() {
@@ -147,7 +149,8 @@ public class IcurrencyModVariables {
 				}
 			}).apply(card_selected));
 			nbt.putString("selected_card_holder", selected_card_holder);
-			nbt.putDouble("set_pin", set_pin);
+			nbt.putDouble("current_slot_cr", current_slot_cr);
+			nbt.putDouble("max_slots_cr", max_slots_cr);
 			return nbt;
 		}
 
@@ -187,7 +190,8 @@ public class IcurrencyModVariables {
 				}
 			}).apply(nbt.getList("card_selected", 6));
 			selected_card_holder = nbt.getString("selected_card_holder");
-			set_pin = nbt.getDouble("set_pin");
+			current_slot_cr = nbt.getDouble("current_slot_cr");
+			max_slots_cr = nbt.getDouble("max_slots_cr");
 		}
 
 		public void syncPlayerVariables(Entity entity) {

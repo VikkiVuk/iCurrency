@@ -26,6 +26,14 @@ public class CashRegisterGiveReceiptProcedure {
 				return "";
 			}
 		}.getValue(world, BlockPos.containing(x, y, z), "cashier")));
+		receipt.getOrCreateTag().putString("cr_name", (new Object() {
+			public String getValue(LevelAccessor world, BlockPos pos, String tag) {
+				BlockEntity blockEntity = world.getBlockEntity(pos);
+				if (blockEntity != null)
+					return blockEntity.getPersistentData().getString(tag);
+				return "";
+			}
+		}.getValue(world, BlockPos.containing(x, y, z), "name")));
 		receipt.getOrCreateTag().putString("product", (new Object() {
 			public String getValue(LevelAccessor world, BlockPos pos, String tag) {
 				BlockEntity blockEntity = world.getBlockEntity(pos);
@@ -42,6 +50,22 @@ public class CashRegisterGiveReceiptProcedure {
 				return -1;
 			}
 		}.getValue(world, BlockPos.containing(x, y, z), "total")));
+		receipt.getOrCreateTag().putDouble("tip", (new Object() {
+			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
+				BlockEntity blockEntity = world.getBlockEntity(pos);
+				if (blockEntity != null)
+					return blockEntity.getPersistentData().getDouble(tag);
+				return -1;
+			}
+		}.getValue(world, BlockPos.containing(x, y, z), "tip")));
+		receipt.getOrCreateTag().putDouble("price", (new Object() {
+			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
+				BlockEntity blockEntity = world.getBlockEntity(pos);
+				if (blockEntity != null)
+					return blockEntity.getPersistentData().getDouble(tag);
+				return -1;
+			}
+		}.getValue(world, BlockPos.containing(x, y, z), "price")));
 		if (entity instanceof Player _player) {
 			ItemStack _setstack = receipt.copy();
 			_setstack.setCount(1);
