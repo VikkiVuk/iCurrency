@@ -22,35 +22,33 @@ public class SetCardPinConfirmProcedure {
 		boolean found_item = false;
 		ItemStack item = ItemStack.EMPTY;
 		double item_index = 0;
-		if (!world.isClientSide()) {
-			if (entity.getCapability(Capabilities.ItemHandler.ENTITY, null) instanceof IItemHandlerModifiable _modHandlerForEach) {
-				for (int _idx = 0; _idx < _modHandlerForEach.getSlots(); _idx++) {
-					ItemStack itemstackiterator = _modHandlerForEach.getStackInSlot(_idx).copy();
-					item_index = item_index + 1;
-					if (itemstackiterator.getItem() == IcurrencyModItems.DEBIT_CARD.get()) {
-						if ((new Vec3((itemstackiterator.getOrCreateTag().getDouble("h1n")), (itemstackiterator.getOrCreateTag().getDouble("h2n")), (itemstackiterator.getOrCreateTag().getDouble("cvc"))))
-								.equals(entity.getData(IcurrencyModVariables.PLAYER_VARIABLES).card_selected)) {
-							if (entity.getData(IcurrencyModVariables.PLAYER_VARIABLES).cards.containsValue(entity.getData(IcurrencyModVariables.PLAYER_VARIABLES).card_selected)) {
-								itemstackiterator.getOrCreateTag().putString("pin", (guistate.containsKey("textin:pin") ? (String) guistate.get("textin:pin") : ""));
-								if (entity instanceof Player _player && !_player.level().isClientSide())
-									_player.displayClientMessage(Component.literal("Success!"), true);
-								if (entity.getCapability(Capabilities.ItemHandler.ENTITY, null) instanceof IItemHandlerModifiable _modHandlerEntSetSlot) {
-									ItemStack _setstack = itemstackiterator.copy();
-									_setstack.setCount(1);
-									_modHandlerEntSetSlot.setStackInSlot((int) (item_index - 1), _setstack);
-								}
-								found_item = true;
+		if (entity.getCapability(Capabilities.ItemHandler.ENTITY, null) instanceof IItemHandlerModifiable _modHandlerForEach) {
+			for (int _idx = 0; _idx < _modHandlerForEach.getSlots(); _idx++) {
+				ItemStack itemstackiterator = _modHandlerForEach.getStackInSlot(_idx).copy();
+				item_index = item_index + 1;
+				if (itemstackiterator.getItem() == IcurrencyModItems.DEBIT_CARD.get()) {
+					if ((new Vec3((itemstackiterator.getOrCreateTag().getDouble("h1n")), (itemstackiterator.getOrCreateTag().getDouble("h2n")), (itemstackiterator.getOrCreateTag().getDouble("cvc"))))
+							.equals(entity.getData(IcurrencyModVariables.PLAYER_VARIABLES).card_selected)) {
+						if (entity.getData(IcurrencyModVariables.PLAYER_VARIABLES).cards.containsValue(entity.getData(IcurrencyModVariables.PLAYER_VARIABLES).card_selected)) {
+							itemstackiterator.getOrCreateTag().putString("pin", (guistate.containsKey("textin:pin") ? (String) guistate.get("textin:pin") : ""));
+							if (entity instanceof Player _player && !_player.level().isClientSide())
+								_player.displayClientMessage(Component.literal("Success!"), true);
+							if (entity.getCapability(Capabilities.ItemHandler.ENTITY, null) instanceof IItemHandlerModifiable _modHandlerEntSetSlot) {
+								ItemStack _setstack = itemstackiterator.copy();
+								_setstack.setCount(1);
+								_modHandlerEntSetSlot.setStackInSlot((int) (item_index - 1), _setstack);
 							}
+							found_item = true;
 						}
 					}
 				}
 			}
-			if (!found_item) {
-				if (entity instanceof Player _player && !_player.level().isClientSide())
-					_player.displayClientMessage(Component.literal("Invalid card"), true);
-			}
-			if (entity instanceof Player _player)
-				_player.closeContainer();
 		}
+		if (!found_item) {
+			if (entity instanceof Player _player && !_player.level().isClientSide())
+				_player.displayClientMessage(Component.literal("Invalid card"), true);
+		}
+		if (entity instanceof Player _player)
+			_player.closeContainer();
 	}
 }

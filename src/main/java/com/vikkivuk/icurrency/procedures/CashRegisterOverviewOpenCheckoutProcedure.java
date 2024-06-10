@@ -13,7 +13,7 @@ import net.minecraft.core.BlockPos;
 
 import io.netty.buffer.Unpooled;
 
-import com.vikkivuk.icurrency.world.inventory.CashRegisterGUIMenu;
+import com.vikkivuk.icurrency.world.inventory.CashRegisterCheckoutGUIMenu;
 
 public class CashRegisterOverviewOpenCheckoutProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -24,12 +24,12 @@ public class CashRegisterOverviewOpenCheckoutProcedure {
 			_ent.openMenu(new MenuProvider() {
 				@Override
 				public Component getDisplayName() {
-					return Component.literal("CashRegisterGUI");
+					return Component.literal("CashRegisterCheckoutGUI");
 				}
 
 				@Override
 				public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-					return new CashRegisterGUIMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(_bpos));
+					return new CashRegisterCheckoutGUIMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(_bpos));
 				}
 			}, _bpos);
 		}

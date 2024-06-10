@@ -16,17 +16,17 @@ import net.minecraft.client.gui.GuiGraphics;
 
 import java.util.HashMap;
 
-import com.vikkivuk.icurrency.world.inventory.CashRegisterGUIMenu;
+import com.vikkivuk.icurrency.world.inventory.CashRegisterCheckoutGUIMenu;
 import com.vikkivuk.icurrency.procedures.ShowCashEnabledCRPProcedure;
 import com.vikkivuk.icurrency.procedures.ShowCashDisabledCRPProcedure;
 import com.vikkivuk.icurrency.procedures.ShowCardEnabledCRPProcedure;
 import com.vikkivuk.icurrency.procedures.ShowCardDisabledCRPProcedure;
-import com.vikkivuk.icurrency.network.CashRegisterGUIButtonMessage;
+import com.vikkivuk.icurrency.network.CashRegisterCheckoutGUIButtonMessage;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 
-public class CashRegisterGUIScreen extends AbstractContainerScreen<CashRegisterGUIMenu> {
-	private final static HashMap<String, Object> guistate = CashRegisterGUIMenu.guistate;
+public class CashRegisterCheckoutGUIScreen extends AbstractContainerScreen<CashRegisterCheckoutGUIMenu> {
+	private final static HashMap<String, Object> guistate = CashRegisterCheckoutGUIMenu.guistate;
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
@@ -34,23 +34,23 @@ public class CashRegisterGUIScreen extends AbstractContainerScreen<CashRegisterG
 	public static EditBox product;
 	public static EditBox price;
 	public static EditBox tip;
-	Button button_cash;
 	Button button_card;
+	Button button_cash;
 	ImageButton imagebutton_cash_disabled;
 	ImageButton imagebutton_cash_disabled1;
 
-	public CashRegisterGUIScreen(CashRegisterGUIMenu container, Inventory inventory, Component text) {
+	public CashRegisterCheckoutGUIScreen(CashRegisterCheckoutGUIMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text);
 		this.world = container.world;
 		this.x = container.x;
 		this.y = container.y;
 		this.z = container.z;
 		this.entity = container.entity;
-		this.imageWidth = 149;
-		this.imageHeight = 159;
+		this.imageWidth = 146;
+		this.imageHeight = 123;
 	}
 
-	private static final ResourceLocation texture = new ResourceLocation("icurrency:textures/screens/cash_register_gui.png");
+	private static final ResourceLocation texture = new ResourceLocation("icurrency:textures/screens/cash_register_checkout_gui.png");
 
 	@Override
 	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
@@ -60,8 +60,16 @@ public class CashRegisterGUIScreen extends AbstractContainerScreen<CashRegisterG
 		price.render(guiGraphics, mouseX, mouseY, partialTicks);
 		tip.render(guiGraphics, mouseX, mouseY, partialTicks);
 		this.renderTooltip(guiGraphics, mouseX, mouseY);
-		if (mouseX > leftPos + 61 && mouseX < leftPos + 85 && mouseY > topPos + 47 && mouseY < topPos + 71)
-			guiGraphics.renderTooltip(font, Component.translatable("gui.icurrency.cash_register_gui.tooltip_anything_over_z570000_can_only_b"), mouseX, mouseY);
+		if (mouseX > leftPos + 13 && mouseX < leftPos + 37 && mouseY > topPos + 36 && mouseY < topPos + 60)
+			guiGraphics.renderTooltip(font, Component.translatable("gui.icurrency.cash_register_checkout_gui.tooltip_anything_over_z500000_can_only_b"), mouseX, mouseY);
+		if (mouseX > leftPos + 37 && mouseX < leftPos + 61 && mouseY > topPos + 36 && mouseY < topPos + 60)
+			guiGraphics.renderTooltip(font, Component.translatable("gui.icurrency.cash_register_checkout_gui.tooltip_anything_over_z500000_can_only_b1"), mouseX, mouseY);
+		if (mouseX > leftPos + 61 && mouseX < leftPos + 85 && mouseY > topPos + 36 && mouseY < topPos + 60)
+			guiGraphics.renderTooltip(font, Component.translatable("gui.icurrency.cash_register_checkout_gui.tooltip_anything_over_z500000_can_only_b2"), mouseX, mouseY);
+		if (mouseX > leftPos + 85 && mouseX < leftPos + 109 && mouseY > topPos + 36 && mouseY < topPos + 60)
+			guiGraphics.renderTooltip(font, Component.translatable("gui.icurrency.cash_register_checkout_gui.tooltip_anything_over_z500000_can_only_b3"), mouseX, mouseY);
+		if (mouseX > leftPos + 109 && mouseX < leftPos + 133 && mouseY > topPos + 36 && mouseY < topPos + 60)
+			guiGraphics.renderTooltip(font, Component.translatable("gui.icurrency.cash_register_checkout_gui.tooltip_anything_over_z500000_can_only_b4"), mouseX, mouseY);
 	}
 
 	@Override
@@ -90,13 +98,10 @@ public class CashRegisterGUIScreen extends AbstractContainerScreen<CashRegisterG
 
 	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-		guiGraphics.drawString(this.font, Component.translatable("gui.icurrency.cash_register_gui.label_checkout"), 56, 11, -12829636, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.icurrency.cash_register_gui.label_tip_max_50"), 43, 86, -12829636, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.icurrency.cash_register_gui.label_price"), 61, 50, -12829636, false);
 		if (ShowCashDisabledCRPProcedure.execute(entity))
-			guiGraphics.drawString(this.font, Component.translatable("gui.icurrency.cash_register_gui.label_cash"), 25, 132, -3355444, false);
+			guiGraphics.drawString(this.font, Component.translatable("gui.icurrency.cash_register_checkout_gui.label_cash"), 25, 99, -3355444, false);
 		if (ShowCardDisabledCRPProcedure.execute(entity))
-			guiGraphics.drawString(this.font, Component.translatable("gui.icurrency.cash_register_gui.label_card"), 98, 132, -3355444, false);
+			guiGraphics.drawString(this.font, Component.translatable("gui.icurrency.cash_register_checkout_gui.label_card"), 98, 99, -3355444, false);
 	}
 
 	@Override
@@ -105,19 +110,19 @@ public class CashRegisterGUIScreen extends AbstractContainerScreen<CashRegisterG
 		textstate.put("textin:product", product.getValue());
 		textstate.put("textin:price", price.getValue());
 		textstate.put("textin:tip", tip.getValue());
-		PacketDistributor.SERVER.noArg().send(new CashRegisterGUIMenu.CashRegisterGUIOtherMessage(0, x, y, z, textstate));
-		CashRegisterGUIMenu.CashRegisterGUIOtherMessage.handleOtherAction(entity, 0, x, y, z, textstate);
+		PacketDistributor.SERVER.noArg().send(new CashRegisterCheckoutGUIButtonMessage(-1, x, y, z, textstate));
+		CashRegisterCheckoutGUIButtonMessage.handleButtonAction(entity, -1, x, y, z, textstate);
 	}
 
 	@Override
 	public void init() {
 		super.init();
-		product = new EditBox(this.font, this.leftPos + 15, this.topPos + 24, 118, 18, Component.translatable("gui.icurrency.cash_register_gui.product")) {
+		product = new EditBox(this.font, this.leftPos + 14, this.topPos + 11, 118, 18, Component.translatable("gui.icurrency.cash_register_checkout_gui.product")) {
 			@Override
 			public void insertText(String text) {
 				super.insertText(text);
 				if (getValue().isEmpty())
-					setSuggestion(Component.translatable("gui.icurrency.cash_register_gui.product").getString());
+					setSuggestion(Component.translatable("gui.icurrency.cash_register_checkout_gui.product").getString());
 				else
 					setSuggestion(null);
 			}
@@ -126,21 +131,21 @@ public class CashRegisterGUIScreen extends AbstractContainerScreen<CashRegisterG
 			public void moveCursorTo(int pos, boolean flag) {
 				super.moveCursorTo(pos, flag);
 				if (getValue().isEmpty())
-					setSuggestion(Component.translatable("gui.icurrency.cash_register_gui.product").getString());
+					setSuggestion(Component.translatable("gui.icurrency.cash_register_checkout_gui.product").getString());
 				else
 					setSuggestion(null);
 			}
 		};
 		product.setMaxLength(32767);
-		product.setSuggestion(Component.translatable("gui.icurrency.cash_register_gui.product").getString());
+		product.setSuggestion(Component.translatable("gui.icurrency.cash_register_checkout_gui.product").getString());
 		guistate.put("text:product", product);
 		this.addWidget(this.product);
-		price = new EditBox(this.font, this.leftPos + 15, this.topPos + 61, 118, 18, Component.translatable("gui.icurrency.cash_register_gui.price")) {
+		price = new EditBox(this.font, this.leftPos + 14, this.topPos + 39, 118, 18, Component.translatable("gui.icurrency.cash_register_checkout_gui.price")) {
 			@Override
 			public void insertText(String text) {
 				super.insertText(text);
 				if (getValue().isEmpty())
-					setSuggestion(Component.translatable("gui.icurrency.cash_register_gui.price").getString());
+					setSuggestion(Component.translatable("gui.icurrency.cash_register_checkout_gui.price").getString());
 				else
 					setSuggestion(null);
 			}
@@ -149,21 +154,21 @@ public class CashRegisterGUIScreen extends AbstractContainerScreen<CashRegisterG
 			public void moveCursorTo(int pos, boolean flag) {
 				super.moveCursorTo(pos, flag);
 				if (getValue().isEmpty())
-					setSuggestion(Component.translatable("gui.icurrency.cash_register_gui.price").getString());
+					setSuggestion(Component.translatable("gui.icurrency.cash_register_checkout_gui.price").getString());
 				else
 					setSuggestion(null);
 			}
 		};
 		price.setMaxLength(32767);
-		price.setSuggestion(Component.translatable("gui.icurrency.cash_register_gui.price").getString());
+		price.setSuggestion(Component.translatable("gui.icurrency.cash_register_checkout_gui.price").getString());
 		guistate.put("text:price", price);
 		this.addWidget(this.price);
-		tip = new EditBox(this.font, this.leftPos + 15, this.topPos + 97, 118, 18, Component.translatable("gui.icurrency.cash_register_gui.tip")) {
+		tip = new EditBox(this.font, this.leftPos + 14, this.topPos + 67, 118, 18, Component.translatable("gui.icurrency.cash_register_checkout_gui.tip")) {
 			@Override
 			public void insertText(String text) {
 				super.insertText(text);
 				if (getValue().isEmpty())
-					setSuggestion(Component.translatable("gui.icurrency.cash_register_gui.tip").getString());
+					setSuggestion(Component.translatable("gui.icurrency.cash_register_checkout_gui.tip").getString());
 				else
 					setSuggestion(null);
 			}
@@ -172,41 +177,24 @@ public class CashRegisterGUIScreen extends AbstractContainerScreen<CashRegisterG
 			public void moveCursorTo(int pos, boolean flag) {
 				super.moveCursorTo(pos, flag);
 				if (getValue().isEmpty())
-					setSuggestion(Component.translatable("gui.icurrency.cash_register_gui.tip").getString());
+					setSuggestion(Component.translatable("gui.icurrency.cash_register_checkout_gui.tip").getString());
 				else
 					setSuggestion(null);
 			}
 		};
 		tip.setMaxLength(32767);
-		tip.setSuggestion(Component.translatable("gui.icurrency.cash_register_gui.tip").getString());
+		tip.setSuggestion(Component.translatable("gui.icurrency.cash_register_checkout_gui.tip").getString());
 		guistate.put("text:tip", tip);
 		this.addWidget(this.tip);
-		button_cash = Button.builder(Component.translatable("gui.icurrency.cash_register_gui.button_cash"), e -> {
-			if (ShowCashEnabledCRPProcedure.execute(entity)) {
-				textstate.put("textin:product", product.getValue());
-				textstate.put("textin:price", price.getValue());
-				textstate.put("textin:tip", tip.getValue());
-				PacketDistributor.SERVER.noArg().send(new CashRegisterGUIButtonMessage(0, x, y, z, textstate));
-				CashRegisterGUIButtonMessage.handleButtonAction(entity, 0, x, y, z, textstate);
-			}
-		}).bounds(this.leftPos + 14, this.topPos + 126, 46, 20).build(builder -> new Button(builder) {
-			@Override
-			public void renderWidget(GuiGraphics guiGraphics, int gx, int gy, float ticks) {
-				if (ShowCashEnabledCRPProcedure.execute(entity))
-					super.renderWidget(guiGraphics, gx, gy, ticks);
-			}
-		});
-		guistate.put("button:button_cash", button_cash);
-		this.addRenderableWidget(button_cash);
-		button_card = Button.builder(Component.translatable("gui.icurrency.cash_register_gui.button_card"), e -> {
+		button_card = Button.builder(Component.translatable("gui.icurrency.cash_register_checkout_gui.button_card"), e -> {
 			if (ShowCardEnabledCRPProcedure.execute(entity)) {
 				textstate.put("textin:product", product.getValue());
 				textstate.put("textin:price", price.getValue());
 				textstate.put("textin:tip", tip.getValue());
-				PacketDistributor.SERVER.noArg().send(new CashRegisterGUIButtonMessage(1, x, y, z, textstate));
-				CashRegisterGUIButtonMessage.handleButtonAction(entity, 1, x, y, z, textstate);
+				PacketDistributor.SERVER.noArg().send(new CashRegisterCheckoutGUIButtonMessage(0, x, y, z, textstate));
+				CashRegisterCheckoutGUIButtonMessage.handleButtonAction(entity, 0, x, y, z, textstate);
 			}
-		}).bounds(this.leftPos + 87, this.topPos + 126, 46, 20).build(builder -> new Button(builder) {
+		}).bounds(this.leftPos + 87, this.topPos + 93, 46, 20).build(builder -> new Button(builder) {
 			@Override
 			public void renderWidget(GuiGraphics guiGraphics, int gx, int gy, float ticks) {
 				if (ShowCardEnabledCRPProcedure.execute(entity))
@@ -215,7 +203,24 @@ public class CashRegisterGUIScreen extends AbstractContainerScreen<CashRegisterG
 		});
 		guistate.put("button:button_card", button_card);
 		this.addRenderableWidget(button_card);
-		imagebutton_cash_disabled = new ImageButton(this.leftPos + 14, this.topPos + 126, 46, 20,
+		button_cash = Button.builder(Component.translatable("gui.icurrency.cash_register_checkout_gui.button_cash"), e -> {
+			if (ShowCashEnabledCRPProcedure.execute(entity)) {
+				textstate.put("textin:product", product.getValue());
+				textstate.put("textin:price", price.getValue());
+				textstate.put("textin:tip", tip.getValue());
+				PacketDistributor.SERVER.noArg().send(new CashRegisterCheckoutGUIButtonMessage(1, x, y, z, textstate));
+				CashRegisterCheckoutGUIButtonMessage.handleButtonAction(entity, 1, x, y, z, textstate);
+			}
+		}).bounds(this.leftPos + 14, this.topPos + 93, 46, 20).build(builder -> new Button(builder) {
+			@Override
+			public void renderWidget(GuiGraphics guiGraphics, int gx, int gy, float ticks) {
+				if (ShowCashEnabledCRPProcedure.execute(entity))
+					super.renderWidget(guiGraphics, gx, gy, ticks);
+			}
+		});
+		guistate.put("button:button_cash", button_cash);
+		this.addRenderableWidget(button_cash);
+		imagebutton_cash_disabled = new ImageButton(this.leftPos + 14, this.topPos + 93, 46, 20,
 				new WidgetSprites(new ResourceLocation("icurrency:textures/screens/cash_disabled.png"), new ResourceLocation("icurrency:textures/screens/cash_disabled.png")), e -> {
 				}) {
 			@Override
@@ -226,7 +231,7 @@ public class CashRegisterGUIScreen extends AbstractContainerScreen<CashRegisterG
 		};
 		guistate.put("button:imagebutton_cash_disabled", imagebutton_cash_disabled);
 		this.addRenderableWidget(imagebutton_cash_disabled);
-		imagebutton_cash_disabled1 = new ImageButton(this.leftPos + 87, this.topPos + 126, 46, 20,
+		imagebutton_cash_disabled1 = new ImageButton(this.leftPos + 87, this.topPos + 93, 46, 20,
 				new WidgetSprites(new ResourceLocation("icurrency:textures/screens/cash_disabled.png"), new ResourceLocation("icurrency:textures/screens/cash_disabled.png")), e -> {
 				}) {
 			@Override

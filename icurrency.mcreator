@@ -1237,21 +1237,6 @@
       }
     },
     {
-      "name": "CashRegisterGUI",
-      "type": "gui",
-      "sortid": 61,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "cash_register_gui",
-      "metadata": {
-        "files": [
-          "src/main/java/com/vikkivuk/icurrency/client/gui/CashRegisterGUIScreen.java",
-          "src/main/java/com/vikkivuk/icurrency/network/CashRegisterGUIButtonMessage.java",
-          "src/main/java/com/vikkivuk/icurrency/world/inventory/CashRegisterGUIMenu.java"
-        ]
-      }
-    },
-    {
       "name": "Receipt",
       "type": "item",
       "sortid": 62,
@@ -2355,6 +2340,21 @@
           }
         ]
       }
+    },
+    {
+      "name": "CashRegisterCheckoutGUI",
+      "type": "gui",
+      "sortid": 104,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cash_register_checkout_gui",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/world/inventory/CashRegisterCheckoutGUIMenu.java",
+          "src/main/java/com/vikkivuk/icurrency/client/gui/CashRegisterCheckoutGUIScreen.java",
+          "src/main/java/com/vikkivuk/icurrency/network/CashRegisterCheckoutGUIButtonMessage.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -2436,42 +2436,47 @@
   "language_map": {
     "en_us": {
       "gui.icurrency.atm_setup.label_bank_owner": "Bank Owner",
-      "gui.icurrency.cash_register_gui.label_tip_max_50": "Tip, max 50%",
       "gui.icurrency.cash_register_pay_card.button_swipe_card": "Swipe Card",
       "gui.icurrency.enter_pin.pin": "Pin",
       "gui.icurrency.card_overview.label_your_cards": "Your Cards",
       "gui.icurrency.cash_register_overview.button_empty1": "Open the cash register",
       "gui.icurrency.cash_register_setup.label_please_setup_the_cash_register": "please setup the cash register!",
       "gui.icurrency.cash_register_setup.password": "Password",
-      "item.icurrency.dollar_ten": "10 Zlatniks",
       "gui.icurrency.cash_register_setup.deposit_account": "Deposit into my account",
+      "item.icurrency.dollar_ten": "10 Zlatniks",
       "gui.icurrency.transfer_money.label_receiver": "Receiver",
+      "gui.icurrency.cash_register_checkout_gui.tooltip_anything_over_z500000_can_only_b1": "Anything over Ƶ500000 can only be paid using card!",
+      "gui.icurrency.cash_register_checkout_gui.tooltip_anything_over_z500000_can_only_b2": "Anything over Ƶ500000 can only be paid using card!",
       "gui.icurrency.cash_register_gui.cost": "Price",
       "gui.icurrency.open_cash_register_check.button_open_cash_register": "Open cash register",
       "gui.icurrency.set_card_pin.label_set_card_pin": "Set Card Pin",
-      "gui.icurrency.cash_register_gui.product": "Product",
+      "gui.icurrency.cash_register_checkout_gui.tooltip_anything_over_z500000_can_only_b3": "Anything over Ƶ500000 can only be paid using card!",
+      "gui.icurrency.cash_register_checkout_gui.price": "Price",
+      "gui.icurrency.cash_register_checkout_gui.tooltip_anything_over_z500000_can_only_b4": "Anything over Ƶ500000 can only be paid using card!",
       "item.icurrency.debit_card": "Debit Card",
       "gui.icurrency.cash_register_setup.tooltip_note_this_will_only_work_if_you": "This will only work if you are online when the transaction is made.",
+      "gui.icurrency.cash_register_checkout_gui.label_cash": "Cash",
       "gui.icurrency.atm_setup.bank_owner": "",
       "gui.icurrency.cash_register_setup.button_empty": "Finish Setup",
       "item.icurrency.dollar_thousand": "1000 Zlatniks",
-      "gui.icurrency.cash_register_gui.label_cash": "Cash",
+      "gui.icurrency.cash_register_checkout_gui.button_cash": "Cash",
       "gui.icurrency.deposit_money.label_deposit_money": "Deposit Money",
       "gui.icurrency.card_overview.label_114": "114",
       "gui.icurrency.atm_setup.bank_name": "",
       "gui.icurrency.atm_setup.label_to_start_using_this_atm_you_nee": "to start using this ATM you need to set it up. Please",
+      "gui.icurrency.cash_register_checkout_gui.tip": "Tip (max 50%)",
       "gui.icurrency.transfer_money.button_empty": "Transfer",
       "gui.icurrency.cash_register_overview.button_empty": "Checkout a customer",
       "gui.icurrency.card_overview.label_1147_3324": "1147 3324",
       "gui.icurrency.cash_register_safe.button_load_more": "Load more",
       "gui.icurrency.withdraw_money.amount": "Amount",
+      "gui.icurrency.cash_register_checkout_gui.button_card": "Card",
       "gui.icurrency.card_overview.label_123": "123",
       "item.icurrency.dollar_two_hundred": "200 Zlatniks",
       "gui.icurrency.atm_setup.label_financial_features_to_your_custo": "financial features to your customers! For your customers",
       "gui.icurrency.transfer_money.label_amount": "Amount",
-      "gui.icurrency.cash_register_gui.label_checkout": "Product",
-      "gui.icurrency.cash_register_gui.label_card": "Card",
       "gui.icurrency.exchange_money.label_exchange_money": "Exchange Money",
+      "gui.icurrency.cash_register_checkout_gui.product": "Product",
       "gui.icurrency.cash_register_pay_cash.label_cash_payment": "Cash Payment",
       "gui.icurrency.cash_register_setup.label_hi_to_start_serving_your_custom": "Hi! To start serving your customers,",
       "gui.icurrency.cash_register_setup.tooltip_this_will_make_it_so_that_custom": "This will make it so that customers can only pay using their cards.",
@@ -2482,11 +2487,13 @@
       "gui.icurrency.cash_register_safe.label_load_more": "Load more",
       "block.icurrency.atm": "ATM",
       "gui.icurrency.open_cash_register_check.pin": "Pin",
+      "gui.icurrency.cash_register_setup.tooltip_to_access_the_cash_registers_ea1": "To access the cash register\u0027s earnings, you will need to enter the password!",
       "gui.icurrency.set_card_pin.pin": "Pin",
-      "gui.icurrency.cash_register_gui.tooltip_anything_over_z570000_can_only_b": "Anything over Ƶ500000 can only be paid using card!",
+      "gui.icurrency.cash_register_setup.tooltip_to_access_the_cash_registers_ea4": "To access the cash register\u0027s earnings, you will need to enter the password!",
       "item_group.icurrency.mod_tab": "iCurrency",
+      "gui.icurrency.cash_register_setup.tooltip_to_access_the_cash_registers_ea3": "To access the cash register\u0027s earnings, you will need to enter the password!",
+      "gui.icurrency.cash_register_setup.tooltip_to_access_the_cash_registers_ea2": "To access the cash register\u0027s earnings, you will need to enter the password!",
       "gui.icurrency.cash_register_pay_card.tooltip_void_the_transaction": "Void the transaction",
-      "gui.icurrency.cash_register_gui.label_price": "Price",
       "gui.icurrency.cash_register_overview.label_welcome": "Welcome, what would you like to do",
       "gui.icurrency.atm_setup.label_bank_name": "Bank Name",
       "gui.icurrency.cash_register_setup.label_pin": "Password",
@@ -2494,8 +2501,12 @@
       "gui.icurrency.acknowledge_transaction_result_cr.label_last_transaction_was_completed_w": "Transaction finished with result ",
       "gui.icurrency.card_overview.label_4414_4778": "4414 4778",
       "gui.icurrency.card_overview.label_4417_4657": "4417 4657",
+      "gui.icurrency.cash_register_setup.tooltip_this_will_be_shown_on_all_receip2": "This will be shown on all receipts on purchases made using this cash register",
       "gui.icurrency.card_overview.label_314": "314",
       "gui.icurrency.cash_register_setup.tooltip_this_will_be_shown_on_all_receip": "This will be shown on all receipts on purchases made using this cash register",
+      "gui.icurrency.cash_register_setup.tooltip_this_will_be_shown_on_all_receip3": "This will be shown on all receipts on purchases made using this cash register",
+      "gui.icurrency.cash_register_setup.tooltip_this_will_be_shown_on_all_receip1": "This will be shown on all receipts on purchases made using this cash register",
+      "gui.icurrency.cash_register_setup.tooltip_this_will_be_shown_on_all_receip4": "This will be shown on all receipts on purchases made using this cash register",
       "gui.icurrency.atm_setup.label_hi_thank_you_for_partnering_wit": "Hi, thank you for partnering with iBank to provide",
       "gui.icurrency.acknowledge_transaction_result_cr.button_empty": "Acknowledge",
       "gui.icurrency.withdraw_money.button_empty": "Withdraw",
@@ -2504,12 +2515,11 @@
       "gui.icurrency.cash_register_pay_cash.tooltip_void_the_transaction": "Void the transaction",
       "gui.icurrency.deposit_money.button_empty": "Deposit",
       "gui.icurrency.open_cash_register_check.pin_check": "Pin",
-      "gui.icurrency.cash_register_gui.price": "Price",
+      "gui.icurrency.cash_register_checkout_gui.label_card": "Card",
       "gui.icurrency.cash_register_safe.button_withdraw_all": "Withdraw all",
       "gui.icurrency.enter_pin.button_empty": "Confirm",
       "gui.icurrency.cash_register_pay_card.label_card_payment": "Card Payment",
       "gui.icurrency.atm_setup.label_fill_out_the_fields_below": "fill out the fields below:",
-      "gui.icurrency.cash_register_gui.button_cash": "Cash",
       "gui.icurrency.cash_register_setup.tooltip_to_access_the_cash_registers_ea": "To access the cash register\u0027s earnings, you will need to enter the password!",
       "gui.icurrency.cash_register_safe.label_cash_safe": "Cash Safe",
       "gui.icurrency.cash_register_pay_cash.button_empty": "Pay",
@@ -2531,14 +2541,13 @@
       "gui.icurrency.open_cash_register_check.pass_check": "Password",
       "item.icurrency.dollar_five_hundred": "500 Zlatniks",
       "gui.icurrency.open_cash_register_check.label_pin": "Pin",
-      "gui.icurrency.cash_register_gui.button_card": "Card",
+      "gui.icurrency.cash_register_checkout_gui.tooltip_anything_over_z500000_can_only_b": "Anything over Ƶ500000 can only be paid using card!",
       "gui.icurrency.withdraw_money.label_withdraw": "Withdraw Money",
       "block.icurrency.cash_register": "Cash Register",
       "item.icurrency.dollar_fifty": "50 Zlatniks",
       "item.icurrency.dollar_hundred": "100 Zlatniks",
       "item.icurrency.receipt": "Receipt",
-      "item.icurrency.dollar_twenty": "20 Zlatniks",
-      "gui.icurrency.cash_register_gui.tip": "Tip (in %)"
+      "item.icurrency.dollar_twenty": "20 Zlatniks"
     }
   },
   "foldersRoot": {

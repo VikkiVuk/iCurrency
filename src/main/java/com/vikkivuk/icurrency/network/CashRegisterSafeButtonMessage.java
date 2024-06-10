@@ -21,6 +21,7 @@ import java.util.HashMap;
 import com.vikkivuk.icurrency.world.inventory.CashRegisterSafeMenu;
 import com.vikkivuk.icurrency.procedures.LoadCashInCashRegisterProcedure;
 import com.vikkivuk.icurrency.procedures.DepositIntoMyAccountSafeProcedure;
+import com.vikkivuk.icurrency.procedures.CashRegisterSafeThisGUIIsClosedProcedure;
 import com.vikkivuk.icurrency.IcurrencyMod;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -95,6 +96,10 @@ public record CashRegisterSafeButtonMessage(int buttonID, int x, int y, int z, H
 		// security measure to prevent arbitrary chunk generation
 		if (!world.hasChunkAt(new BlockPos(x, y, z)))
 			return;
+		if (buttonID == -2) {
+
+			CashRegisterSafeThisGUIIsClosedProcedure.execute(world, x, y, z, entity);
+		}
 		if (buttonID == 1) {
 
 			LoadCashInCashRegisterProcedure.execute(world, x, y, z, entity);

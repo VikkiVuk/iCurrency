@@ -40,7 +40,7 @@ public class CashRegisterSetupScreen extends AbstractContainerScreen<CashRegiste
 		this.z = container.z;
 		this.entity = container.entity;
 		this.imageWidth = 208;
-		this.imageHeight = 166;
+		this.imageHeight = 164;
 	}
 
 	private static final ResourceLocation texture = new ResourceLocation("icurrency:textures/screens/cash_register_setup.png");
@@ -52,14 +52,30 @@ public class CashRegisterSetupScreen extends AbstractContainerScreen<CashRegiste
 		password.render(guiGraphics, mouseX, mouseY, partialTicks);
 		name.render(guiGraphics, mouseX, mouseY, partialTicks);
 		this.renderTooltip(guiGraphics, mouseX, mouseY);
-		if (mouseX > leftPos + 9 && mouseX < leftPos + 33 && mouseY > topPos + 59 && mouseY < topPos + 83)
+		if (mouseX > leftPos + 7 && mouseX < leftPos + 31 && mouseY > topPos + 57 && mouseY < topPos + 81)
 			guiGraphics.renderTooltip(font, Component.translatable("gui.icurrency.cash_register_setup.tooltip_to_access_the_cash_registers_ea"), mouseX, mouseY);
-		if (mouseX > leftPos + 9 && mouseX < leftPos + 33 && mouseY > topPos + 86 && mouseY < topPos + 110)
+		if (mouseX > leftPos + 7 && mouseX < leftPos + 31 && mouseY > topPos + 83 && mouseY < topPos + 107)
 			guiGraphics.renderTooltip(font, Component.translatable("gui.icurrency.cash_register_setup.tooltip_this_will_make_it_so_that_custom"), mouseX, mouseY);
-		if (mouseX > leftPos + 9 && mouseX < leftPos + 33 && mouseY > topPos + 109 && mouseY < topPos + 133)
+		if (mouseX > leftPos + 7 && mouseX < leftPos + 31 && mouseY > topPos + 107 && mouseY < topPos + 131)
 			guiGraphics.renderTooltip(font, Component.translatable("gui.icurrency.cash_register_setup.tooltip_note_this_will_only_work_if_you"), mouseX, mouseY);
-		if (mouseX > leftPos + 9 && mouseX < leftPos + 33 && mouseY > topPos + 32 && mouseY < topPos + 56)
+		if (mouseX > leftPos + 7 && mouseX < leftPos + 31 && mouseY > topPos + 33 && mouseY < topPos + 57)
 			guiGraphics.renderTooltip(font, Component.translatable("gui.icurrency.cash_register_setup.tooltip_this_will_be_shown_on_all_receip"), mouseX, mouseY);
+		if (mouseX > leftPos + 31 && mouseX < leftPos + 55 && mouseY > topPos + 33 && mouseY < topPos + 57)
+			guiGraphics.renderTooltip(font, Component.translatable("gui.icurrency.cash_register_setup.tooltip_this_will_be_shown_on_all_receip1"), mouseX, mouseY);
+		if (mouseX > leftPos + 55 && mouseX < leftPos + 79 && mouseY > topPos + 33 && mouseY < topPos + 57)
+			guiGraphics.renderTooltip(font, Component.translatable("gui.icurrency.cash_register_setup.tooltip_this_will_be_shown_on_all_receip2"), mouseX, mouseY);
+		if (mouseX > leftPos + 79 && mouseX < leftPos + 103 && mouseY > topPos + 33 && mouseY < topPos + 57)
+			guiGraphics.renderTooltip(font, Component.translatable("gui.icurrency.cash_register_setup.tooltip_this_will_be_shown_on_all_receip3"), mouseX, mouseY);
+		if (mouseX > leftPos + 103 && mouseX < leftPos + 127 && mouseY > topPos + 33 && mouseY < topPos + 57)
+			guiGraphics.renderTooltip(font, Component.translatable("gui.icurrency.cash_register_setup.tooltip_this_will_be_shown_on_all_receip4"), mouseX, mouseY);
+		if (mouseX > leftPos + 31 && mouseX < leftPos + 55 && mouseY > topPos + 57 && mouseY < topPos + 81)
+			guiGraphics.renderTooltip(font, Component.translatable("gui.icurrency.cash_register_setup.tooltip_to_access_the_cash_registers_ea1"), mouseX, mouseY);
+		if (mouseX > leftPos + 55 && mouseX < leftPos + 79 && mouseY > topPos + 57 && mouseY < topPos + 81)
+			guiGraphics.renderTooltip(font, Component.translatable("gui.icurrency.cash_register_setup.tooltip_to_access_the_cash_registers_ea2"), mouseX, mouseY);
+		if (mouseX > leftPos + 79 && mouseX < leftPos + 103 && mouseY > topPos + 57 && mouseY < topPos + 81)
+			guiGraphics.renderTooltip(font, Component.translatable("gui.icurrency.cash_register_setup.tooltip_to_access_the_cash_registers_ea3"), mouseX, mouseY);
+		if (mouseX > leftPos + 103 && mouseX < leftPos + 127 && mouseY > topPos + 57 && mouseY < topPos + 81)
+			guiGraphics.renderTooltip(font, Component.translatable("gui.icurrency.cash_register_setup.tooltip_to_access_the_cash_registers_ea4"), mouseX, mouseY);
 	}
 
 	@Override
@@ -86,14 +102,14 @@ public class CashRegisterSetupScreen extends AbstractContainerScreen<CashRegiste
 
 	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-		guiGraphics.drawString(this.font, Component.translatable("gui.icurrency.cash_register_setup.label_hi_to_start_serving_your_custom"), 9, 10, -12829636, false);
-		guiGraphics.drawString(this.font, Component.translatable("gui.icurrency.cash_register_setup.label_please_setup_the_cash_register"), 9, 19, -12829636, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.icurrency.cash_register_setup.label_hi_to_start_serving_your_custom"), 9, 9, -12829636, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.icurrency.cash_register_setup.label_please_setup_the_cash_register"), 9, 20, -12829636, false);
 	}
 
 	@Override
 	public void init() {
 		super.init();
-		password = new EditBox(this.font, this.leftPos + 9, this.topPos + 60, 118, 18, Component.translatable("gui.icurrency.cash_register_setup.password")) {
+		password = new EditBox(this.font, this.leftPos + 9, this.topPos + 59, 118, 18, Component.translatable("gui.icurrency.cash_register_setup.password")) {
 			@Override
 			public void insertText(String text) {
 				super.insertText(text);
@@ -116,7 +132,7 @@ public class CashRegisterSetupScreen extends AbstractContainerScreen<CashRegiste
 		password.setSuggestion(Component.translatable("gui.icurrency.cash_register_setup.password").getString());
 		guistate.put("text:password", password);
 		this.addWidget(this.password);
-		name = new EditBox(this.font, this.leftPos + 9, this.topPos + 38, 118, 18, Component.translatable("gui.icurrency.cash_register_setup.name")) {
+		name = new EditBox(this.font, this.leftPos + 9, this.topPos + 37, 118, 18, Component.translatable("gui.icurrency.cash_register_setup.name")) {
 			@Override
 			public void insertText(String text) {
 				super.insertText(text);
@@ -148,15 +164,15 @@ public class CashRegisterSetupScreen extends AbstractContainerScreen<CashRegiste
 				PacketDistributor.SERVER.noArg().send(new CashRegisterSetupButtonMessage(0, x, y, z, textstate));
 				CashRegisterSetupButtonMessage.handleButtonAction(entity, 0, x, y, z, textstate);
 			}
-		}).bounds(this.leftPos + 9, this.topPos + 136, 187, 20).build();
+		}).bounds(this.leftPos + 9, this.topPos + 135, 187, 20).build();
 		guistate.put("button:button_empty", button_empty);
 		this.addRenderableWidget(button_empty);
-		only_cards = Checkbox.builder(Component.translatable("gui.icurrency.cash_register_setup.only_cards"), this.font).pos(this.leftPos + 9, this.topPos + 86)
+		only_cards = Checkbox.builder(Component.translatable("gui.icurrency.cash_register_setup.only_cards"), this.font).pos(this.leftPos + 9, this.topPos + 85)
 
 				.build();
 		guistate.put("checkbox:only_cards", only_cards);
 		this.addRenderableWidget(only_cards);
-		deposit_account = Checkbox.builder(Component.translatable("gui.icurrency.cash_register_setup.deposit_account"), this.font).pos(this.leftPos + 9, this.topPos + 109)
+		deposit_account = Checkbox.builder(Component.translatable("gui.icurrency.cash_register_setup.deposit_account"), this.font).pos(this.leftPos + 9, this.topPos + 108)
 
 				.build();
 		guistate.put("checkbox:deposit_account", deposit_account);

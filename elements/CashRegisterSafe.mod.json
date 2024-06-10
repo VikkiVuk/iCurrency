@@ -4,9 +4,9 @@
   "definition": {
     "type": 1,
     "width": 176,
-    "height": 178,
+    "height": 174,
     "inventoryOffsetX": 0,
-    "inventoryOffsetY": 6,
+    "inventoryOffsetY": 5,
     "renderBgLayer": true,
     "doesPauseGame": false,
     "components": [
@@ -19,7 +19,7 @@
           },
           "dropItemsWhenNotBound": true,
           "x": 133,
-          "y": 51
+          "y": 54
         }
       },
       {
@@ -31,7 +31,7 @@
           "width": 87,
           "height": 20,
           "x": 133,
-          "y": 73
+          "y": 76
         }
       },
       {
@@ -49,7 +49,7 @@
           "width": 72,
           "height": 20,
           "x": 222,
-          "y": 73
+          "y": 76
         }
       },
       {
@@ -64,7 +64,7 @@
           "width": 161,
           "height": 20,
           "x": 133,
-          "y": 96
+          "y": 99
         }
       },
       {
@@ -76,7 +76,7 @@
           },
           "dropItemsWhenNotBound": true,
           "x": 151,
-          "y": 51
+          "y": 54
         }
       },
       {
@@ -88,7 +88,7 @@
           },
           "dropItemsWhenNotBound": true,
           "x": 169,
-          "y": 51
+          "y": 54
         }
       },
       {
@@ -100,7 +100,7 @@
           },
           "dropItemsWhenNotBound": true,
           "x": 187,
-          "y": 51
+          "y": 54
         }
       },
       {
@@ -112,7 +112,7 @@
           },
           "dropItemsWhenNotBound": true,
           "x": 205,
-          "y": 51
+          "y": 54
         }
       },
       {
@@ -124,7 +124,7 @@
           },
           "dropItemsWhenNotBound": true,
           "x": 223,
-          "y": 51
+          "y": 54
         }
       },
       {
@@ -136,7 +136,7 @@
           },
           "dropItemsWhenNotBound": true,
           "x": 241,
-          "y": 51
+          "y": 54
         }
       },
       {
@@ -148,7 +148,7 @@
           },
           "dropItemsWhenNotBound": true,
           "x": 259,
-          "y": 51
+          "y": 54
         }
       },
       {
@@ -160,7 +160,7 @@
           },
           "dropItemsWhenNotBound": true,
           "x": 277,
-          "y": 51
+          "y": 54
         }
       },
       {
@@ -173,7 +173,7 @@
             "name": "ShowLoadMoreDisabled"
           },
           "x": 222,
-          "y": 73
+          "y": 76
         }
       },
       {
@@ -191,7 +191,7 @@
             "name": "ShowLoadMoreDisabled"
           },
           "x": 232,
-          "y": 79
+          "y": 82
         }
       },
       {
@@ -207,12 +207,15 @@
             "falpha": 0.0
           },
           "x": 133,
-          "y": 37
+          "y": 41
         }
       }
     ],
     "onOpen": {
       "name": "CashRegisterSafeThisGUIIsOpened"
+    },
+    "onClosed": {
+      "name": "CashRegisterSafeThisGUIIsClosed"
     },
     "gridSettings": {
       "sx": 18,

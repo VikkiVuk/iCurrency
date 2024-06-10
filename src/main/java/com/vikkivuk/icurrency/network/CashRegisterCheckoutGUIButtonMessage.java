@@ -18,17 +18,18 @@ import net.minecraft.core.BlockPos;
 import java.util.Map;
 import java.util.HashMap;
 
-import com.vikkivuk.icurrency.world.inventory.CashRegisterGUIMenu;
+import com.vikkivuk.icurrency.world.inventory.CashRegisterCheckoutGUIMenu;
 import com.vikkivuk.icurrency.procedures.StartCashTransactionCRProcedure;
 import com.vikkivuk.icurrency.procedures.StartCardTransactionCRProcedure;
+import com.vikkivuk.icurrency.procedures.CashRegisterGUIWhileThisGUIIsOpenTickProcedure;
 import com.vikkivuk.icurrency.IcurrencyMod;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-public record CashRegisterGUIButtonMessage(int buttonID, int x, int y, int z, HashMap<String, String> textstate) implements CustomPacketPayload {
+public record CashRegisterCheckoutGUIButtonMessage(int buttonID, int x, int y, int z, HashMap<String, String> textstate) implements CustomPacketPayload {
 
-	public static final ResourceLocation ID = new ResourceLocation(IcurrencyMod.MODID, "cash_register_gui_buttons");
+	public static final ResourceLocation ID = new ResourceLocation(IcurrencyMod.MODID, "cash_register_checkout_gui_buttons");
 
-	public CashRegisterGUIButtonMessage(FriendlyByteBuf buffer) {
+	public CashRegisterCheckoutGUIButtonMessage(FriendlyByteBuf buffer) {
 		this(buffer.readInt(), buffer.readInt(), buffer.readInt(), buffer.readInt(), mapwork.readTextState(buffer));
 	}
 
@@ -67,7 +68,7 @@ public record CashRegisterGUIButtonMessage(int buttonID, int x, int y, int z, Ha
 		return ID;
 	}
 
-	public static void handleData(final CashRegisterGUIButtonMessage message, final PlayPayloadContext context) {
+	public static void handleData(final CashRegisterCheckoutGUIButtonMessage message, final PlayPayloadContext context) {
 		if (context.flow() == PacketFlow.SERVERBOUND) {
 			context.workHandler().submitAsync(() -> {
 				Player entity = context.player().get();
@@ -86,7 +87,7 @@ public record CashRegisterGUIButtonMessage(int buttonID, int x, int y, int z, Ha
 
 	public static void handleButtonAction(Player entity, int buttonID, int x, int y, int z, HashMap<String, String> textstate) {
 		Level world = entity.level();
-		HashMap guistate = CashRegisterGUIMenu.guistate;
+		HashMap guistate = CashRegisterCheckoutGUIMenu.guistate;
 		for (Map.Entry<String, String> entry : textstate.entrySet()) {
 			String key = entry.getKey();
 			String value = entry.getValue();
@@ -95,19 +96,23 @@ public record CashRegisterGUIButtonMessage(int buttonID, int x, int y, int z, Ha
 		// security measure to prevent arbitrary chunk generation
 		if (!world.hasChunkAt(new BlockPos(x, y, z)))
 			return;
+		if (buttonID == -1) {
+
+			CashRegisterGUIWhileThisGUIIsOpenTickProcedure.execute(entity, guistate);
+		}
 		if (buttonID == 0) {
 
-			StartCashTransactionCRProcedure.execute(world, x, y, z, entity, guistate);
+			StartCardTransactionCRProcedure.execute(world, x, y, z, entity, guistate);
 		}
 		if (buttonID == 1) {
 
-			StartCardTransactionCRProcedure.execute(world, x, y, z, entity, guistate);
+			StartCashTransactionCRProcedure.execute(world, x, y, z, entity, guistate);
 		}
 	}
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		IcurrencyMod.addNetworkMessage(CashRegisterGUIButtonMessage.ID, CashRegisterGUIButtonMessage::new, CashRegisterGUIButtonMessage::handleData);
+		IcurrencyMod.addNetworkMessage(CashRegisterCheckoutGUIButtonMessage.ID, CashRegisterCheckoutGUIButtonMessage::new, CashRegisterCheckoutGUIButtonMessage::handleData);
 	}
 
 }

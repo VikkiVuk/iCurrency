@@ -23,7 +23,7 @@ import com.vikkivuk.icurrency.world.inventory.CashRegisterSafeMenu;
 import com.vikkivuk.icurrency.world.inventory.CashRegisterPayCashMenu;
 import com.vikkivuk.icurrency.world.inventory.CashRegisterPayCardMenu;
 import com.vikkivuk.icurrency.world.inventory.CashRegisterOverviewMenu;
-import com.vikkivuk.icurrency.world.inventory.CashRegisterGUIMenu;
+import com.vikkivuk.icurrency.world.inventory.CashRegisterCheckoutGUIMenu;
 import com.vikkivuk.icurrency.world.inventory.CardOverviewMenu;
 import com.vikkivuk.icurrency.world.inventory.AcknowledgeTransactionResultCRMenu;
 import com.vikkivuk.icurrency.world.inventory.ATMSetupMenu;
@@ -39,7 +39,6 @@ public class IcurrencyModMenus {
 	public static final DeferredHolder<MenuType<?>, MenuType<TransferMoneyMenu>> TRANSFER_MONEY = REGISTRY.register("transfer_money", () -> IMenuTypeExtension.create(TransferMoneyMenu::new));
 	public static final DeferredHolder<MenuType<?>, MenuType<ExchangeMoneyMenu>> EXCHANGE_MONEY = REGISTRY.register("exchange_money", () -> IMenuTypeExtension.create(ExchangeMoneyMenu::new));
 	public static final DeferredHolder<MenuType<?>, MenuType<CardOverviewMenu>> CARD_OVERVIEW = REGISTRY.register("card_overview", () -> IMenuTypeExtension.create(CardOverviewMenu::new));
-	public static final DeferredHolder<MenuType<?>, MenuType<CashRegisterGUIMenu>> CASH_REGISTER_GUI = REGISTRY.register("cash_register_gui", () -> IMenuTypeExtension.create(CashRegisterGUIMenu::new));
 	public static final DeferredHolder<MenuType<?>, MenuType<CashRegisterPayCardMenu>> CASH_REGISTER_PAY_CARD = REGISTRY.register("cash_register_pay_card", () -> IMenuTypeExtension.create(CashRegisterPayCardMenu::new));
 	public static final DeferredHolder<MenuType<?>, MenuType<CashRegisterPayCashMenu>> CASH_REGISTER_PAY_CASH = REGISTRY.register("cash_register_pay_cash", () -> IMenuTypeExtension.create(CashRegisterPayCashMenu::new));
 	public static final DeferredHolder<MenuType<?>, MenuType<CashRegisterSetupMenu>> CASH_REGISTER_SETUP = REGISTRY.register("cash_register_setup", () -> IMenuTypeExtension.create(CashRegisterSetupMenu::new));
@@ -50,4 +49,5 @@ public class IcurrencyModMenus {
 			() -> IMenuTypeExtension.create(AcknowledgeTransactionResultCRMenu::new));
 	public static final DeferredHolder<MenuType<?>, MenuType<SetCardPinMenu>> SET_CARD_PIN = REGISTRY.register("set_card_pin", () -> IMenuTypeExtension.create(SetCardPinMenu::new));
 	public static final DeferredHolder<MenuType<?>, MenuType<EnterPinMenu>> ENTER_PIN = REGISTRY.register("enter_pin", () -> IMenuTypeExtension.create(EnterPinMenu::new));
+	public static final DeferredHolder<MenuType<?>, MenuType<CashRegisterCheckoutGUIMenu>> CASH_REGISTER_CHECKOUT_GUI = REGISTRY.register("cash_register_checkout_gui", () -> IMenuTypeExtension.create(CashRegisterCheckoutGUIMenu::new));
 }

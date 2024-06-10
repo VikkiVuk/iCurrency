@@ -28,7 +28,7 @@ public class ATMSetupScreen extends AbstractContainerScreen<ATMSetupMenu> {
 	private final static HashMap<String, String> textstate = new HashMap<>();
 	public static EditBox bank_name;
 	public static EditBox bank_owner;
-	Checkbox tos;
+	public static Checkbox tos;
 	Button button_empty;
 
 	public ATMSetupScreen(ATMSetupMenu container, Inventory inventory, Component text) {
@@ -100,6 +100,7 @@ public class ATMSetupScreen extends AbstractContainerScreen<ATMSetupMenu> {
 			if (true) {
 				textstate.put("textin:bank_name", bank_name.getValue());
 				textstate.put("textin:bank_owner", bank_owner.getValue());
+				textstate.put("checkboxin:tos", tos.selected() ? "true" : "false");
 				PacketDistributor.SERVER.noArg().send(new ATMSetupButtonMessage(0, x, y, z, textstate));
 				ATMSetupButtonMessage.handleButtonAction(entity, 0, x, y, z, textstate);
 			}

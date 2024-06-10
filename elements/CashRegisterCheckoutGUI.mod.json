@@ -1,0 +1,224 @@
+{
+  "_fv": 60,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 146,
+    "height": 123,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "Product",
+          "name": "product",
+          "width": 120,
+          "height": 20,
+          "x": 154,
+          "y": 69
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "Price",
+          "name": "price",
+          "width": 120,
+          "height": 20,
+          "x": 154,
+          "y": 97
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "Tip (max 50%)",
+          "name": "tip",
+          "width": 120,
+          "height": 20,
+          "x": 154,
+          "y": 125
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_card",
+          "text": "Card",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "StartCardTransactionCR"
+          },
+          "displayCondition": {
+            "name": "ShowCardEnabledCRP"
+          },
+          "width": 46,
+          "height": 20,
+          "x": 228,
+          "y": 152
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_cash",
+          "text": "Cash",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "StartCashTransactionCR"
+          },
+          "displayCondition": {
+            "name": "ShowCashEnabledCRP"
+          },
+          "width": 46,
+          "height": 20,
+          "x": 155,
+          "y": 152
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_cash_disabled",
+          "image": "cash_disabled.png",
+          "hoveredImage": "cash_disabled.png",
+          "displayCondition": {
+            "name": "ShowCashDisabledCRP"
+          },
+          "x": 155,
+          "y": 152
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_cash",
+          "text": {
+            "fixedValue": "Cash"
+          },
+          "color": {
+            "value": -3355444,
+            "falpha": 0.0
+          },
+          "displayCondition": {
+            "name": "ShowCashDisabledCRP"
+          },
+          "x": 166,
+          "y": 158
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_cash_disabled1",
+          "image": "cash_disabled.png",
+          "hoveredImage": "cash_disabled.png",
+          "displayCondition": {
+            "name": "ShowCardDisabledCRP"
+          },
+          "x": 228,
+          "y": 152
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_card",
+          "text": {
+            "fixedValue": "Card"
+          },
+          "color": {
+            "value": -3355444,
+            "falpha": 0.0
+          },
+          "displayCondition": {
+            "name": "ShowCardDisabledCRP"
+          },
+          "x": 239,
+          "y": 158
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_anything_over_z500000_can_only_b",
+          "text": {
+            "fixedValue": "Anything over Ƶ500000 can only be paid using card!"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 154,
+          "y": 95
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_anything_over_z500000_can_only_b1",
+          "text": {
+            "fixedValue": "Anything over Ƶ500000 can only be paid using card!"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 178,
+          "y": 95
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_anything_over_z500000_can_only_b2",
+          "text": {
+            "fixedValue": "Anything over Ƶ500000 can only be paid using card!"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 202,
+          "y": 95
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_anything_over_z500000_can_only_b3",
+          "text": {
+            "fixedValue": "Anything over Ƶ500000 can only be paid using card!"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 226,
+          "y": 95
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_anything_over_z500000_can_only_b4",
+          "text": {
+            "fixedValue": "Anything over Ƶ500000 can only be paid using card!"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 250,
+          "y": 95
+        }
+      }
+    ],
+    "onOpen": {
+      "name": "CashRegisterGUIThisGUIIsOpened"
+    },
+    "onTick": {
+      "name": "CashRegisterGUIWhileThisGUIIsOpenTick"
+    },
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

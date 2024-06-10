@@ -21,7 +21,7 @@ import com.vikkivuk.icurrency.client.gui.CashRegisterSafeScreen;
 import com.vikkivuk.icurrency.client.gui.CashRegisterPayCashScreen;
 import com.vikkivuk.icurrency.client.gui.CashRegisterPayCardScreen;
 import com.vikkivuk.icurrency.client.gui.CashRegisterOverviewScreen;
-import com.vikkivuk.icurrency.client.gui.CashRegisterGUIScreen;
+import com.vikkivuk.icurrency.client.gui.CashRegisterCheckoutGUIScreen;
 import com.vikkivuk.icurrency.client.gui.CardOverviewScreen;
 import com.vikkivuk.icurrency.client.gui.AcknowledgeTransactionResultCRScreen;
 import com.vikkivuk.icurrency.client.gui.ATMSetupScreen;
@@ -38,7 +38,6 @@ public class IcurrencyModScreens {
 		event.register(IcurrencyModMenus.TRANSFER_MONEY.get(), TransferMoneyScreen::new);
 		event.register(IcurrencyModMenus.EXCHANGE_MONEY.get(), ExchangeMoneyScreen::new);
 		event.register(IcurrencyModMenus.CARD_OVERVIEW.get(), CardOverviewScreen::new);
-		event.register(IcurrencyModMenus.CASH_REGISTER_GUI.get(), CashRegisterGUIScreen::new);
 		event.register(IcurrencyModMenus.CASH_REGISTER_PAY_CARD.get(), CashRegisterPayCardScreen::new);
 		event.register(IcurrencyModMenus.CASH_REGISTER_PAY_CASH.get(), CashRegisterPayCashScreen::new);
 		event.register(IcurrencyModMenus.CASH_REGISTER_SETUP.get(), CashRegisterSetupScreen::new);
@@ -48,5 +47,6 @@ public class IcurrencyModScreens {
 		event.register(IcurrencyModMenus.ACKNOWLEDGE_TRANSACTION_RESULT_CR.get(), AcknowledgeTransactionResultCRScreen::new);
 		event.register(IcurrencyModMenus.SET_CARD_PIN.get(), SetCardPinScreen::new);
 		event.register(IcurrencyModMenus.ENTER_PIN.get(), EnterPinScreen::new);
+		event.register(IcurrencyModMenus.CASH_REGISTER_CHECKOUT_GUI.get(), CashRegisterCheckoutGUIScreen::new);
 	}
 }

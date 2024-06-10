@@ -4,7 +4,7 @@
   "definition": {
     "type": 0,
     "width": 208,
-    "height": 166,
+    "height": 164,
     "inventoryOffsetX": 0,
     "inventoryOffsetY": 0,
     "renderBgLayer": true,
@@ -37,7 +37,7 @@
             "falpha": 0.0
           },
           "x": 119,
-          "y": 56
+          "y": 58
         }
       },
       {
@@ -60,8 +60,8 @@
           },
           "width": 24,
           "height": 24,
-          "x": 119,
-          "y": 96
+          "x": 117,
+          "y": 95
         }
       },
       {
@@ -82,8 +82,8 @@
           },
           "width": 24,
           "height": 24,
-          "x": 119,
-          "y": 123
+          "x": 117,
+          "y": 121
         }
       },
       {
@@ -104,8 +104,8 @@
           },
           "width": 24,
           "height": 24,
-          "x": 119,
-          "y": 146
+          "x": 117,
+          "y": 145
         }
       },
       {
@@ -143,8 +143,112 @@
           },
           "width": 24,
           "height": 24,
-          "x": 119,
-          "y": 69
+          "x": 117,
+          "y": 71
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_this_will_be_shown_on_all_receip1",
+          "text": {
+            "fixedValue": "This will be shown on all receipts on purchases made using this cash register"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 141,
+          "y": 71
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_this_will_be_shown_on_all_receip2",
+          "text": {
+            "fixedValue": "This will be shown on all receipts on purchases made using this cash register"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 165,
+          "y": 71
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_this_will_be_shown_on_all_receip3",
+          "text": {
+            "fixedValue": "This will be shown on all receipts on purchases made using this cash register"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 189,
+          "y": 71
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_this_will_be_shown_on_all_receip4",
+          "text": {
+            "fixedValue": "This will be shown on all receipts on purchases made using this cash register"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 213,
+          "y": 71
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_to_access_the_cash_registers_ea1",
+          "text": {
+            "fixedValue": "To access the cash register's earnings, you will need to enter the password!"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 141,
+          "y": 95
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_to_access_the_cash_registers_ea2",
+          "text": {
+            "fixedValue": "To access the cash register's earnings, you will need to enter the password!"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 165,
+          "y": 95
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_to_access_the_cash_registers_ea3",
+          "text": {
+            "fixedValue": "To access the cash register's earnings, you will need to enter the password!"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 189,
+          "y": 95
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_to_access_the_cash_registers_ea4",
+          "text": {
+            "fixedValue": "To access the cash register's earnings, you will need to enter the password!"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 213,
+          "y": 95
         }
       }
     ],

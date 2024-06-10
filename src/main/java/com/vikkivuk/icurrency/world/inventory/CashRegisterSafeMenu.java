@@ -1,6 +1,7 @@
 
 package com.vikkivuk.icurrency.world.inventory;
 
+import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.items.SlotItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.IItemHandler;
@@ -24,7 +25,9 @@ import java.util.Map;
 import java.util.HashMap;
 
 import com.vikkivuk.icurrency.procedures.CashRegisterSafeThisGUIIsOpenedProcedure;
+import com.vikkivuk.icurrency.network.CashRegisterSafeButtonMessage;
 import com.vikkivuk.icurrency.init.IcurrencyModMenus;
+import com.vikkivuk.icurrency.client.gui.CashRegisterSafeScreen;
 
 public class CashRegisterSafeMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
 	public final static HashMap<String, Object> guistate = new HashMap<>();
@@ -83,7 +86,7 @@ public class CashRegisterSafeMenu extends AbstractContainerMenu implements Suppl
 				}
 			}
 		}
-		this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 8, 21) {
+		this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 8, 22) {
 			private final int slot = 0;
 
 			@Override
@@ -91,7 +94,7 @@ public class CashRegisterSafeMenu extends AbstractContainerMenu implements Suppl
 				return false;
 			}
 		}));
-		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 26, 21) {
+		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 26, 22) {
 			private final int slot = 1;
 
 			@Override
@@ -99,7 +102,7 @@ public class CashRegisterSafeMenu extends AbstractContainerMenu implements Suppl
 				return false;
 			}
 		}));
-		this.customSlots.put(2, this.addSlot(new SlotItemHandler(internal, 2, 44, 21) {
+		this.customSlots.put(2, this.addSlot(new SlotItemHandler(internal, 2, 44, 22) {
 			private final int slot = 2;
 
 			@Override
@@ -107,7 +110,7 @@ public class CashRegisterSafeMenu extends AbstractContainerMenu implements Suppl
 				return false;
 			}
 		}));
-		this.customSlots.put(3, this.addSlot(new SlotItemHandler(internal, 3, 62, 21) {
+		this.customSlots.put(3, this.addSlot(new SlotItemHandler(internal, 3, 62, 22) {
 			private final int slot = 3;
 
 			@Override
@@ -115,7 +118,7 @@ public class CashRegisterSafeMenu extends AbstractContainerMenu implements Suppl
 				return false;
 			}
 		}));
-		this.customSlots.put(4, this.addSlot(new SlotItemHandler(internal, 4, 80, 21) {
+		this.customSlots.put(4, this.addSlot(new SlotItemHandler(internal, 4, 80, 22) {
 			private final int slot = 4;
 
 			@Override
@@ -123,7 +126,7 @@ public class CashRegisterSafeMenu extends AbstractContainerMenu implements Suppl
 				return false;
 			}
 		}));
-		this.customSlots.put(5, this.addSlot(new SlotItemHandler(internal, 5, 98, 21) {
+		this.customSlots.put(5, this.addSlot(new SlotItemHandler(internal, 5, 98, 22) {
 			private final int slot = 5;
 
 			@Override
@@ -131,7 +134,7 @@ public class CashRegisterSafeMenu extends AbstractContainerMenu implements Suppl
 				return false;
 			}
 		}));
-		this.customSlots.put(6, this.addSlot(new SlotItemHandler(internal, 6, 116, 21) {
+		this.customSlots.put(6, this.addSlot(new SlotItemHandler(internal, 6, 116, 22) {
 			private final int slot = 6;
 
 			@Override
@@ -139,7 +142,7 @@ public class CashRegisterSafeMenu extends AbstractContainerMenu implements Suppl
 				return false;
 			}
 		}));
-		this.customSlots.put(7, this.addSlot(new SlotItemHandler(internal, 7, 134, 21) {
+		this.customSlots.put(7, this.addSlot(new SlotItemHandler(internal, 7, 134, 22) {
 			private final int slot = 7;
 
 			@Override
@@ -147,7 +150,7 @@ public class CashRegisterSafeMenu extends AbstractContainerMenu implements Suppl
 				return false;
 			}
 		}));
-		this.customSlots.put(8, this.addSlot(new SlotItemHandler(internal, 8, 152, 21) {
+		this.customSlots.put(8, this.addSlot(new SlotItemHandler(internal, 8, 152, 22) {
 			private final int slot = 8;
 
 			@Override
@@ -157,9 +160,9 @@ public class CashRegisterSafeMenu extends AbstractContainerMenu implements Suppl
 		}));
 		for (int si = 0; si < 3; ++si)
 			for (int sj = 0; sj < 9; ++sj)
-				this.addSlot(new Slot(inv, sj + (si + 1) * 9, 0 + 8 + sj * 18, 12 + 84 + si * 18));
+				this.addSlot(new Slot(inv, sj + (si + 1) * 9, 0 + 8 + sj * 18, 9 + 84 + si * 18));
 		for (int si = 0; si < 9; ++si)
-			this.addSlot(new Slot(inv, si, 0 + 8 + si * 18, 12 + 142));
+			this.addSlot(new Slot(inv, si, 0 + 8 + si * 18, 9 + 142));
 		CashRegisterSafeThisGUIIsOpenedProcedure.execute(world, x, y, z, entity);
 	}
 
@@ -273,6 +276,9 @@ public class CashRegisterSafeMenu extends AbstractContainerMenu implements Suppl
 	@Override
 	public void removed(Player playerIn) {
 		super.removed(playerIn);
+		if (this.world != null && this.world.isClientSide()) {
+			textBoxStart();
+		}
 		if (!bound && playerIn instanceof ServerPlayer serverPlayer) {
 			if (!serverPlayer.isAlive() || serverPlayer.hasDisconnected()) {
 				for (int j = 0; j < internal.getSlots(); ++j) {
@@ -288,5 +294,10 @@ public class CashRegisterSafeMenu extends AbstractContainerMenu implements Suppl
 
 	public Map<Integer, Slot> get() {
 		return customSlots;
+	}
+
+	public void textBoxStart() {
+		PacketDistributor.SERVER.noArg().send(new CashRegisterSafeButtonMessage(-2, x, y, z, CashRegisterSafeScreen.getTextboxValues()));
+		CashRegisterSafeButtonMessage.handleButtonAction(entity, -2, x, y, z, CashRegisterSafeScreen.getTextboxValues());
 	}
 }
