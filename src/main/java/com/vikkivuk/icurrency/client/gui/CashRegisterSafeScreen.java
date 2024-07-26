@@ -12,6 +12,7 @@ import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.Minecraft;
 
 import java.util.HashMap;
 
@@ -28,7 +29,6 @@ public class CashRegisterSafeScreen extends AbstractContainerScreen<CashRegister
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
-	private final static HashMap<String, String> textstate = new HashMap<>();
 	Button button_withdraw_all;
 	Button button_load_more;
 	Button button_empty;
@@ -43,6 +43,14 @@ public class CashRegisterSafeScreen extends AbstractContainerScreen<CashRegister
 		this.entity = container.entity;
 		this.imageWidth = 176;
 		this.imageHeight = 174;
+	}
+
+	public static HashMap<String, String> getEditBoxAndCheckBoxValues() {
+		HashMap<String, String> textstate = new HashMap<>();
+		if (Minecraft.getInstance().screen instanceof CashRegisterSafeScreen sc) {
+
+		}
+		return textstate;
 	}
 
 	private static final ResourceLocation texture = new ResourceLocation("icurrency:textures/screens/cash_register_safe.png");
@@ -72,10 +80,6 @@ public class CashRegisterSafeScreen extends AbstractContainerScreen<CashRegister
 		return super.keyPressed(key, b, c);
 	}
 
-	public static HashMap<String, String> getTextboxValues() {
-		return textstate;
-	}
-
 	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
 		if (ShowLoadMoreDisabledProcedure.execute(entity))
@@ -94,8 +98,8 @@ public class CashRegisterSafeScreen extends AbstractContainerScreen<CashRegister
 		this.addRenderableWidget(button_withdraw_all);
 		button_load_more = Button.builder(Component.translatable("gui.icurrency.cash_register_safe.button_load_more"), e -> {
 			if (ShowLoadMoreEnabledProcedure.execute(entity)) {
-				PacketDistributor.SERVER.noArg().send(new CashRegisterSafeButtonMessage(1, x, y, z, textstate));
-				CashRegisterSafeButtonMessage.handleButtonAction(entity, 1, x, y, z, textstate);
+				PacketDistributor.sendToServer(new CashRegisterSafeButtonMessage(1, x, y, z, getEditBoxAndCheckBoxValues()));
+				CashRegisterSafeButtonMessage.handleButtonAction(entity, 1, x, y, z, getEditBoxAndCheckBoxValues());
 			}
 		}).bounds(this.leftPos + 96, this.topPos + 43, 72, 20).build(builder -> new Button(builder) {
 			@Override
@@ -108,8 +112,8 @@ public class CashRegisterSafeScreen extends AbstractContainerScreen<CashRegister
 		this.addRenderableWidget(button_load_more);
 		button_empty = Button.builder(Component.translatable("gui.icurrency.cash_register_safe.button_empty"), e -> {
 			if (true) {
-				PacketDistributor.SERVER.noArg().send(new CashRegisterSafeButtonMessage(2, x, y, z, textstate));
-				CashRegisterSafeButtonMessage.handleButtonAction(entity, 2, x, y, z, textstate);
+				PacketDistributor.sendToServer(new CashRegisterSafeButtonMessage(2, x, y, z, getEditBoxAndCheckBoxValues()));
+				CashRegisterSafeButtonMessage.handleButtonAction(entity, 2, x, y, z, getEditBoxAndCheckBoxValues());
 			}
 		}).bounds(this.leftPos + 7, this.topPos + 66, 161, 20).build();
 		guistate.put("button:button_empty", button_empty);

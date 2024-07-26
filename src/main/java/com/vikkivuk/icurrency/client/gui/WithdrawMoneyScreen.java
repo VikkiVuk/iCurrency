@@ -11,6 +11,7 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.Minecraft;
 
 import java.util.HashMap;
 
@@ -24,8 +25,7 @@ public class WithdrawMoneyScreen extends AbstractContainerScreen<WithdrawMoneyMe
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
-	private final static HashMap<String, String> textstate = new HashMap<>();
-	public static EditBox amount;
+	EditBox amount;
 	Button button_empty;
 
 	public WithdrawMoneyScreen(WithdrawMoneyMenu container, Inventory inventory, Component text) {
@@ -37,6 +37,15 @@ public class WithdrawMoneyScreen extends AbstractContainerScreen<WithdrawMoneyMe
 		this.entity = container.entity;
 		this.imageWidth = 176;
 		this.imageHeight = 166;
+	}
+
+	public static HashMap<String, String> getEditBoxAndCheckBoxValues() {
+		HashMap<String, String> textstate = new HashMap<>();
+		if (Minecraft.getInstance().screen instanceof WithdrawMoneyScreen sc) {
+			textstate.put("textin:amount", sc.amount.getValue());
+
+		}
+		return textstate;
 	}
 
 	private static final ResourceLocation texture = new ResourceLocation("icurrency:textures/screens/withdraw_money.png");
@@ -67,6 +76,13 @@ public class WithdrawMoneyScreen extends AbstractContainerScreen<WithdrawMoneyMe
 		if (amount.isFocused())
 			return amount.keyPressed(key, b, c);
 		return super.keyPressed(key, b, c);
+	}
+
+	@Override
+	public void resize(Minecraft minecraft, int width, int height) {
+		String amountValue = amount.getValue();
+		super.resize(minecraft, width, height);
+		amount.setValue(amountValue);
 	}
 
 	@Override
@@ -102,9 +118,8 @@ public class WithdrawMoneyScreen extends AbstractContainerScreen<WithdrawMoneyMe
 		this.addWidget(this.amount);
 		button_empty = Button.builder(Component.translatable("gui.icurrency.withdraw_money.button_empty"), e -> {
 			if (true) {
-				textstate.put("textin:amount", amount.getValue());
-				PacketDistributor.SERVER.noArg().send(new WithdrawMoneyButtonMessage(0, x, y, z, textstate));
-				WithdrawMoneyButtonMessage.handleButtonAction(entity, 0, x, y, z, textstate);
+				PacketDistributor.sendToServer(new WithdrawMoneyButtonMessage(0, x, y, z, getEditBoxAndCheckBoxValues()));
+				WithdrawMoneyButtonMessage.handleButtonAction(entity, 0, x, y, z, getEditBoxAndCheckBoxValues());
 			}
 		}).bounds(this.leftPos + 7, this.topPos + 38, 161, 20).build();
 		guistate.put("button:button_empty", button_empty);

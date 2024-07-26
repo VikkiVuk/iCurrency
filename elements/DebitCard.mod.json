@@ -1,5 +1,5 @@
 {
-  "_fv": 60,
+  "_fv": 66,
   "_type": "item",
   "definition": {
     "renderType": 0,
@@ -9,9 +9,11 @@
     "states": [],
     "name": "Debit Card",
     "rarity": "COMMON",
-    "creativeTab": {
-      "value": "CUSTOM:ModTab"
-    },
+    "creativeTabs": [
+      {
+        "value": "CUSTOM:ModTab"
+      }
+    ],
     "stackSize": 64,
     "enchantability": 0,
     "useDuration": 0,
@@ -36,10 +38,11 @@
     "inventorySize": 9,
     "inventoryStackSize": 64,
     "onRightClickedInAir": {
-      "name": "DebitCardRightclicked"
+      "name": "DebitCardRightClick"
     },
     "enableRanged": false,
     "shootConstantly": false,
+    "rangedItemChargesPower": false,
     "projectile": {
       "value": "Arrow"
     },

@@ -13,6 +13,7 @@ import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.Minecraft;
 
 import java.util.HashMap;
 
@@ -30,10 +31,9 @@ public class CashRegisterCheckoutGUIScreen extends AbstractContainerScreen<CashR
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
-	private final static HashMap<String, String> textstate = new HashMap<>();
-	public static EditBox product;
-	public static EditBox price;
-	public static EditBox tip;
+	EditBox product;
+	EditBox price;
+	EditBox tip;
 	Button button_card;
 	Button button_cash;
 	ImageButton imagebutton_cash_disabled;
@@ -48,6 +48,24 @@ public class CashRegisterCheckoutGUIScreen extends AbstractContainerScreen<CashR
 		this.entity = container.entity;
 		this.imageWidth = 146;
 		this.imageHeight = 123;
+	}
+
+	public static HashMap<String, String> getEditBoxAndCheckBoxValues() {
+		HashMap<String, String> textstate = new HashMap<>();
+		if (Minecraft.getInstance().screen instanceof CashRegisterCheckoutGUIScreen sc) {
+			textstate.put("textin:product", sc.product.getValue());
+			textstate.put("textin:price", sc.price.getValue());
+			textstate.put("textin:tip", sc.tip.getValue());
+
+		}
+		return textstate;
+	}
+
+	@Override
+	public void containerTick() {
+		super.containerTick();
+		PacketDistributor.sendToServer(new CashRegisterCheckoutGUIButtonMessage(-1, x, y, z, getEditBoxAndCheckBoxValues()));
+		CashRegisterCheckoutGUIButtonMessage.handleButtonAction(entity, -1, x, y, z, getEditBoxAndCheckBoxValues());
 	}
 
 	private static final ResourceLocation texture = new ResourceLocation("icurrency:textures/screens/cash_register_checkout_gui.png");
@@ -97,21 +115,22 @@ public class CashRegisterCheckoutGUIScreen extends AbstractContainerScreen<CashR
 	}
 
 	@Override
+	public void resize(Minecraft minecraft, int width, int height) {
+		String productValue = product.getValue();
+		String priceValue = price.getValue();
+		String tipValue = tip.getValue();
+		super.resize(minecraft, width, height);
+		product.setValue(productValue);
+		price.setValue(priceValue);
+		tip.setValue(tipValue);
+	}
+
+	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
 		if (ShowCashDisabledCRPProcedure.execute(entity))
 			guiGraphics.drawString(this.font, Component.translatable("gui.icurrency.cash_register_checkout_gui.label_cash"), 25, 99, -3355444, false);
 		if (ShowCardDisabledCRPProcedure.execute(entity))
 			guiGraphics.drawString(this.font, Component.translatable("gui.icurrency.cash_register_checkout_gui.label_card"), 98, 99, -3355444, false);
-	}
-
-	@Override
-	public void containerTick() {
-		super.containerTick();
-		textstate.put("textin:product", product.getValue());
-		textstate.put("textin:price", price.getValue());
-		textstate.put("textin:tip", tip.getValue());
-		PacketDistributor.SERVER.noArg().send(new CashRegisterCheckoutGUIButtonMessage(-1, x, y, z, textstate));
-		CashRegisterCheckoutGUIButtonMessage.handleButtonAction(entity, -1, x, y, z, textstate);
 	}
 
 	@Override
@@ -188,11 +207,8 @@ public class CashRegisterCheckoutGUIScreen extends AbstractContainerScreen<CashR
 		this.addWidget(this.tip);
 		button_card = Button.builder(Component.translatable("gui.icurrency.cash_register_checkout_gui.button_card"), e -> {
 			if (ShowCardEnabledCRPProcedure.execute(entity)) {
-				textstate.put("textin:product", product.getValue());
-				textstate.put("textin:price", price.getValue());
-				textstate.put("textin:tip", tip.getValue());
-				PacketDistributor.SERVER.noArg().send(new CashRegisterCheckoutGUIButtonMessage(0, x, y, z, textstate));
-				CashRegisterCheckoutGUIButtonMessage.handleButtonAction(entity, 0, x, y, z, textstate);
+				PacketDistributor.sendToServer(new CashRegisterCheckoutGUIButtonMessage(0, x, y, z, getEditBoxAndCheckBoxValues()));
+				CashRegisterCheckoutGUIButtonMessage.handleButtonAction(entity, 0, x, y, z, getEditBoxAndCheckBoxValues());
 			}
 		}).bounds(this.leftPos + 87, this.topPos + 93, 46, 20).build(builder -> new Button(builder) {
 			@Override
@@ -205,11 +221,8 @@ public class CashRegisterCheckoutGUIScreen extends AbstractContainerScreen<CashR
 		this.addRenderableWidget(button_card);
 		button_cash = Button.builder(Component.translatable("gui.icurrency.cash_register_checkout_gui.button_cash"), e -> {
 			if (ShowCashEnabledCRPProcedure.execute(entity)) {
-				textstate.put("textin:product", product.getValue());
-				textstate.put("textin:price", price.getValue());
-				textstate.put("textin:tip", tip.getValue());
-				PacketDistributor.SERVER.noArg().send(new CashRegisterCheckoutGUIButtonMessage(1, x, y, z, textstate));
-				CashRegisterCheckoutGUIButtonMessage.handleButtonAction(entity, 1, x, y, z, textstate);
+				PacketDistributor.sendToServer(new CashRegisterCheckoutGUIButtonMessage(1, x, y, z, getEditBoxAndCheckBoxValues()));
+				CashRegisterCheckoutGUIButtonMessage.handleButtonAction(entity, 1, x, y, z, getEditBoxAndCheckBoxValues());
 			}
 		}).bounds(this.leftPos + 14, this.topPos + 93, 46, 20).build(builder -> new Button(builder) {
 			@Override

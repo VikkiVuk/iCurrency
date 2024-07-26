@@ -29,5 +29,6 @@ public class IcurrencyModTabs {
 				tabData.accept(IcurrencyModBlocks.ATM.get().asItem());
 				tabData.accept(IcurrencyModBlocks.CASH_REGISTER.get().asItem());
 				tabData.accept(IcurrencyModItems.RECEIPT.get());
+				tabData.accept(IcurrencyModBlocks.ACM.get().asItem());
 			}).withSearchBar().build());
 }

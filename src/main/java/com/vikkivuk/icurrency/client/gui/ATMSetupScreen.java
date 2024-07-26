@@ -12,6 +12,7 @@ import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.Checkbox;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.Minecraft;
 
 import java.util.HashMap;
 
@@ -25,10 +26,9 @@ public class ATMSetupScreen extends AbstractContainerScreen<ATMSetupMenu> {
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
-	private final static HashMap<String, String> textstate = new HashMap<>();
-	public static EditBox bank_name;
-	public static EditBox bank_owner;
-	public static Checkbox tos;
+	EditBox bank_name;
+	EditBox bank_owner;
+	Checkbox tos;
 	Button button_empty;
 
 	public ATMSetupScreen(ATMSetupMenu container, Inventory inventory, Component text) {
@@ -40,6 +40,17 @@ public class ATMSetupScreen extends AbstractContainerScreen<ATMSetupMenu> {
 		this.entity = container.entity;
 		this.imageWidth = 330;
 		this.imageHeight = 166;
+	}
+
+	public static HashMap<String, String> getEditBoxAndCheckBoxValues() {
+		HashMap<String, String> textstate = new HashMap<>();
+		if (Minecraft.getInstance().screen instanceof ATMSetupScreen sc) {
+			textstate.put("textin:bank_name", sc.bank_name.getValue());
+			textstate.put("textin:bank_owner", sc.bank_owner.getValue());
+
+			textstate.put("checkboxin:tos", sc.tos.selected() ? "true" : "false");
+		}
+		return textstate;
 	}
 
 	private static final ResourceLocation texture = new ResourceLocation("icurrency:textures/screens/atm_setup.png");
@@ -76,6 +87,15 @@ public class ATMSetupScreen extends AbstractContainerScreen<ATMSetupMenu> {
 	}
 
 	@Override
+	public void resize(Minecraft minecraft, int width, int height) {
+		String bank_nameValue = bank_name.getValue();
+		String bank_ownerValue = bank_owner.getValue();
+		super.resize(minecraft, width, height);
+		bank_name.setValue(bank_nameValue);
+		bank_owner.setValue(bank_ownerValue);
+	}
+
+	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
 		guiGraphics.drawString(this.font, Component.translatable("gui.icurrency.atm_setup.label_hi_thank_you_for_partnering_wit"), 21, 16, -12829636, false);
 		guiGraphics.drawString(this.font, Component.translatable("gui.icurrency.atm_setup.label_financial_features_to_your_custo"), 20, 25, -12829636, false);
@@ -98,11 +118,8 @@ public class ATMSetupScreen extends AbstractContainerScreen<ATMSetupMenu> {
 		this.addWidget(this.bank_owner);
 		button_empty = Button.builder(Component.translatable("gui.icurrency.atm_setup.button_empty"), e -> {
 			if (true) {
-				textstate.put("textin:bank_name", bank_name.getValue());
-				textstate.put("textin:bank_owner", bank_owner.getValue());
-				textstate.put("checkboxin:tos", tos.selected() ? "true" : "false");
-				PacketDistributor.SERVER.noArg().send(new ATMSetupButtonMessage(0, x, y, z, textstate));
-				ATMSetupButtonMessage.handleButtonAction(entity, 0, x, y, z, textstate);
+				PacketDistributor.sendToServer(new ATMSetupButtonMessage(0, x, y, z, getEditBoxAndCheckBoxValues()));
+				ATMSetupButtonMessage.handleButtonAction(entity, 0, x, y, z, getEditBoxAndCheckBoxValues());
 			}
 		}).bounds(this.leftPos + 41, this.topPos + 127, 245, 20).build();
 		guistate.put("button:button_empty", button_empty);

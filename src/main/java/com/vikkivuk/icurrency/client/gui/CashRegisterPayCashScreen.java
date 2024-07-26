@@ -12,6 +12,7 @@ import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.Minecraft;
 
 import java.util.HashMap;
 
@@ -26,7 +27,6 @@ public class CashRegisterPayCashScreen extends AbstractContainerScreen<CashRegis
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
-	private final static HashMap<String, String> textstate = new HashMap<>();
 	Button button_empty;
 	ImageButton imagebutton_trash;
 
@@ -39,6 +39,14 @@ public class CashRegisterPayCashScreen extends AbstractContainerScreen<CashRegis
 		this.entity = container.entity;
 		this.imageWidth = 176;
 		this.imageHeight = 166;
+	}
+
+	public static HashMap<String, String> getEditBoxAndCheckBoxValues() {
+		HashMap<String, String> textstate = new HashMap<>();
+		if (Minecraft.getInstance().screen instanceof CashRegisterPayCashScreen sc) {
+
+		}
+		return textstate;
 	}
 
 	private static final ResourceLocation texture = new ResourceLocation("icurrency:textures/screens/cash_register_pay_cash.png");
@@ -83,16 +91,16 @@ public class CashRegisterPayCashScreen extends AbstractContainerScreen<CashRegis
 		super.init();
 		button_empty = Button.builder(Component.translatable("gui.icurrency.cash_register_pay_cash.button_empty"), e -> {
 			if (true) {
-				PacketDistributor.SERVER.noArg().send(new CashRegisterPayCashButtonMessage(0, x, y, z, textstate));
-				CashRegisterPayCashButtonMessage.handleButtonAction(entity, 0, x, y, z, textstate);
+				PacketDistributor.sendToServer(new CashRegisterPayCashButtonMessage(0, x, y, z, getEditBoxAndCheckBoxValues()));
+				CashRegisterPayCashButtonMessage.handleButtonAction(entity, 0, x, y, z, getEditBoxAndCheckBoxValues());
 			}
 		}).bounds(this.leftPos + 7, this.topPos + 59, 161, 20).build();
 		guistate.put("button:button_empty", button_empty);
 		this.addRenderableWidget(button_empty);
 		imagebutton_trash = new ImageButton(this.leftPos + 151, this.topPos + 7, 16, 16, new WidgetSprites(new ResourceLocation("icurrency:textures/screens/trash.png"), new ResourceLocation("icurrency:textures/screens/trash_hover.png")), e -> {
 			if (true) {
-				PacketDistributor.SERVER.noArg().send(new CashRegisterPayCashButtonMessage(1, x, y, z, textstate));
-				CashRegisterPayCashButtonMessage.handleButtonAction(entity, 1, x, y, z, textstate);
+				PacketDistributor.sendToServer(new CashRegisterPayCashButtonMessage(1, x, y, z, getEditBoxAndCheckBoxValues()));
+				CashRegisterPayCashButtonMessage.handleButtonAction(entity, 1, x, y, z, getEditBoxAndCheckBoxValues());
 			}
 		}) {
 			@Override

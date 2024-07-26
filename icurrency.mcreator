@@ -3,7 +3,6 @@
     {
       "name": "DebitCard",
       "type": "item",
-      "sortid": 2,
       "compiles": true,
       "locked_code": false,
       "registry_name": "debit_card",
@@ -12,12 +11,12 @@
           "src/main/resources/assets/icurrency/models/item/debit_card.json",
           "src/main/java/com/vikkivuk/icurrency/item/DebitCardItem.java"
         ]
-      }
+      },
+      "path": "~/Card"
     },
     {
       "name": "ModTab",
       "type": "tab",
-      "sortid": 1,
       "compiles": true,
       "locked_code": false,
       "registry_name": "mod_tab",
@@ -28,7 +27,6 @@
     {
       "name": "DollarTen",
       "type": "item",
-      "sortid": 3,
       "compiles": true,
       "locked_code": false,
       "registry_name": "dollar_ten",
@@ -37,12 +35,12 @@
           "src/main/java/com/vikkivuk/icurrency/item/DollarTenItem.java",
           "src/main/resources/assets/icurrency/models/item/dollar_ten.json"
         ]
-      }
+      },
+      "path": "~/Dollars"
     },
     {
       "name": "DollarTwenty",
       "type": "item",
-      "sortid": 4,
       "compiles": true,
       "locked_code": false,
       "registry_name": "dollar_twenty",
@@ -51,12 +49,12 @@
           "src/main/resources/assets/icurrency/models/item/dollar_twenty.json",
           "src/main/java/com/vikkivuk/icurrency/item/DollarTwentyItem.java"
         ]
-      }
+      },
+      "path": "~/Dollars"
     },
     {
       "name": "DollarFifty",
       "type": "item",
-      "sortid": 5,
       "compiles": true,
       "locked_code": false,
       "registry_name": "dollar_fifty",
@@ -65,12 +63,12 @@
           "src/main/java/com/vikkivuk/icurrency/item/DollarFiftyItem.java",
           "src/main/resources/assets/icurrency/models/item/dollar_fifty.json"
         ]
-      }
+      },
+      "path": "~/Dollars"
     },
     {
       "name": "DollarHundred",
       "type": "item",
-      "sortid": 6,
       "compiles": true,
       "locked_code": false,
       "registry_name": "dollar_hundred",
@@ -79,12 +77,12 @@
           "src/main/java/com/vikkivuk/icurrency/item/DollarHundredItem.java",
           "src/main/resources/assets/icurrency/models/item/dollar_hundred.json"
         ]
-      }
+      },
+      "path": "~/Dollars"
     },
     {
       "name": "DollarTwoHundred",
       "type": "item",
-      "sortid": 7,
       "compiles": true,
       "locked_code": false,
       "registry_name": "dollar_two_hundred",
@@ -93,12 +91,12 @@
           "src/main/resources/assets/icurrency/models/item/dollar_two_hundred.json",
           "src/main/java/com/vikkivuk/icurrency/item/DollarTwoHundredItem.java"
         ]
-      }
+      },
+      "path": "~/Dollars"
     },
     {
       "name": "DollarFiveHundred",
       "type": "item",
-      "sortid": 8,
       "compiles": true,
       "locked_code": false,
       "registry_name": "dollar_five_hundred",
@@ -107,12 +105,12 @@
           "src/main/java/com/vikkivuk/icurrency/item/DollarFiveHundredItem.java",
           "src/main/resources/assets/icurrency/models/item/dollar_five_hundred.json"
         ]
-      }
+      },
+      "path": "~/Dollars"
     },
     {
       "name": "DollarThousand",
       "type": "item",
-      "sortid": 9,
       "compiles": true,
       "locked_code": false,
       "registry_name": "dollar_thousand",
@@ -121,12 +119,12 @@
           "src/main/java/com/vikkivuk/icurrency/item/DollarThousandItem.java",
           "src/main/resources/assets/icurrency/models/item/dollar_thousand.json"
         ]
-      }
+      },
+      "path": "~/Dollars"
     },
     {
       "name": "ATM",
       "type": "block",
-      "sortid": 10,
       "compiles": true,
       "locked_code": false,
       "registry_name": "atm",
@@ -139,12 +137,12 @@
           "src/main/resources/assets/icurrency/models/item/atm.json",
           "src/main/java/com/vikkivuk/icurrency/block/entity/ATMBlockEntity.java"
         ]
-      }
+      },
+      "path": "~/ATM"
     },
     {
       "name": "ATMEntryPoint",
       "type": "gui",
-      "sortid": 11,
       "compiles": true,
       "locked_code": false,
       "registry_name": "atm_entry_point",
@@ -154,51 +152,12 @@
           "src/main/java/com/vikkivuk/icurrency/client/gui/ATMEntryPointScreen.java",
           "src/main/java/com/vikkivuk/icurrency/world/inventory/ATMEntryPointMenu.java"
         ]
-      }
-    },
-    {
-      "name": "DebitCardRightclicked",
-      "type": "procedure",
-      "sortid": 12,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "debit_card_rightclicked",
-      "metadata": {
-        "files": [
-          "src/main/java/com/vikkivuk/icurrency/procedures/DebitCardRightclickedProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "itemstack",
-            "type": "itemstack"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      }
+      },
+      "path": "~/ATM"
     },
     {
       "name": "ATMSetup",
       "type": "gui",
-      "sortid": 13,
       "compiles": true,
       "locked_code": false,
       "registry_name": "atm_setup",
@@ -208,12 +167,12 @@
           "src/main/java/com/vikkivuk/icurrency/client/gui/ATMSetupScreen.java",
           "src/main/java/com/vikkivuk/icurrency/network/ATMSetupButtonMessage.java"
         ]
-      }
+      },
+      "path": "~/ATM"
     },
     {
       "name": "CardTooltip",
       "type": "procedure",
-      "sortid": 14,
       "compiles": true,
       "locked_code": false,
       "registry_name": "card_tooltip",
@@ -236,7 +195,6 @@
     {
       "name": "ATMOnBlockRightClicked",
       "type": "procedure",
-      "sortid": 15,
       "compiles": true,
       "locked_code": false,
       "registry_name": "atm_on_block_right_clicked",
@@ -266,12 +224,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/ATM"
     },
     {
       "name": "ATMSetupButtonConfirm",
       "type": "procedure",
-      "sortid": 16,
       "compiles": true,
       "locked_code": false,
       "registry_name": "atm_setup_button_confirm",
@@ -305,12 +263,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/ATM"
     },
     {
       "name": "CheckBalance",
       "type": "procedure",
-      "sortid": 17,
       "compiles": true,
       "locked_code": false,
       "registry_name": "check_balance",
@@ -324,12 +282,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/ATM"
     },
     {
       "name": "DepositMoney",
       "type": "gui",
-      "sortid": 18,
       "compiles": true,
       "locked_code": false,
       "registry_name": "deposit_money",
@@ -339,12 +297,12 @@
           "src/main/java/com/vikkivuk/icurrency/client/gui/DepositMoneyScreen.java",
           "src/main/java/com/vikkivuk/icurrency/network/DepositMoneyButtonMessage.java"
         ]
-      }
+      },
+      "path": "~/ATM"
     },
     {
       "name": "WithdrawMoney",
       "type": "gui",
-      "sortid": 19,
       "compiles": true,
       "locked_code": false,
       "registry_name": "withdraw_money",
@@ -354,12 +312,12 @@
           "src/main/java/com/vikkivuk/icurrency/network/WithdrawMoneyButtonMessage.java",
           "src/main/java/com/vikkivuk/icurrency/world/inventory/WithdrawMoneyMenu.java"
         ]
-      }
+      },
+      "path": "~/ATM"
     },
     {
       "name": "TransferMoney",
       "type": "gui",
-      "sortid": 20,
       "compiles": true,
       "locked_code": false,
       "registry_name": "transfer_money",
@@ -369,12 +327,12 @@
           "src/main/java/com/vikkivuk/icurrency/world/inventory/TransferMoneyMenu.java",
           "src/main/java/com/vikkivuk/icurrency/network/TransferMoneyButtonMessage.java"
         ]
-      }
+      },
+      "path": "~/ATM"
     },
     {
       "name": "ExchangeMoney",
       "type": "gui",
-      "sortid": 21,
       "compiles": true,
       "locked_code": false,
       "registry_name": "exchange_money",
@@ -384,12 +342,12 @@
           "src/main/java/com/vikkivuk/icurrency/world/inventory/ExchangeMoneyMenu.java",
           "src/main/java/com/vikkivuk/icurrency/client/gui/ExchangeMoneyScreen.java"
         ]
-      }
+      },
+      "path": "~/ATM"
     },
     {
       "name": "CardOverview",
       "type": "gui",
-      "sortid": 22,
       "compiles": true,
       "locked_code": false,
       "registry_name": "card_overview",
@@ -399,12 +357,12 @@
           "src/main/java/com/vikkivuk/icurrency/world/inventory/CardOverviewMenu.java",
           "src/main/java/com/vikkivuk/icurrency/client/gui/CardOverviewScreen.java"
         ]
-      }
+      },
+      "path": "~/ATM/CardOverview"
     },
     {
       "name": "COShowCardOne",
       "type": "procedure",
-      "sortid": 23,
       "compiles": true,
       "locked_code": false,
       "registry_name": "co_show_card_one",
@@ -419,12 +377,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/ATM/CardOverview"
     },
     {
       "name": "COShowCardTwo",
       "type": "procedure",
-      "sortid": 24,
       "compiles": true,
       "locked_code": false,
       "registry_name": "co_show_card_two",
@@ -439,12 +397,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/ATM/CardOverview"
     },
     {
       "name": "COShowCardThree",
       "type": "procedure",
-      "sortid": 25,
       "compiles": true,
       "locked_code": false,
       "registry_name": "co_show_card_three",
@@ -459,12 +417,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/ATM/CardOverview"
     },
     {
       "name": "COShowCardFour",
       "type": "procedure",
-      "sortid": 26,
       "compiles": true,
       "locked_code": false,
       "registry_name": "co_show_card_four",
@@ -479,12 +437,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/ATM/CardOverview"
     },
     {
       "name": "RequestCardClicked",
       "type": "procedure",
-      "sortid": 27,
       "compiles": true,
       "locked_code": false,
       "registry_name": "request_card_clicked",
@@ -498,12 +456,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/ATM/CardOverview"
     },
     {
       "name": "COCardOneNumber",
       "type": "procedure",
-      "sortid": 28,
       "compiles": true,
       "locked_code": false,
       "registry_name": "co_card_one_number",
@@ -518,12 +476,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/ATM/CardOverview"
     },
     {
       "name": "COCardTwoNumber",
       "type": "procedure",
-      "sortid": 29,
       "compiles": true,
       "locked_code": false,
       "registry_name": "co_card_two_number",
@@ -538,12 +496,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/ATM/CardOverview"
     },
     {
       "name": "COCardThreeNumber",
       "type": "procedure",
-      "sortid": 30,
       "compiles": true,
       "locked_code": false,
       "registry_name": "co_card_three_number",
@@ -558,12 +516,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/ATM/CardOverview"
     },
     {
       "name": "COCardFourNumber",
       "type": "procedure",
-      "sortid": 31,
       "compiles": true,
       "locked_code": false,
       "registry_name": "co_card_four_number",
@@ -578,12 +536,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/ATM/CardOverview"
     },
     {
       "name": "COCardOneCVC",
       "type": "procedure",
-      "sortid": 32,
       "compiles": true,
       "locked_code": false,
       "registry_name": "co_card_one_cvc",
@@ -598,12 +556,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/ATM/CardOverview"
     },
     {
       "name": "COCardTwoCVC",
       "type": "procedure",
-      "sortid": 33,
       "compiles": true,
       "locked_code": false,
       "registry_name": "co_card_two_cvc",
@@ -618,12 +576,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/ATM/CardOverview"
     },
     {
       "name": "COCardFourCVC",
       "type": "procedure",
-      "sortid": 34,
       "compiles": true,
       "locked_code": false,
       "registry_name": "co_card_four_cvc",
@@ -638,12 +596,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/ATM/CardOverview"
     },
     {
       "name": "COCardThreeCVC",
       "type": "procedure",
-      "sortid": 35,
       "compiles": true,
       "locked_code": false,
       "registry_name": "co_card_three_cvc",
@@ -658,12 +616,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/ATM/CardOverview"
     },
     {
       "name": "TrashCardOne",
       "type": "procedure",
-      "sortid": 36,
       "compiles": true,
       "locked_code": false,
       "registry_name": "trash_card_one",
@@ -677,12 +635,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/ATM/CardOverview"
     },
     {
       "name": "TrashCardTwo",
       "type": "procedure",
-      "sortid": 37,
       "compiles": true,
       "locked_code": false,
       "registry_name": "trash_card_two",
@@ -696,12 +654,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/ATM/CardOverview"
     },
     {
       "name": "TrashCardThree",
       "type": "procedure",
-      "sortid": 38,
       "compiles": true,
       "locked_code": false,
       "registry_name": "trash_card_three",
@@ -715,12 +673,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/ATM/CardOverview"
     },
     {
       "name": "TrashCardFour",
       "type": "procedure",
-      "sortid": 39,
       "compiles": true,
       "locked_code": false,
       "registry_name": "trash_card_four",
@@ -734,12 +692,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/ATM/CardOverview"
     },
     {
       "name": "AEPDepositMoneyClicked",
       "type": "procedure",
-      "sortid": 40,
       "compiles": true,
       "locked_code": false,
       "registry_name": "aep_deposit_money_clicked",
@@ -769,12 +727,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/ATM"
     },
     {
       "name": "AEPWithdrawMoneyClicked",
       "type": "procedure",
-      "sortid": 41,
       "compiles": true,
       "locked_code": false,
       "registry_name": "aep_withdraw_money_clicked",
@@ -804,12 +762,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/ATM"
     },
     {
       "name": "AEPTransferMoneyClicked",
       "type": "procedure",
-      "sortid": 42,
       "compiles": true,
       "locked_code": false,
       "registry_name": "aep_transfer_money_clicked",
@@ -839,12 +797,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/ATM"
     },
     {
       "name": "AEPExchangeMoneyClicked",
       "type": "procedure",
-      "sortid": 43,
       "compiles": true,
       "locked_code": false,
       "registry_name": "aep_exchange_money_clicked",
@@ -874,12 +832,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/ATM"
     },
     {
       "name": "AEPCardOverviewClicked",
       "type": "procedure",
-      "sortid": 44,
       "compiles": true,
       "locked_code": false,
       "registry_name": "aep_card_overview_clicked",
@@ -909,12 +867,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/ATM"
     },
     {
       "name": "DollarTenItemInInventoryTick",
       "type": "procedure",
-      "sortid": 45,
       "compiles": true,
       "locked_code": false,
       "registry_name": "dollar_ten_item_in_inventory_tick",
@@ -928,12 +886,12 @@
             "type": "itemstack"
           }
         ]
-      }
+      },
+      "path": "~/Dollars"
     },
     {
       "name": "DollarTwentyItemInInventoryTick",
       "type": "procedure",
-      "sortid": 46,
       "compiles": true,
       "locked_code": false,
       "registry_name": "dollar_twenty_item_in_inventory_tick",
@@ -947,12 +905,12 @@
             "type": "itemstack"
           }
         ]
-      }
+      },
+      "path": "~/Dollars"
     },
     {
       "name": "DollarFiftyItemInInventoryTick",
       "type": "procedure",
-      "sortid": 47,
       "compiles": true,
       "locked_code": false,
       "registry_name": "dollar_fifty_item_in_inventory_tick",
@@ -966,12 +924,12 @@
             "type": "itemstack"
           }
         ]
-      }
+      },
+      "path": "~/Dollars"
     },
     {
       "name": "DollarHundredItemInInventoryTick",
       "type": "procedure",
-      "sortid": 48,
       "compiles": true,
       "locked_code": false,
       "registry_name": "dollar_hundred_item_in_inventory_tick",
@@ -985,12 +943,12 @@
             "type": "itemstack"
           }
         ]
-      }
+      },
+      "path": "~/Dollars"
     },
     {
       "name": "DollarTwoHundredItemInInventoryTick",
       "type": "procedure",
-      "sortid": 49,
       "compiles": true,
       "locked_code": false,
       "registry_name": "dollar_two_hundred_item_in_inventory_tick",
@@ -1004,12 +962,12 @@
             "type": "itemstack"
           }
         ]
-      }
+      },
+      "path": "~/Dollars"
     },
     {
       "name": "DollarFiveHundredItemInInventoryTick",
       "type": "procedure",
-      "sortid": 50,
       "compiles": true,
       "locked_code": false,
       "registry_name": "dollar_five_hundred_item_in_inventory_tick",
@@ -1023,12 +981,12 @@
             "type": "itemstack"
           }
         ]
-      }
+      },
+      "path": "~/Dollars"
     },
     {
       "name": "DollarThousandItemInInventoryTick",
       "type": "procedure",
-      "sortid": 51,
       "compiles": true,
       "locked_code": false,
       "registry_name": "dollar_thousand_item_in_inventory_tick",
@@ -1042,12 +1000,12 @@
             "type": "itemstack"
           }
         ]
-      }
+      },
+      "path": "~/Dollars"
     },
     {
       "name": "DepositMoneyClicked",
       "type": "procedure",
-      "sortid": 52,
       "compiles": true,
       "locked_code": false,
       "registry_name": "deposit_money_clicked",
@@ -1061,12 +1019,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/ATM"
     },
     {
       "name": "AddMoneyCommand",
       "type": "procedure",
-      "sortid": 53,
       "compiles": true,
       "locked_code": false,
       "registry_name": "add_money_command",
@@ -1084,12 +1042,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/Money Command"
     },
     {
       "name": "RemoveMoneyCommand",
       "type": "procedure",
-      "sortid": 54,
       "compiles": true,
       "locked_code": false,
       "registry_name": "remove_money_command",
@@ -1107,12 +1065,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/Money Command"
     },
     {
       "name": "SetMoneyCommand",
       "type": "procedure",
-      "sortid": 55,
       "compiles": true,
       "locked_code": false,
       "registry_name": "set_money_command",
@@ -1130,12 +1088,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/Money Command"
     },
     {
       "name": "GetMoneyCommand",
       "type": "procedure",
-      "sortid": 56,
       "compiles": true,
       "locked_code": false,
       "registry_name": "get_money_command",
@@ -1153,12 +1111,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/Money Command"
     },
     {
       "name": "Money",
       "type": "command",
-      "sortid": 57,
       "compiles": true,
       "locked_code": false,
       "registry_name": "money",
@@ -1166,12 +1124,12 @@
         "files": [
           "src/main/java/com/vikkivuk/icurrency/command/MoneyCommand.java"
         ]
-      }
+      },
+      "path": "~/Money Command"
     },
     {
       "name": "WithdrawMoneyClicked",
       "type": "procedure",
-      "sortid": 58,
       "compiles": true,
       "locked_code": false,
       "registry_name": "withdraw_money_clicked",
@@ -1189,12 +1147,12 @@
             "type": "map"
           }
         ]
-      }
+      },
+      "path": "~/ATM"
     },
     {
       "name": "TransferMoneyClicked",
       "type": "procedure",
-      "sortid": 59,
       "compiles": true,
       "locked_code": false,
       "registry_name": "transfer_money_clicked",
@@ -1216,12 +1174,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/ATM"
     },
     {
       "name": "CashRegister",
       "type": "block",
-      "sortid": 60,
       "compiles": true,
       "locked_code": false,
       "registry_name": "cash_register",
@@ -1234,12 +1192,12 @@
           "src/main/resources/assets/icurrency/models/block/cash_register.json",
           "src/main/resources/data/icurrency/loot_tables/blocks/cash_register.json"
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "Receipt",
       "type": "item",
-      "sortid": 62,
       "compiles": true,
       "locked_code": false,
       "registry_name": "receipt",
@@ -1253,7 +1211,6 @@
     {
       "name": "CashRegisterPayCard",
       "type": "gui",
-      "sortid": 63,
       "compiles": true,
       "locked_code": false,
       "registry_name": "cash_register_pay_card",
@@ -1263,12 +1220,12 @@
           "src/main/java/com/vikkivuk/icurrency/client/gui/CashRegisterPayCardScreen.java",
           "src/main/java/com/vikkivuk/icurrency/network/CashRegisterPayCardButtonMessage.java"
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "CashRegisterPayCash",
       "type": "gui",
-      "sortid": 64,
       "compiles": true,
       "locked_code": false,
       "registry_name": "cash_register_pay_cash",
@@ -1278,12 +1235,12 @@
           "src/main/java/com/vikkivuk/icurrency/world/inventory/CashRegisterPayCashMenu.java",
           "src/main/java/com/vikkivuk/icurrency/client/gui/CashRegisterPayCashScreen.java"
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "ShowCashEnabledCRP",
       "type": "procedure",
-      "sortid": 65,
       "compiles": true,
       "locked_code": false,
       "registry_name": "show_cash_enabled_crp",
@@ -1298,12 +1255,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "ShowCashDisabledCRP",
       "type": "procedure",
-      "sortid": 66,
       "compiles": true,
       "locked_code": false,
       "registry_name": "show_cash_disabled_crp",
@@ -1318,12 +1275,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "CashRegisterSetup",
       "type": "gui",
-      "sortid": 67,
       "compiles": true,
       "locked_code": false,
       "registry_name": "cash_register_setup",
@@ -1333,12 +1290,12 @@
           "src/main/java/com/vikkivuk/icurrency/client/gui/CashRegisterSetupScreen.java",
           "src/main/java/com/vikkivuk/icurrency/network/CashRegisterSetupButtonMessage.java"
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "CashRegisterOverview",
       "type": "gui",
-      "sortid": 68,
       "compiles": true,
       "locked_code": false,
       "registry_name": "cash_register_overview",
@@ -1348,12 +1305,12 @@
           "src/main/java/com/vikkivuk/icurrency/world/inventory/CashRegisterOverviewMenu.java",
           "src/main/java/com/vikkivuk/icurrency/network/CashRegisterOverviewButtonMessage.java"
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "OpenCashRegisterCheck",
       "type": "gui",
-      "sortid": 69,
       "compiles": true,
       "locked_code": false,
       "registry_name": "open_cash_register_check",
@@ -1363,12 +1320,12 @@
           "src/main/java/com/vikkivuk/icurrency/world/inventory/OpenCashRegisterCheckMenu.java",
           "src/main/java/com/vikkivuk/icurrency/network/OpenCashRegisterCheckButtonMessage.java"
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "CashRegisterSafe",
       "type": "gui",
-      "sortid": 70,
       "compiles": true,
       "locked_code": false,
       "registry_name": "cash_register_safe",
@@ -1378,12 +1335,12 @@
           "src/main/java/com/vikkivuk/icurrency/client/gui/CashRegisterSafeScreen.java",
           "src/main/java/com/vikkivuk/icurrency/network/CashRegisterSafeButtonMessage.java"
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "ShowLoadMoreEnabled",
       "type": "procedure",
-      "sortid": 71,
       "compiles": true,
       "locked_code": false,
       "registry_name": "show_load_more_enabled",
@@ -1398,12 +1355,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "ShowLoadMoreDisabled",
       "type": "procedure",
-      "sortid": 72,
       "compiles": true,
       "locked_code": false,
       "registry_name": "show_load_more_disabled",
@@ -1418,12 +1375,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "CashRegisterOnBlockRightClicked",
       "type": "procedure",
-      "sortid": 73,
       "compiles": true,
       "locked_code": false,
       "registry_name": "cash_register_on_block_right_clicked",
@@ -1453,12 +1410,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "CashRegisterFinishSetup",
       "type": "procedure",
-      "sortid": 74,
       "compiles": true,
       "locked_code": false,
       "registry_name": "cash_register_finish_setup",
@@ -1492,12 +1449,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "CashRegisterOverviewOpenCheckout",
       "type": "procedure",
-      "sortid": 75,
       "compiles": true,
       "locked_code": false,
       "registry_name": "cash_register_overview_open_checkout",
@@ -1527,12 +1484,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "CashRegisterOverviewOpenSafe",
       "type": "procedure",
-      "sortid": 76,
       "compiles": true,
       "locked_code": false,
       "registry_name": "cash_register_overview_open_safe",
@@ -1562,12 +1519,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "OpenCashRegisterCheckCheck",
       "type": "procedure",
-      "sortid": 77,
       "compiles": true,
       "locked_code": false,
       "registry_name": "open_cash_register_check_check",
@@ -1601,12 +1558,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "CashRegisterGUIWhileThisGUIIsOpenTick",
       "type": "procedure",
-      "sortid": 78,
       "compiles": true,
       "locked_code": false,
       "registry_name": "cash_register_gui_while_this_gui_is_open_tick",
@@ -1624,12 +1581,12 @@
             "type": "map"
           }
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "ShowCardEnabledCRP",
       "type": "procedure",
-      "sortid": 79,
       "compiles": true,
       "locked_code": false,
       "registry_name": "show_card_enabled_crp",
@@ -1644,12 +1601,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "ShowCardDisabledCRP",
       "type": "procedure",
-      "sortid": 80,
       "compiles": true,
       "locked_code": false,
       "registry_name": "show_card_disabled_crp",
@@ -1664,12 +1621,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "StartCashTransactionCR",
       "type": "procedure",
-      "sortid": 81,
       "compiles": true,
       "locked_code": false,
       "registry_name": "start_cash_transaction_cr",
@@ -1703,12 +1660,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "StartCardTransactionCR",
       "type": "procedure",
-      "sortid": 82,
       "compiles": true,
       "locked_code": false,
       "registry_name": "start_card_transaction_cr",
@@ -1742,12 +1699,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "CashRegisterPayCardValue",
       "type": "procedure",
-      "sortid": 83,
       "compiles": true,
       "locked_code": false,
       "registry_name": "cash_register_pay_card_value",
@@ -1774,12 +1731,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "VoidTransaction",
       "type": "procedure",
-      "sortid": 84,
       "compiles": true,
       "locked_code": false,
       "registry_name": "void_transaction",
@@ -1809,12 +1766,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "AcknowledgeTransactionResultCR",
       "type": "gui",
-      "sortid": 85,
       "compiles": true,
       "locked_code": false,
       "registry_name": "acknowledge_transaction_result_cr",
@@ -1824,12 +1781,12 @@
           "src/main/java/com/vikkivuk/icurrency/client/gui/AcknowledgeTransactionResultCRScreen.java",
           "src/main/java/com/vikkivuk/icurrency/world/inventory/AcknowledgeTransactionResultCRMenu.java"
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "SwipeCardCashRegister",
       "type": "procedure",
-      "sortid": 86,
       "compiles": true,
       "locked_code": false,
       "registry_name": "swipe_card_cash_register",
@@ -1859,12 +1816,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "ShowTransactionResult",
       "type": "procedure",
-      "sortid": 87,
       "compiles": true,
       "locked_code": false,
       "registry_name": "show_transaction_result",
@@ -1891,12 +1848,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "AcknowledgeTransactionPressed",
       "type": "procedure",
-      "sortid": 88,
       "compiles": true,
       "locked_code": false,
       "registry_name": "acknowledge_transaction_pressed",
@@ -1926,12 +1883,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "PayCashCashRegister",
       "type": "procedure",
-      "sortid": 89,
       "compiles": true,
       "locked_code": false,
       "registry_name": "pay_cash_cash_register",
@@ -1961,12 +1918,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "ExchangeMoneyPressed",
       "type": "procedure",
-      "sortid": 90,
       "compiles": true,
       "locked_code": false,
       "registry_name": "exchange_money_pressed",
@@ -1980,12 +1937,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/ATM"
     },
     {
       "name": "SetCardPin",
       "type": "gui",
-      "sortid": 91,
       "compiles": true,
       "locked_code": false,
       "registry_name": "set_card_pin",
@@ -1995,12 +1952,12 @@
           "src/main/java/com/vikkivuk/icurrency/client/gui/SetCardPinScreen.java",
           "src/main/java/com/vikkivuk/icurrency/network/SetCardPinButtonMessage.java"
         ]
-      }
+      },
+      "path": "~/Card"
     },
     {
       "name": "SetCardPinConfirm",
       "type": "procedure",
-      "sortid": 92,
       "compiles": true,
       "locked_code": false,
       "registry_name": "set_card_pin_confirm",
@@ -2022,12 +1979,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Card"
     },
     {
       "name": "EnterPin",
       "type": "gui",
-      "sortid": 93,
       "compiles": true,
       "locked_code": false,
       "registry_name": "enter_pin",
@@ -2037,12 +1994,12 @@
           "src/main/java/com/vikkivuk/icurrency/client/gui/EnterPinScreen.java",
           "src/main/java/com/vikkivuk/icurrency/network/EnterPinButtonMessage.java"
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "CheckCardPin",
       "type": "procedure",
-      "sortid": 94,
       "compiles": true,
       "locked_code": false,
       "registry_name": "check_card_pin",
@@ -2076,26 +2033,12 @@
             "type": "world"
           }
         ]
-      }
-    },
-    {
-      "name": "ReceiptRightclicked",
-      "type": "procedure",
-      "sortid": 95,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "receipt_rightclicked",
-      "metadata": {
-        "files": [
-          "src/main/java/com/vikkivuk/icurrency/procedures/ReceiptRightclickedProcedure.java"
-        ],
-        "dependencies": []
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "CashRegisterGiveReceipt",
       "type": "procedure",
-      "sortid": 96,
       "compiles": true,
       "locked_code": false,
       "registry_name": "cash_register_give_receipt",
@@ -2125,12 +2068,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "CheckSlotCRSafe",
       "type": "procedure",
-      "sortid": 97,
       "compiles": true,
       "locked_code": false,
       "registry_name": "check_slot_cr_safe",
@@ -2148,12 +2091,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "LoadCashInCashRegister",
       "type": "procedure",
-      "sortid": 98,
       "compiles": true,
       "locked_code": false,
       "registry_name": "load_cash_in_cash_register",
@@ -2183,12 +2126,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "CashRegisterSafeThisGUIIsClosed",
       "type": "procedure",
-      "sortid": 99,
       "compiles": true,
       "locked_code": false,
       "registry_name": "cash_register_safe_this_gui_is_closed",
@@ -2218,12 +2161,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "DepositIntoMyAccountSafe",
       "type": "procedure",
-      "sortid": 100,
       "compiles": true,
       "locked_code": false,
       "registry_name": "deposit_into_my_account_safe",
@@ -2237,12 +2180,12 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "CashRegisterSafeThisGUIIsOpened",
       "type": "procedure",
-      "sortid": 101,
       "compiles": true,
       "locked_code": false,
       "registry_name": "cash_register_safe_this_gui_is_opened",
@@ -2272,12 +2215,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "GetCashRegisterSafeMoney",
       "type": "procedure",
-      "sortid": 102,
       "compiles": true,
       "locked_code": false,
       "registry_name": "get_cash_register_safe_money",
@@ -2304,12 +2247,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "CashRegisterGUIThisGUIIsOpened",
       "type": "procedure",
-      "sortid": 103,
       "compiles": true,
       "locked_code": false,
       "registry_name": "cash_register_gui_this_gui_is_opened",
@@ -2339,12 +2282,12 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Cash Register"
     },
     {
       "name": "CashRegisterCheckoutGUI",
       "type": "gui",
-      "sortid": 104,
       "compiles": true,
       "locked_code": false,
       "registry_name": "cash_register_checkout_gui",
@@ -2354,7 +2297,64 @@
           "src/main/java/com/vikkivuk/icurrency/client/gui/CashRegisterCheckoutGUIScreen.java",
           "src/main/java/com/vikkivuk/icurrency/network/CashRegisterCheckoutGUIButtonMessage.java"
         ]
-      }
+      },
+      "path": "~/Cash Register"
+    },
+    {
+      "name": "ACM",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "acm",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/icurrency/models/item/acm.json",
+          "src/main/resources/assets/icurrency/blockstates/acm.json",
+          "src/main/resources/data/icurrency/loot_tables/blocks/acm.json",
+          "src/main/resources/assets/icurrency/models/block/acm.json",
+          "src/main/java/com/vikkivuk/icurrency/block/ACMBlock.java"
+        ]
+      },
+      "path": "~/ACM"
+    },
+    {
+      "name": "DebitCardRightClick",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "debit_card_right_click",
+      "metadata": {
+        "files": [
+          "src/main/java/com/vikkivuk/icurrency/procedures/DebitCardRightClickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/Card"
     }
   ],
   "variable_elements": [
@@ -2433,6 +2433,7 @@
   ],
   "sound_elements": [],
   "tag_elements": {},
+  "tab_element_order": {},
   "language_map": {
     "en_us": {
       "gui.icurrency.atm_setup.label_bank_owner": "Bank Owner",
@@ -2472,8 +2473,8 @@
       "gui.icurrency.withdraw_money.amount": "Amount",
       "gui.icurrency.cash_register_checkout_gui.button_card": "Card",
       "gui.icurrency.card_overview.label_123": "123",
-      "item.icurrency.dollar_two_hundred": "200 Zlatniks",
       "gui.icurrency.atm_setup.label_financial_features_to_your_custo": "financial features to your customers! For your customers",
+      "item.icurrency.dollar_two_hundred": "200 Zlatniks",
       "gui.icurrency.transfer_money.label_amount": "Amount",
       "gui.icurrency.exchange_money.label_exchange_money": "Exchange Money",
       "gui.icurrency.cash_register_checkout_gui.product": "Product",
@@ -2494,6 +2495,7 @@
       "gui.icurrency.cash_register_setup.tooltip_to_access_the_cash_registers_ea3": "To access the cash register\u0027s earnings, you will need to enter the password!",
       "gui.icurrency.cash_register_setup.tooltip_to_access_the_cash_registers_ea2": "To access the cash register\u0027s earnings, you will need to enter the password!",
       "gui.icurrency.cash_register_pay_card.tooltip_void_the_transaction": "Void the transaction",
+      "block.icurrency.acm": "ACM",
       "gui.icurrency.cash_register_overview.label_welcome": "Welcome, what would you like to do",
       "gui.icurrency.atm_setup.label_bank_name": "Bank Name",
       "gui.icurrency.cash_register_setup.label_pin": "Password",
@@ -2552,7 +2554,37 @@
   },
   "foldersRoot": {
     "name": "~",
-    "children": []
+    "children": [
+      {
+        "name": "ATM",
+        "children": [
+          {
+            "name": "CardOverview",
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "Dollars",
+        "children": []
+      },
+      {
+        "name": "Money Command",
+        "children": []
+      },
+      {
+        "name": "Cash Register",
+        "children": []
+      },
+      {
+        "name": "Card",
+        "children": []
+      },
+      {
+        "name": "ACM",
+        "children": []
+      }
+    ]
   },
   "workspaceSettings": {
     "modid": "icurrency",
@@ -2568,9 +2600,9 @@
     "dependencies": [],
     "dependants": [],
     "mcreatorDependencies": [],
-    "currentGenerator": "neoforge-1.20.4",
+    "currentGenerator": "neoforge-1.20.6",
     "credits": "Thanks to my friend XMasterWoo for helping with some models and textures",
     "modElementsPackage": "com.vikkivuk.icurrency"
   },
-  "mcreatorVersion": 202400118518
+  "mcreatorVersion": 202400229712
 }

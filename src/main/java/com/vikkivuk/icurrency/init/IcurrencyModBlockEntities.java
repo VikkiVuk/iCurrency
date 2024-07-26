@@ -8,7 +8,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
 
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -19,7 +19,7 @@ import com.vikkivuk.icurrency.block.entity.CashRegisterBlockEntity;
 import com.vikkivuk.icurrency.block.entity.ATMBlockEntity;
 import com.vikkivuk.icurrency.IcurrencyMod;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public class IcurrencyModBlockEntities {
 	public static final DeferredRegister<BlockEntityType<?>> REGISTRY = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, IcurrencyMod.MODID);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> ATM = register("atm", IcurrencyModBlocks.ATM, ATMBlockEntity::new);

@@ -57,6 +57,11 @@ public class CashRegisterOnBlockRightClickedProcedure {
 							}
 
 							@Override
+							public boolean shouldTriggerClientSideContainerClosingOnOpen() {
+								return false;
+							}
+
+							@Override
 							public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
 								return new CashRegisterPayCardMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(_bpos));
 							}
@@ -69,6 +74,11 @@ public class CashRegisterOnBlockRightClickedProcedure {
 							@Override
 							public Component getDisplayName() {
 								return Component.literal("CashRegisterPayCash");
+							}
+
+							@Override
+							public boolean shouldTriggerClientSideContainerClosingOnOpen() {
+								return false;
 							}
 
 							@Override
@@ -95,6 +105,11 @@ public class CashRegisterOnBlockRightClickedProcedure {
 						}
 
 						@Override
+						public boolean shouldTriggerClientSideContainerClosingOnOpen() {
+							return false;
+						}
+
+						@Override
 						public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
 							return new AcknowledgeTransactionResultCRMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(_bpos));
 						}
@@ -107,6 +122,11 @@ public class CashRegisterOnBlockRightClickedProcedure {
 						@Override
 						public Component getDisplayName() {
 							return Component.literal("CashRegisterOverview");
+						}
+
+						@Override
+						public boolean shouldTriggerClientSideContainerClosingOnOpen() {
+							return false;
 						}
 
 						@Override
@@ -123,6 +143,11 @@ public class CashRegisterOnBlockRightClickedProcedure {
 					@Override
 					public Component getDisplayName() {
 						return Component.literal("CashRegisterSetup");
+					}
+
+					@Override
+					public boolean shouldTriggerClientSideContainerClosingOnOpen() {
+						return false;
 					}
 
 					@Override

@@ -10,6 +10,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.Minecraft;
 
 import java.util.HashMap;
 
@@ -23,7 +24,6 @@ public class ATMEntryPointScreen extends AbstractContainerScreen<ATMEntryPointMe
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
-	private final static HashMap<String, String> textstate = new HashMap<>();
 	Button button_empty;
 	Button button_empty1;
 	Button button_empty2;
@@ -40,6 +40,14 @@ public class ATMEntryPointScreen extends AbstractContainerScreen<ATMEntryPointMe
 		this.entity = container.entity;
 		this.imageWidth = 166;
 		this.imageHeight = 166;
+	}
+
+	public static HashMap<String, String> getEditBoxAndCheckBoxValues() {
+		HashMap<String, String> textstate = new HashMap<>();
+		if (Minecraft.getInstance().screen instanceof ATMEntryPointScreen sc) {
+
+		}
+		return textstate;
 	}
 
 	private static final ResourceLocation texture = new ResourceLocation("icurrency:textures/screens/atm_entry_point.png");
@@ -78,48 +86,48 @@ public class ATMEntryPointScreen extends AbstractContainerScreen<ATMEntryPointMe
 		super.init();
 		button_empty = Button.builder(Component.translatable("gui.icurrency.atm_entry_point.button_empty"), e -> {
 			if (true) {
-				PacketDistributor.SERVER.noArg().send(new ATMEntryPointButtonMessage(0, x, y, z, textstate));
-				ATMEntryPointButtonMessage.handleButtonAction(entity, 0, x, y, z, textstate);
+				PacketDistributor.sendToServer(new ATMEntryPointButtonMessage(0, x, y, z, getEditBoxAndCheckBoxValues()));
+				ATMEntryPointButtonMessage.handleButtonAction(entity, 0, x, y, z, getEditBoxAndCheckBoxValues());
 			}
 		}).bounds(this.leftPos + 10, this.topPos + 10, 145, 20).build();
 		guistate.put("button:button_empty", button_empty);
 		this.addRenderableWidget(button_empty);
 		button_empty1 = Button.builder(Component.translatable("gui.icurrency.atm_entry_point.button_empty1"), e -> {
 			if (true) {
-				PacketDistributor.SERVER.noArg().send(new ATMEntryPointButtonMessage(1, x, y, z, textstate));
-				ATMEntryPointButtonMessage.handleButtonAction(entity, 1, x, y, z, textstate);
+				PacketDistributor.sendToServer(new ATMEntryPointButtonMessage(1, x, y, z, getEditBoxAndCheckBoxValues()));
+				ATMEntryPointButtonMessage.handleButtonAction(entity, 1, x, y, z, getEditBoxAndCheckBoxValues());
 			}
 		}).bounds(this.leftPos + 10, this.topPos + 35, 145, 20).build();
 		guistate.put("button:button_empty1", button_empty1);
 		this.addRenderableWidget(button_empty1);
 		button_empty2 = Button.builder(Component.translatable("gui.icurrency.atm_entry_point.button_empty2"), e -> {
 			if (true) {
-				PacketDistributor.SERVER.noArg().send(new ATMEntryPointButtonMessage(2, x, y, z, textstate));
-				ATMEntryPointButtonMessage.handleButtonAction(entity, 2, x, y, z, textstate);
+				PacketDistributor.sendToServer(new ATMEntryPointButtonMessage(2, x, y, z, getEditBoxAndCheckBoxValues()));
+				ATMEntryPointButtonMessage.handleButtonAction(entity, 2, x, y, z, getEditBoxAndCheckBoxValues());
 			}
 		}).bounds(this.leftPos + 10, this.topPos + 60, 145, 20).build();
 		guistate.put("button:button_empty2", button_empty2);
 		this.addRenderableWidget(button_empty2);
 		button_empty3 = Button.builder(Component.translatable("gui.icurrency.atm_entry_point.button_empty3"), e -> {
 			if (true) {
-				PacketDistributor.SERVER.noArg().send(new ATMEntryPointButtonMessage(3, x, y, z, textstate));
-				ATMEntryPointButtonMessage.handleButtonAction(entity, 3, x, y, z, textstate);
+				PacketDistributor.sendToServer(new ATMEntryPointButtonMessage(3, x, y, z, getEditBoxAndCheckBoxValues()));
+				ATMEntryPointButtonMessage.handleButtonAction(entity, 3, x, y, z, getEditBoxAndCheckBoxValues());
 			}
 		}).bounds(this.leftPos + 10, this.topPos + 85, 145, 20).build();
 		guistate.put("button:button_empty3", button_empty3);
 		this.addRenderableWidget(button_empty3);
 		button_empty4 = Button.builder(Component.translatable("gui.icurrency.atm_entry_point.button_empty4"), e -> {
 			if (true) {
-				PacketDistributor.SERVER.noArg().send(new ATMEntryPointButtonMessage(4, x, y, z, textstate));
-				ATMEntryPointButtonMessage.handleButtonAction(entity, 4, x, y, z, textstate);
+				PacketDistributor.sendToServer(new ATMEntryPointButtonMessage(4, x, y, z, getEditBoxAndCheckBoxValues()));
+				ATMEntryPointButtonMessage.handleButtonAction(entity, 4, x, y, z, getEditBoxAndCheckBoxValues());
 			}
 		}).bounds(this.leftPos + 10, this.topPos + 110, 145, 20).build();
 		guistate.put("button:button_empty4", button_empty4);
 		this.addRenderableWidget(button_empty4);
 		button_empty5 = Button.builder(Component.translatable("gui.icurrency.atm_entry_point.button_empty5"), e -> {
 			if (true) {
-				PacketDistributor.SERVER.noArg().send(new ATMEntryPointButtonMessage(5, x, y, z, textstate));
-				ATMEntryPointButtonMessage.handleButtonAction(entity, 5, x, y, z, textstate);
+				PacketDistributor.sendToServer(new ATMEntryPointButtonMessage(5, x, y, z, getEditBoxAndCheckBoxValues()));
+				ATMEntryPointButtonMessage.handleButtonAction(entity, 5, x, y, z, getEditBoxAndCheckBoxValues());
 			}
 		}).bounds(this.leftPos + 10, this.topPos + 135, 145, 20).build();
 		guistate.put("button:button_empty5", button_empty5);

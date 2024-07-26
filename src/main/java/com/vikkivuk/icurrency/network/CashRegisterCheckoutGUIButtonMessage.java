@@ -1,9 +1,9 @@
 
 package com.vikkivuk.icurrency.network;
 
-import net.neoforged.neoforge.network.handling.PlayPayloadContext;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
 
 import net.minecraft.world.level.Level;
@@ -11,8 +11,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.network.protocol.PacketFlow;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.chat.ComponentSerialization;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
 import java.util.Map;
@@ -24,54 +26,26 @@ import com.vikkivuk.icurrency.procedures.StartCardTransactionCRProcedure;
 import com.vikkivuk.icurrency.procedures.CashRegisterGUIWhileThisGUIIsOpenTickProcedure;
 import com.vikkivuk.icurrency.IcurrencyMod;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public record CashRegisterCheckoutGUIButtonMessage(int buttonID, int x, int y, int z, HashMap<String, String> textstate) implements CustomPacketPayload {
 
-	public static final ResourceLocation ID = new ResourceLocation(IcurrencyMod.MODID, "cash_register_checkout_gui_buttons");
-
-	public CashRegisterCheckoutGUIButtonMessage(FriendlyByteBuf buffer) {
-		this(buffer.readInt(), buffer.readInt(), buffer.readInt(), buffer.readInt(), mapwork.readTextState(buffer));
-	}
-
+	public static final Type<CashRegisterCheckoutGUIButtonMessage> TYPE = new Type<>(new ResourceLocation(IcurrencyMod.MODID, "cash_register_checkout_gui_buttons"));
+	public static final StreamCodec<RegistryFriendlyByteBuf, CashRegisterCheckoutGUIButtonMessage> STREAM_CODEC = StreamCodec.of((RegistryFriendlyByteBuf buffer, CashRegisterCheckoutGUIButtonMessage message) -> {
+		buffer.writeInt(message.buttonID);
+		buffer.writeInt(message.x);
+		buffer.writeInt(message.y);
+		buffer.writeInt(message.z);
+		writeTextState(message.textstate, buffer);
+	}, (RegistryFriendlyByteBuf buffer) -> new CashRegisterCheckoutGUIButtonMessage(buffer.readInt(), buffer.readInt(), buffer.readInt(), buffer.readInt(), readTextState(buffer)));
 	@Override
-	public void write(final FriendlyByteBuf buffer) {
-		buffer.writeInt(buttonID);
-		buffer.writeInt(x);
-		buffer.writeInt(y);
-		buffer.writeInt(z);
-		mapwork.writeTextState(textstate, buffer);
+	public Type<CashRegisterCheckoutGUIButtonMessage> type() {
+		return TYPE;
 	}
 
-	public static class mapwork {
-		public static void writeTextState(HashMap<String, String> map, FriendlyByteBuf buffer) {
-			buffer.writeInt(map.size());
-			for (Map.Entry<String, String> entry : map.entrySet()) {
-				buffer.writeUtf(entry.getKey());
-				buffer.writeUtf(entry.getValue());
-			}
-		}
-
-		public static HashMap<String, String> readTextState(FriendlyByteBuf buffer) {
-			int size = buffer.readInt();
-			HashMap<String, String> map = new HashMap<>();
-			for (int i = 0; i < size; i++) {
-				String key = buffer.readUtf();
-				String value = buffer.readUtf();
-				map.put(key, value);
-			}
-			return map;
-		}
-	}
-
-	@Override
-	public ResourceLocation id() {
-		return ID;
-	}
-
-	public static void handleData(final CashRegisterCheckoutGUIButtonMessage message, final PlayPayloadContext context) {
+	public static void handleData(final CashRegisterCheckoutGUIButtonMessage message, final IPayloadContext context) {
 		if (context.flow() == PacketFlow.SERVERBOUND) {
-			context.workHandler().submitAsync(() -> {
-				Player entity = context.player().get();
+			context.enqueueWork(() -> {
+				Player entity = context.player();
 				int buttonID = message.buttonID;
 				int x = message.x;
 				int y = message.y;
@@ -79,7 +53,7 @@ public record CashRegisterCheckoutGUIButtonMessage(int buttonID, int x, int y, i
 				HashMap<String, String> textstate = message.textstate;
 				handleButtonAction(entity, buttonID, x, y, z, textstate);
 			}).exceptionally(e -> {
-				context.packetHandler().disconnect(Component.literal(e.getMessage()));
+				context.connection().disconnect(Component.literal(e.getMessage()));
 				return null;
 			});
 		}
@@ -88,6 +62,7 @@ public record CashRegisterCheckoutGUIButtonMessage(int buttonID, int x, int y, i
 	public static void handleButtonAction(Player entity, int buttonID, int x, int y, int z, HashMap<String, String> textstate) {
 		Level world = entity.level();
 		HashMap guistate = CashRegisterCheckoutGUIMenu.guistate;
+		// connect EditBox and CheckBox to guistate
 		for (Map.Entry<String, String> entry : textstate.entrySet()) {
 			String key = entry.getKey();
 			String value = entry.getValue();
@@ -110,9 +85,35 @@ public record CashRegisterCheckoutGUIButtonMessage(int buttonID, int x, int y, i
 		}
 	}
 
-	@SubscribeEvent
-	public static void registerMessage(FMLCommonSetupEvent event) {
-		IcurrencyMod.addNetworkMessage(CashRegisterCheckoutGUIButtonMessage.ID, CashRegisterCheckoutGUIButtonMessage::new, CashRegisterCheckoutGUIButtonMessage::handleData);
+	private static void writeTextState(HashMap<String, String> map, RegistryFriendlyByteBuf buffer) {
+		buffer.writeInt(map.size());
+		for (Map.Entry<String, String> entry : map.entrySet()) {
+			writeComponent(buffer, Component.literal(entry.getKey()));
+			writeComponent(buffer, Component.literal(entry.getValue()));
+		}
 	}
 
+	private static HashMap<String, String> readTextState(RegistryFriendlyByteBuf buffer) {
+		int size = buffer.readInt();
+		HashMap<String, String> map = new HashMap<>();
+		for (int i = 0; i < size; i++) {
+			String key = readComponent(buffer).getString();
+			String value = readComponent(buffer).getString();
+			map.put(key, value);
+		}
+		return map;
+	}
+
+	private static Component readComponent(RegistryFriendlyByteBuf buffer) {
+		return ComponentSerialization.TRUSTED_STREAM_CODEC.decode(buffer);
+	}
+
+	private static void writeComponent(RegistryFriendlyByteBuf buffer, Component component) {
+		ComponentSerialization.TRUSTED_STREAM_CODEC.encode(buffer, component);
+	}
+
+	@SubscribeEvent
+	public static void registerMessage(FMLCommonSetupEvent event) {
+		IcurrencyMod.addNetworkMessage(CashRegisterCheckoutGUIButtonMessage.TYPE, CashRegisterCheckoutGUIButtonMessage.STREAM_CODEC, CashRegisterCheckoutGUIButtonMessage::handleData);
+	}
 }

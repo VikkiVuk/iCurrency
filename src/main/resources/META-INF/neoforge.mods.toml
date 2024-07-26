@@ -1,0 +1,39 @@
+modLoader="javafml"
+loaderVersion="[2,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="icurrency"
+version="1.20.41.0.0"
+displayName="iCurrency"
+displayURL="https://modrinth.com/project/icurrency"
+logoFile="logo.png"
+credits="Thanks to my friend XMasterWoo for helping with some models and textures"
+authors="VikkiVuk"
+description="A minecraft banking mod"
+
+# Start of user code block mod configuration
+# End of user code block mod configuration
+
+[[dependencies.icurrency]]
+    modId="neoforge"
+    type="required"
+    versionRange="[20.6.117,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.icurrency]]
+    modId="minecraft"
+    type="required"
+    versionRange="[1.20.6]"
+    ordering="AFTER"
+    side="BOTH"
+
+
+
+
+[[mixins]]
+    config="mixins.icurrency.json"
+
+# Start of user code block dependencies configuration
+# End of user code block dependencies configuration

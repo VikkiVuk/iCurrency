@@ -12,6 +12,7 @@ import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.Minecraft;
 
 import java.util.HashMap;
 
@@ -37,7 +38,6 @@ public class CardOverviewScreen extends AbstractContainerScreen<CardOverviewMenu
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
-	private final static HashMap<String, String> textstate = new HashMap<>();
 	Button button_empty;
 	ImageButton imagebutton_trash;
 	ImageButton imagebutton_trash1;
@@ -53,6 +53,14 @@ public class CardOverviewScreen extends AbstractContainerScreen<CardOverviewMenu
 		this.entity = container.entity;
 		this.imageWidth = 176;
 		this.imageHeight = 170;
+	}
+
+	public static HashMap<String, String> getEditBoxAndCheckBoxValues() {
+		HashMap<String, String> textstate = new HashMap<>();
+		if (Minecraft.getInstance().screen instanceof CardOverviewScreen sc) {
+
+		}
+		return textstate;
 	}
 
 	private static final ResourceLocation texture = new ResourceLocation("icurrency:textures/screens/card_overview.png");
@@ -136,16 +144,16 @@ public class CardOverviewScreen extends AbstractContainerScreen<CardOverviewMenu
 		super.init();
 		button_empty = Button.builder(Component.translatable("gui.icurrency.card_overview.button_empty"), e -> {
 			if (true) {
-				PacketDistributor.SERVER.noArg().send(new CardOverviewButtonMessage(0, x, y, z, textstate));
-				CardOverviewButtonMessage.handleButtonAction(entity, 0, x, y, z, textstate);
+				PacketDistributor.sendToServer(new CardOverviewButtonMessage(0, x, y, z, getEditBoxAndCheckBoxValues()));
+				CardOverviewButtonMessage.handleButtonAction(entity, 0, x, y, z, getEditBoxAndCheckBoxValues());
 			}
 		}).bounds(this.leftPos + 9, this.topPos + 137, 156, 20).build();
 		guistate.put("button:button_empty", button_empty);
 		this.addRenderableWidget(button_empty);
 		imagebutton_trash = new ImageButton(this.leftPos + 64, this.topPos + 52, 16, 16, new WidgetSprites(new ResourceLocation("icurrency:textures/screens/trash.png"), new ResourceLocation("icurrency:textures/screens/trash_hover.png")), e -> {
 			if (COShowCardOneProcedure.execute(entity)) {
-				PacketDistributor.SERVER.noArg().send(new CardOverviewButtonMessage(1, x, y, z, textstate));
-				CardOverviewButtonMessage.handleButtonAction(entity, 1, x, y, z, textstate);
+				PacketDistributor.sendToServer(new CardOverviewButtonMessage(1, x, y, z, getEditBoxAndCheckBoxValues()));
+				CardOverviewButtonMessage.handleButtonAction(entity, 1, x, y, z, getEditBoxAndCheckBoxValues());
 			}
 		}) {
 			@Override
@@ -158,8 +166,8 @@ public class CardOverviewScreen extends AbstractContainerScreen<CardOverviewMenu
 		this.addRenderableWidget(imagebutton_trash);
 		imagebutton_trash1 = new ImageButton(this.leftPos + 145, this.topPos + 52, 16, 16, new WidgetSprites(new ResourceLocation("icurrency:textures/screens/trash.png"), new ResourceLocation("icurrency:textures/screens/trash_hover.png")), e -> {
 			if (COShowCardTwoProcedure.execute(entity)) {
-				PacketDistributor.SERVER.noArg().send(new CardOverviewButtonMessage(2, x, y, z, textstate));
-				CardOverviewButtonMessage.handleButtonAction(entity, 2, x, y, z, textstate);
+				PacketDistributor.sendToServer(new CardOverviewButtonMessage(2, x, y, z, getEditBoxAndCheckBoxValues()));
+				CardOverviewButtonMessage.handleButtonAction(entity, 2, x, y, z, getEditBoxAndCheckBoxValues());
 			}
 		}) {
 			@Override
@@ -172,8 +180,8 @@ public class CardOverviewScreen extends AbstractContainerScreen<CardOverviewMenu
 		this.addRenderableWidget(imagebutton_trash1);
 		imagebutton_trash2 = new ImageButton(this.leftPos + 64, this.topPos + 108, 16, 16, new WidgetSprites(new ResourceLocation("icurrency:textures/screens/trash.png"), new ResourceLocation("icurrency:textures/screens/trash_hover.png")), e -> {
 			if (COShowCardThreeProcedure.execute(entity)) {
-				PacketDistributor.SERVER.noArg().send(new CardOverviewButtonMessage(3, x, y, z, textstate));
-				CardOverviewButtonMessage.handleButtonAction(entity, 3, x, y, z, textstate);
+				PacketDistributor.sendToServer(new CardOverviewButtonMessage(3, x, y, z, getEditBoxAndCheckBoxValues()));
+				CardOverviewButtonMessage.handleButtonAction(entity, 3, x, y, z, getEditBoxAndCheckBoxValues());
 			}
 		}) {
 			@Override
@@ -186,8 +194,8 @@ public class CardOverviewScreen extends AbstractContainerScreen<CardOverviewMenu
 		this.addRenderableWidget(imagebutton_trash2);
 		imagebutton_trash3 = new ImageButton(this.leftPos + 145, this.topPos + 108, 16, 16, new WidgetSprites(new ResourceLocation("icurrency:textures/screens/trash.png"), new ResourceLocation("icurrency:textures/screens/trash_hover.png")), e -> {
 			if (COShowCardFourProcedure.execute(entity)) {
-				PacketDistributor.SERVER.noArg().send(new CardOverviewButtonMessage(4, x, y, z, textstate));
-				CardOverviewButtonMessage.handleButtonAction(entity, 4, x, y, z, textstate);
+				PacketDistributor.sendToServer(new CardOverviewButtonMessage(4, x, y, z, getEditBoxAndCheckBoxValues()));
+				CardOverviewButtonMessage.handleButtonAction(entity, 4, x, y, z, getEditBoxAndCheckBoxValues());
 			}
 		}) {
 			@Override

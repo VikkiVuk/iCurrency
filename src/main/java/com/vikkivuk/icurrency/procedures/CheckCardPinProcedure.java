@@ -7,6 +7,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -18,6 +19,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.BlockPos;
 
 import java.util.function.Supplier;
@@ -48,21 +50,29 @@ public class CheckCardPinProcedure {
 					}
 
 					@Override
+					public boolean shouldTriggerClientSideContainerClosingOnOpen() {
+						return false;
+					}
+
+					@Override
 					public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
 						return new CashRegisterPayCardMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(_bpos));
 					}
 				}, _bpos);
 			}
-			if ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY).getOrCreateTag().getBoolean("activated")) {
-				if (((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY).getOrCreateTag().getString("pin"))
-						.equals(guistate.containsKey("textin:pin") ? (String) guistate.get("textin:pin") : "")) {
-					if ((entity.getDisplayName().getString()).equals(
-							(entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY).getOrCreateTag().getString("holder"))) {
+			if ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
+					.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getBoolean("activated")) {
+				if (((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
+						.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getString("pin")).equals(guistate.containsKey("textin:pin") ? (String) guistate.get("textin:pin") : "")) {
+					if ((entity.getDisplayName().getString()).equals((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
+							.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getString("holder"))) {
 						if (entity.getData(IcurrencyModVariables.PLAYER_VARIABLES).cards.containsValue((new Vec3(
-								((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("h1n")),
-								((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("h2n")),
-								((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY).getOrCreateTag()
-										.getDouble("cvc")))))) {
+								((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
+										.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDouble("h1n")),
+								((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
+										.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDouble("h2n")),
+								((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
+										.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDouble("cvc")))))) {
 							if (new Object() {
 								public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 									BlockEntity blockEntity = world.getBlockEntity(pos);
@@ -309,8 +319,8 @@ public class CheckCardPinProcedure {
 								}
 								return null;
 							}
-						}).apply(world, ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY).getOrCreateTag()
-								.getString("holder_uuid")))) == null)) {
+						}).apply(world, ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
+								.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getString("holder_uuid")))) == null)) {
 							if (((new BiFunction<LevelAccessor, String, Entity>() {
 								@Override
 								public Entity apply(LevelAccessor levelAccessor, String uuid) {
@@ -323,16 +333,16 @@ public class CheckCardPinProcedure {
 									return null;
 								}
 							}).apply(world,
-									((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY).getOrCreateTag()
-											.getString("holder_uuid"))))
+									((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
+											.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getString("holder_uuid"))))
 									.getData(IcurrencyModVariables.PLAYER_VARIABLES).cards
 									.containsValue((new Vec3(
-											((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY).getOrCreateTag()
-													.getDouble("h1n")),
-											((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY).getOrCreateTag()
-													.getDouble("h2n")),
-											((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY).getOrCreateTag()
-													.getDouble("cvc")))))) {
+											((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
+													.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDouble("h1n")),
+											((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
+													.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDouble("h2n")),
+											((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
+													.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDouble("cvc")))))) {
 								if (new Object() {
 									public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 										BlockEntity blockEntity = world.getBlockEntity(pos);
@@ -351,8 +361,8 @@ public class CheckCardPinProcedure {
 										}
 										return null;
 									}
-								}).apply(world, ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY).getOrCreateTag()
-										.getString("holder_uuid")))).getData(IcurrencyModVariables.PLAYER_VARIABLES).money) {
+								}).apply(world, ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
+										.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getString("holder_uuid")))).getData(IcurrencyModVariables.PLAYER_VARIABLES).money) {
 									if (!(((new BiFunction<LevelAccessor, String, Entity>() {
 										@Override
 										public Entity apply(LevelAccessor levelAccessor, String uuid) {
@@ -385,7 +395,7 @@ public class CheckCardPinProcedure {
 													return null;
 												}
 											}).apply(world, ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
-													.getOrCreateTag().getString("holder_uuid")))).getData(IcurrencyModVariables.PLAYER_VARIABLES);
+													.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getString("holder_uuid")))).getData(IcurrencyModVariables.PLAYER_VARIABLES);
 											_vars.money = ((new BiFunction<LevelAccessor, String, Entity>() {
 												@Override
 												public Entity apply(LevelAccessor levelAccessor, String uuid) {
@@ -398,7 +408,7 @@ public class CheckCardPinProcedure {
 													return null;
 												}
 											}).apply(world, ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
-													.getOrCreateTag().getString("holder_uuid")))).getData(IcurrencyModVariables.PLAYER_VARIABLES).money - (new Object() {
+													.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getString("holder_uuid")))).getData(IcurrencyModVariables.PLAYER_VARIABLES).money - (new Object() {
 														public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 															BlockEntity blockEntity = world.getBlockEntity(pos);
 															if (blockEntity != null)
@@ -418,7 +428,7 @@ public class CheckCardPinProcedure {
 													return null;
 												}
 											}).apply(world, ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
-													.getOrCreateTag().getString("holder_uuid")))));
+													.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getString("holder_uuid")))));
 										}
 										if (!world.isClientSide()) {
 											BlockPos _bp = BlockPos.containing(x, y, z);
@@ -457,7 +467,7 @@ public class CheckCardPinProcedure {
 												return null;
 											}
 										}).apply(world, ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
-												.getOrCreateTag().getString("holder_uuid")))) instanceof Player _player && !_player.level().isClientSide())
+												.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getString("holder_uuid")))) instanceof Player _player && !_player.level().isClientSide())
 											_player.displayClientMessage(Component.literal((entity.getDisplayName().getString() + "" + " bought \"" + (new Object() {
 												public String getValue(LevelAccessor world, BlockPos pos, String tag) {
 													BlockEntity blockEntity = world.getBlockEntity(pos);
@@ -466,15 +476,35 @@ public class CheckCardPinProcedure {
 													return "";
 												}
 											}.getValue(world, BlockPos.containing(x, y, z), "product")) + "\" using your card with the number "
-													+ ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
-															.getOrCreateTag().getDouble("h1n"))
+													+ Math.round((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
+															.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDouble("h1n"))
 													+ " "
-													+ ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
-															.getOrCreateTag().getDouble("h2n"))
-													+ "\\n----------------------\\n" + "The payment total is \u01B5"
-													+ ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
-															.getOrCreateTag().getDouble("total")))),
+													+ Math.round((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
+															.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDouble("h2n")))),
 													false);
+										if (entity instanceof Player _player && !_player.level().isClientSide())
+											_player.displayClientMessage(Component.literal("----------------------"), false);
+										if (((new BiFunction<LevelAccessor, String, Entity>() {
+											@Override
+											public Entity apply(LevelAccessor levelAccessor, String uuid) {
+												if (levelAccessor instanceof ServerLevel serverLevel) {
+													try {
+														return serverLevel.getEntity(UUID.fromString(uuid));
+													} catch (Exception e) {
+													}
+												}
+												return null;
+											}
+										}).apply(world, ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
+												.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getString("holder_uuid")))) instanceof Player _player && !_player.level().isClientSide())
+											_player.displayClientMessage(Component.literal(("The payment total is \u01B5" + (new Object() {
+												public double getValue(LevelAccessor world, BlockPos pos, String tag) {
+													BlockEntity blockEntity = world.getBlockEntity(pos);
+													if (blockEntity != null)
+														return blockEntity.getPersistentData().getDouble(tag);
+													return -1;
+												}
+											}.getValue(world, BlockPos.containing(x, y, z), "total")))), false);
 										if (!world.isClientSide()) {
 											BlockPos _bp = BlockPos.containing(x, y, z);
 											BlockEntity _blockEntity = world.getBlockEntity(_bp);
@@ -620,7 +650,7 @@ public class CheckCardPinProcedure {
 											return null;
 										}
 									}).apply(world, ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
-											.getOrCreateTag().getString("holder_uuid")))) instanceof Player _player && !_player.level().isClientSide())
+											.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getString("holder_uuid")))) instanceof Player _player && !_player.level().isClientSide())
 										_player.displayClientMessage(Component.literal((entity.getDisplayName().getString() + "" + " tried to buy \"" + (new Object() {
 											public String getValue(LevelAccessor world, BlockPos pos, String tag) {
 												BlockEntity blockEntity = world.getBlockEntity(pos);
@@ -629,15 +659,34 @@ public class CheckCardPinProcedure {
 												return "";
 											}
 										}.getValue(world, BlockPos.containing(x, y, z), "product")) + "\" using your card with the number "
-												+ ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY).getOrCreateTag()
-														.getDouble("h1n"))
-												+ " "
-												+ ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY).getOrCreateTag()
-														.getDouble("h2n"))
-												+ ". However there were insufficient funds on your account." + "\\n----------------------\\n" + "The payment total was \u01B5"
-												+ ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY).getOrCreateTag()
-														.getDouble("total")))),
-												false);
+												+ Math.round((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
+														.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDouble("h1n"))
+												+ " " + Math.round((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
+														.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDouble("h2n"))
+												+ ". However there were insufficient funds on your account.")), false);
+									if (entity instanceof Player _player && !_player.level().isClientSide())
+										_player.displayClientMessage(Component.literal("----------------------"), false);
+									if (((new BiFunction<LevelAccessor, String, Entity>() {
+										@Override
+										public Entity apply(LevelAccessor levelAccessor, String uuid) {
+											if (levelAccessor instanceof ServerLevel serverLevel) {
+												try {
+													return serverLevel.getEntity(UUID.fromString(uuid));
+												} catch (Exception e) {
+												}
+											}
+											return null;
+										}
+									}).apply(world, ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
+											.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getString("holder_uuid")))) instanceof Player _player && !_player.level().isClientSide())
+										_player.displayClientMessage(Component.literal(("The payment total was \u01B5" + (new Object() {
+											public double getValue(LevelAccessor world, BlockPos pos, String tag) {
+												BlockEntity blockEntity = world.getBlockEntity(pos);
+												if (blockEntity != null)
+													return blockEntity.getPersistentData().getDouble(tag);
+												return -1;
+											}
+										}.getValue(world, BlockPos.containing(x, y, z), "total")))), false);
 									if (!world.isClientSide()) {
 										BlockPos _bp = BlockPos.containing(x, y, z);
 										BlockEntity _blockEntity = world.getBlockEntity(_bp);

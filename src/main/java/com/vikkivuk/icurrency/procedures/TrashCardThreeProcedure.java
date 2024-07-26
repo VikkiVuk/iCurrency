@@ -8,9 +8,6 @@ public class TrashCardThreeProcedure {
 	public static void execute(Entity entity) {
 		if (entity == null)
 			return;
-		try {
-			entity.getData(IcurrencyModVariables.PLAYER_VARIABLES).cards.remove("three");
-		} catch (Exception e) {
-		}
+		entity.getData(IcurrencyModVariables.PLAYER_VARIABLES).cards.remove("three");
 	}
 }

@@ -12,6 +12,7 @@ import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.Checkbox;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.Minecraft;
 
 import java.util.HashMap;
 
@@ -25,11 +26,10 @@ public class CashRegisterSetupScreen extends AbstractContainerScreen<CashRegiste
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
-	private final static HashMap<String, String> textstate = new HashMap<>();
-	public static EditBox password;
-	public static EditBox name;
-	public static Checkbox only_cards;
-	public static Checkbox deposit_account;
+	EditBox password;
+	EditBox name;
+	Checkbox only_cards;
+	Checkbox deposit_account;
 	Button button_empty;
 
 	public CashRegisterSetupScreen(CashRegisterSetupMenu container, Inventory inventory, Component text) {
@@ -41,6 +41,18 @@ public class CashRegisterSetupScreen extends AbstractContainerScreen<CashRegiste
 		this.entity = container.entity;
 		this.imageWidth = 208;
 		this.imageHeight = 164;
+	}
+
+	public static HashMap<String, String> getEditBoxAndCheckBoxValues() {
+		HashMap<String, String> textstate = new HashMap<>();
+		if (Minecraft.getInstance().screen instanceof CashRegisterSetupScreen sc) {
+			textstate.put("textin:password", sc.password.getValue());
+			textstate.put("textin:name", sc.name.getValue());
+
+			textstate.put("checkboxin:only_cards", sc.only_cards.selected() ? "true" : "false");
+			textstate.put("checkboxin:deposit_account", sc.deposit_account.selected() ? "true" : "false");
+		}
+		return textstate;
 	}
 
 	private static final ResourceLocation texture = new ResourceLocation("icurrency:textures/screens/cash_register_setup.png");
@@ -101,6 +113,15 @@ public class CashRegisterSetupScreen extends AbstractContainerScreen<CashRegiste
 	}
 
 	@Override
+	public void resize(Minecraft minecraft, int width, int height) {
+		String passwordValue = password.getValue();
+		String nameValue = name.getValue();
+		super.resize(minecraft, width, height);
+		password.setValue(passwordValue);
+		name.setValue(nameValue);
+	}
+
+	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
 		guiGraphics.drawString(this.font, Component.translatable("gui.icurrency.cash_register_setup.label_hi_to_start_serving_your_custom"), 9, 9, -12829636, false);
 		guiGraphics.drawString(this.font, Component.translatable("gui.icurrency.cash_register_setup.label_please_setup_the_cash_register"), 9, 20, -12829636, false);
@@ -157,12 +178,8 @@ public class CashRegisterSetupScreen extends AbstractContainerScreen<CashRegiste
 		this.addWidget(this.name);
 		button_empty = Button.builder(Component.translatable("gui.icurrency.cash_register_setup.button_empty"), e -> {
 			if (true) {
-				textstate.put("textin:password", password.getValue());
-				textstate.put("textin:name", name.getValue());
-				textstate.put("checkboxin:only_cards", only_cards.selected() ? "true" : "false");
-				textstate.put("checkboxin:deposit_account", deposit_account.selected() ? "true" : "false");
-				PacketDistributor.SERVER.noArg().send(new CashRegisterSetupButtonMessage(0, x, y, z, textstate));
-				CashRegisterSetupButtonMessage.handleButtonAction(entity, 0, x, y, z, textstate);
+				PacketDistributor.sendToServer(new CashRegisterSetupButtonMessage(0, x, y, z, getEditBoxAndCheckBoxValues()));
+				CashRegisterSetupButtonMessage.handleButtonAction(entity, 0, x, y, z, getEditBoxAndCheckBoxValues());
 			}
 		}).bounds(this.leftPos + 9, this.topPos + 135, 187, 20).build();
 		guistate.put("button:button_empty", button_empty);

@@ -9,7 +9,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.InteractionHand;
 
-import com.vikkivuk.icurrency.procedures.DebitCardRightclickedProcedure;
+import com.vikkivuk.icurrency.procedures.DebitCardRightClickProcedure;
 
 public class DebitCardItem extends Item {
 	public DebitCardItem() {
@@ -19,7 +19,7 @@ public class DebitCardItem extends Item {
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		DebitCardRightclickedProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity, ar.getObject());
+		DebitCardRightClickProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity, ar.getObject());
 		return ar;
 	}
 }

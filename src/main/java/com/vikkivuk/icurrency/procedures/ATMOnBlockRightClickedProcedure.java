@@ -38,6 +38,11 @@ public class ATMOnBlockRightClickedProcedure {
 					}
 
 					@Override
+					public boolean shouldTriggerClientSideContainerClosingOnOpen() {
+						return false;
+					}
+
+					@Override
 					public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
 						return new ATMEntryPointMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(_bpos));
 					}
@@ -50,6 +55,11 @@ public class ATMOnBlockRightClickedProcedure {
 					@Override
 					public Component getDisplayName() {
 						return Component.literal("ATMSetup");
+					}
+
+					@Override
+					public boolean shouldTriggerClientSideContainerClosingOnOpen() {
+						return false;
 					}
 
 					@Override

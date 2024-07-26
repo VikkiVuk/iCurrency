@@ -11,6 +11,7 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.Minecraft;
 
 import java.util.HashMap;
 
@@ -24,8 +25,7 @@ public class EnterPinScreen extends AbstractContainerScreen<EnterPinMenu> {
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
-	private final static HashMap<String, String> textstate = new HashMap<>();
-	public static EditBox pin;
+	EditBox pin;
 	Button button_empty;
 
 	public EnterPinScreen(EnterPinMenu container, Inventory inventory, Component text) {
@@ -37,6 +37,15 @@ public class EnterPinScreen extends AbstractContainerScreen<EnterPinMenu> {
 		this.entity = container.entity;
 		this.imageWidth = 142;
 		this.imageHeight = 77;
+	}
+
+	public static HashMap<String, String> getEditBoxAndCheckBoxValues() {
+		HashMap<String, String> textstate = new HashMap<>();
+		if (Minecraft.getInstance().screen instanceof EnterPinScreen sc) {
+			textstate.put("textin:pin", sc.pin.getValue());
+
+		}
+		return textstate;
 	}
 
 	private static final ResourceLocation texture = new ResourceLocation("icurrency:textures/screens/enter_pin.png");
@@ -67,6 +76,13 @@ public class EnterPinScreen extends AbstractContainerScreen<EnterPinMenu> {
 		if (pin.isFocused())
 			return pin.keyPressed(key, b, c);
 		return super.keyPressed(key, b, c);
+	}
+
+	@Override
+	public void resize(Minecraft minecraft, int width, int height) {
+		String pinValue = pin.getValue();
+		super.resize(minecraft, width, height);
+		pin.setValue(pinValue);
 	}
 
 	@Override
@@ -102,9 +118,8 @@ public class EnterPinScreen extends AbstractContainerScreen<EnterPinMenu> {
 		this.addWidget(this.pin);
 		button_empty = Button.builder(Component.translatable("gui.icurrency.enter_pin.button_empty"), e -> {
 			if (true) {
-				textstate.put("textin:pin", pin.getValue());
-				PacketDistributor.SERVER.noArg().send(new EnterPinButtonMessage(0, x, y, z, textstate));
-				EnterPinButtonMessage.handleButtonAction(entity, 0, x, y, z, textstate);
+				PacketDistributor.sendToServer(new EnterPinButtonMessage(0, x, y, z, getEditBoxAndCheckBoxValues()));
+				EnterPinButtonMessage.handleButtonAction(entity, 0, x, y, z, getEditBoxAndCheckBoxValues());
 			}
 		}).bounds(this.leftPos + 12, this.topPos + 48, 119, 20).build();
 		guistate.put("button:button_empty", button_empty);

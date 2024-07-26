@@ -10,6 +10,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.Minecraft;
 
 import java.util.HashMap;
 
@@ -23,7 +24,6 @@ public class CashRegisterOverviewScreen extends AbstractContainerScreen<CashRegi
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
-	private final static HashMap<String, String> textstate = new HashMap<>();
 	Button button_empty;
 	Button button_empty1;
 
@@ -36,6 +36,14 @@ public class CashRegisterOverviewScreen extends AbstractContainerScreen<CashRegi
 		this.entity = container.entity;
 		this.imageWidth = 208;
 		this.imageHeight = 86;
+	}
+
+	public static HashMap<String, String> getEditBoxAndCheckBoxValues() {
+		HashMap<String, String> textstate = new HashMap<>();
+		if (Minecraft.getInstance().screen instanceof CashRegisterOverviewScreen sc) {
+
+		}
+		return textstate;
 	}
 
 	private static final ResourceLocation texture = new ResourceLocation("icurrency:textures/screens/cash_register_overview.png");
@@ -75,16 +83,16 @@ public class CashRegisterOverviewScreen extends AbstractContainerScreen<CashRegi
 		super.init();
 		button_empty = Button.builder(Component.translatable("gui.icurrency.cash_register_overview.button_empty"), e -> {
 			if (true) {
-				PacketDistributor.SERVER.noArg().send(new CashRegisterOverviewButtonMessage(0, x, y, z, textstate));
-				CashRegisterOverviewButtonMessage.handleButtonAction(entity, 0, x, y, z, textstate);
+				PacketDistributor.sendToServer(new CashRegisterOverviewButtonMessage(0, x, y, z, getEditBoxAndCheckBoxValues()));
+				CashRegisterOverviewButtonMessage.handleButtonAction(entity, 0, x, y, z, getEditBoxAndCheckBoxValues());
 			}
 		}).bounds(this.leftPos + 7, this.topPos + 29, 193, 20).build();
 		guistate.put("button:button_empty", button_empty);
 		this.addRenderableWidget(button_empty);
 		button_empty1 = Button.builder(Component.translatable("gui.icurrency.cash_register_overview.button_empty1"), e -> {
 			if (true) {
-				PacketDistributor.SERVER.noArg().send(new CashRegisterOverviewButtonMessage(1, x, y, z, textstate));
-				CashRegisterOverviewButtonMessage.handleButtonAction(entity, 1, x, y, z, textstate);
+				PacketDistributor.sendToServer(new CashRegisterOverviewButtonMessage(1, x, y, z, getEditBoxAndCheckBoxValues()));
+				CashRegisterOverviewButtonMessage.handleButtonAction(entity, 1, x, y, z, getEditBoxAndCheckBoxValues());
 			}
 		}).bounds(this.leftPos + 7, this.topPos + 55, 193, 20).build();
 		guistate.put("button:button_empty1", button_empty1);

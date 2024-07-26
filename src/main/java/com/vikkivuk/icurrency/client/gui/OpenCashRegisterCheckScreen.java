@@ -11,6 +11,7 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.Minecraft;
 
 import java.util.HashMap;
 
@@ -24,8 +25,7 @@ public class OpenCashRegisterCheckScreen extends AbstractContainerScreen<OpenCas
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
-	private final static HashMap<String, String> textstate = new HashMap<>();
-	public static EditBox pass_check;
+	EditBox pass_check;
 	Button button_open_cash_register;
 
 	public OpenCashRegisterCheckScreen(OpenCashRegisterCheckMenu container, Inventory inventory, Component text) {
@@ -37,6 +37,15 @@ public class OpenCashRegisterCheckScreen extends AbstractContainerScreen<OpenCas
 		this.entity = container.entity;
 		this.imageWidth = 152;
 		this.imageHeight = 63;
+	}
+
+	public static HashMap<String, String> getEditBoxAndCheckBoxValues() {
+		HashMap<String, String> textstate = new HashMap<>();
+		if (Minecraft.getInstance().screen instanceof OpenCashRegisterCheckScreen sc) {
+			textstate.put("textin:pass_check", sc.pass_check.getValue());
+
+		}
+		return textstate;
 	}
 
 	private static final ResourceLocation texture = new ResourceLocation("icurrency:textures/screens/open_cash_register_check.png");
@@ -67,6 +76,13 @@ public class OpenCashRegisterCheckScreen extends AbstractContainerScreen<OpenCas
 		if (pass_check.isFocused())
 			return pass_check.keyPressed(key, b, c);
 		return super.keyPressed(key, b, c);
+	}
+
+	@Override
+	public void resize(Minecraft minecraft, int width, int height) {
+		String pass_checkValue = pass_check.getValue();
+		super.resize(minecraft, width, height);
+		pass_check.setValue(pass_checkValue);
 	}
 
 	@Override
@@ -101,9 +117,8 @@ public class OpenCashRegisterCheckScreen extends AbstractContainerScreen<OpenCas
 		this.addWidget(this.pass_check);
 		button_open_cash_register = Button.builder(Component.translatable("gui.icurrency.open_cash_register_check.button_open_cash_register"), e -> {
 			if (true) {
-				textstate.put("textin:pass_check", pass_check.getValue());
-				PacketDistributor.SERVER.noArg().send(new OpenCashRegisterCheckButtonMessage(0, x, y, z, textstate));
-				OpenCashRegisterCheckButtonMessage.handleButtonAction(entity, 0, x, y, z, textstate);
+				PacketDistributor.sendToServer(new OpenCashRegisterCheckButtonMessage(0, x, y, z, getEditBoxAndCheckBoxValues()));
+				OpenCashRegisterCheckButtonMessage.handleButtonAction(entity, 0, x, y, z, getEditBoxAndCheckBoxValues());
 			}
 		}).bounds(this.leftPos + 17, this.topPos + 33, 119, 20).build();
 		guistate.put("button:button_open_cash_register", button_open_cash_register);

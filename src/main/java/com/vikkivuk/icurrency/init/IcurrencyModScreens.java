@@ -5,7 +5,7 @@
 package com.vikkivuk.icurrency.init;
 
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.api.distmarker.Dist;
 
@@ -27,7 +27,7 @@ import com.vikkivuk.icurrency.client.gui.AcknowledgeTransactionResultCRScreen;
 import com.vikkivuk.icurrency.client.gui.ATMSetupScreen;
 import com.vikkivuk.icurrency.client.gui.ATMEntryPointScreen;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class IcurrencyModScreens {
 	@SubscribeEvent
 	public static void clientLoad(RegisterMenuScreensEvent event) {

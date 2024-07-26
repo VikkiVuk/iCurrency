@@ -10,6 +10,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.Minecraft;
 
 import java.util.HashMap;
 
@@ -23,7 +24,6 @@ public class ExchangeMoneyScreen extends AbstractContainerScreen<ExchangeMoneyMe
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
-	private final static HashMap<String, String> textstate = new HashMap<>();
 	Button button_empty;
 
 	public ExchangeMoneyScreen(ExchangeMoneyMenu container, Inventory inventory, Component text) {
@@ -35,6 +35,14 @@ public class ExchangeMoneyScreen extends AbstractContainerScreen<ExchangeMoneyMe
 		this.entity = container.entity;
 		this.imageWidth = 176;
 		this.imageHeight = 166;
+	}
+
+	public static HashMap<String, String> getEditBoxAndCheckBoxValues() {
+		HashMap<String, String> textstate = new HashMap<>();
+		if (Minecraft.getInstance().screen instanceof ExchangeMoneyScreen sc) {
+
+		}
+		return textstate;
 	}
 
 	private static final ResourceLocation texture = new ResourceLocation("icurrency:textures/screens/exchange_money.png");
@@ -74,8 +82,8 @@ public class ExchangeMoneyScreen extends AbstractContainerScreen<ExchangeMoneyMe
 		super.init();
 		button_empty = Button.builder(Component.translatable("gui.icurrency.exchange_money.button_empty"), e -> {
 			if (true) {
-				PacketDistributor.SERVER.noArg().send(new ExchangeMoneyButtonMessage(0, x, y, z, textstate));
-				ExchangeMoneyButtonMessage.handleButtonAction(entity, 0, x, y, z, textstate);
+				PacketDistributor.sendToServer(new ExchangeMoneyButtonMessage(0, x, y, z, getEditBoxAndCheckBoxValues()));
+				ExchangeMoneyButtonMessage.handleButtonAction(entity, 0, x, y, z, getEditBoxAndCheckBoxValues());
 			}
 		}).bounds(this.leftPos + 7, this.topPos + 40, 161, 20).build();
 		guistate.put("button:button_empty", button_empty);

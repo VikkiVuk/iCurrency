@@ -11,6 +11,7 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.Minecraft;
 
 import java.util.HashMap;
 
@@ -24,9 +25,8 @@ public class TransferMoneyScreen extends AbstractContainerScreen<TransferMoneyMe
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
-	private final static HashMap<String, String> textstate = new HashMap<>();
-	public static EditBox receiver;
-	public static EditBox amount;
+	EditBox receiver;
+	EditBox amount;
 	Button button_empty;
 
 	public TransferMoneyScreen(TransferMoneyMenu container, Inventory inventory, Component text) {
@@ -38,6 +38,16 @@ public class TransferMoneyScreen extends AbstractContainerScreen<TransferMoneyMe
 		this.entity = container.entity;
 		this.imageWidth = 150;
 		this.imageHeight = 120;
+	}
+
+	public static HashMap<String, String> getEditBoxAndCheckBoxValues() {
+		HashMap<String, String> textstate = new HashMap<>();
+		if (Minecraft.getInstance().screen instanceof TransferMoneyScreen sc) {
+			textstate.put("textin:receiver", sc.receiver.getValue());
+			textstate.put("textin:amount", sc.amount.getValue());
+
+		}
+		return textstate;
 	}
 
 	private static final ResourceLocation texture = new ResourceLocation("icurrency:textures/screens/transfer_money.png");
@@ -74,6 +84,15 @@ public class TransferMoneyScreen extends AbstractContainerScreen<TransferMoneyMe
 	}
 
 	@Override
+	public void resize(Minecraft minecraft, int width, int height) {
+		String receiverValue = receiver.getValue();
+		String amountValue = amount.getValue();
+		super.resize(minecraft, width, height);
+		receiver.setValue(receiverValue);
+		amount.setValue(amountValue);
+	}
+
+	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
 		guiGraphics.drawString(this.font, Component.translatable("gui.icurrency.transfer_money.label_amount"), 59, 11, -12829636, false);
 		guiGraphics.drawString(this.font, Component.translatable("gui.icurrency.transfer_money.label_receiver"), 55, 47, -12829636, false);
@@ -92,10 +111,8 @@ public class TransferMoneyScreen extends AbstractContainerScreen<TransferMoneyMe
 		this.addWidget(this.amount);
 		button_empty = Button.builder(Component.translatable("gui.icurrency.transfer_money.button_empty"), e -> {
 			if (true) {
-				textstate.put("textin:receiver", receiver.getValue());
-				textstate.put("textin:amount", amount.getValue());
-				PacketDistributor.SERVER.noArg().send(new TransferMoneyButtonMessage(0, x, y, z, textstate));
-				TransferMoneyButtonMessage.handleButtonAction(entity, 0, x, y, z, textstate);
+				PacketDistributor.sendToServer(new TransferMoneyButtonMessage(0, x, y, z, getEditBoxAndCheckBoxValues()));
+				TransferMoneyButtonMessage.handleButtonAction(entity, 0, x, y, z, getEditBoxAndCheckBoxValues());
 			}
 		}).bounds(this.leftPos + 15, this.topPos + 88, 119, 20).build();
 		guistate.put("button:button_empty", button_empty);

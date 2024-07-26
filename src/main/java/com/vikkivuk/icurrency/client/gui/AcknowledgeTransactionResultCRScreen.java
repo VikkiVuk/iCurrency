@@ -10,6 +10,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.Minecraft;
 
 import java.util.HashMap;
 
@@ -24,7 +25,6 @@ public class AcknowledgeTransactionResultCRScreen extends AbstractContainerScree
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
-	private final static HashMap<String, String> textstate = new HashMap<>();
 	Button button_empty;
 
 	public AcknowledgeTransactionResultCRScreen(AcknowledgeTransactionResultCRMenu container, Inventory inventory, Component text) {
@@ -36,6 +36,14 @@ public class AcknowledgeTransactionResultCRScreen extends AbstractContainerScree
 		this.entity = container.entity;
 		this.imageWidth = 236;
 		this.imageHeight = 60;
+	}
+
+	public static HashMap<String, String> getEditBoxAndCheckBoxValues() {
+		HashMap<String, String> textstate = new HashMap<>();
+		if (Minecraft.getInstance().screen instanceof AcknowledgeTransactionResultCRScreen sc) {
+
+		}
+		return textstate;
 	}
 
 	private static final ResourceLocation texture = new ResourceLocation("icurrency:textures/screens/acknowledge_transaction_result_cr.png");
@@ -77,8 +85,8 @@ public class AcknowledgeTransactionResultCRScreen extends AbstractContainerScree
 		super.init();
 		button_empty = Button.builder(Component.translatable("gui.icurrency.acknowledge_transaction_result_cr.button_empty"), e -> {
 			if (true) {
-				PacketDistributor.SERVER.noArg().send(new AcknowledgeTransactionResultCRButtonMessage(0, x, y, z, textstate));
-				AcknowledgeTransactionResultCRButtonMessage.handleButtonAction(entity, 0, x, y, z, textstate);
+				PacketDistributor.sendToServer(new AcknowledgeTransactionResultCRButtonMessage(0, x, y, z, getEditBoxAndCheckBoxValues()));
+				AcknowledgeTransactionResultCRButtonMessage.handleButtonAction(entity, 0, x, y, z, getEditBoxAndCheckBoxValues());
 			}
 		}).bounds(this.leftPos + 15, this.topPos + 30, 208, 20).build();
 		guistate.put("button:button_empty", button_empty);
