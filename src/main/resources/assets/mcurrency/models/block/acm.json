@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "mcurrency:block/acm",
+    "up": "mcurrency:block/acm",
+    "north": "mcurrency:block/acm",
+    "east": "mcurrency:block/acm",
+    "south": "mcurrency:block/acm",
+    "west": "mcurrency:block/acm",
+    "particle": "mcurrency:block/acm"
+  },
+  "render_type": "solid"
+}

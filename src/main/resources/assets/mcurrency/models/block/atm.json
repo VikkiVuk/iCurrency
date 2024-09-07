@@ -1,0 +1,9 @@
+{
+  "parent": "mcurrency:custom/atm",
+  "textures": {
+    "all": "mcurrency:block/atm",
+    "particle": "mcurrency:block/atm",
+    "2": "mcurrency:block/atm"
+  },
+  "render_type": "solid"
+}

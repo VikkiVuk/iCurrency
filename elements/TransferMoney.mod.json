@@ -3,8 +3,8 @@
   "_type": "gui",
   "definition": {
     "type": 0,
-    "width": 150,
-    "height": 120,
+    "width": 141,
+    "height": 107,
     "inventoryOffsetX": 0,
     "inventoryOffsetY": 0,
     "renderBgLayer": true,
@@ -18,7 +18,7 @@
           "width": 120,
           "height": 20,
           "x": 154,
-          "y": 116
+          "y": 120
         }
       },
       {
@@ -29,7 +29,7 @@
           "width": 120,
           "height": 20,
           "x": 154,
-          "y": 80
+          "y": 87
         }
       },
       {
@@ -43,8 +43,8 @@
             "value": -12829636,
             "falpha": 0.0
           },
-          "x": 198,
-          "y": 71
+          "x": 199,
+          "y": 77
         }
       },
       {
@@ -58,8 +58,8 @@
             "value": -12829636,
             "falpha": 0.0
           },
-          "x": 194,
-          "y": 107
+          "x": 193,
+          "y": 110
         }
       },
       {
@@ -74,7 +74,7 @@
           "width": 119,
           "height": 20,
           "x": 154,
-          "y": 148
+          "y": 143
         }
       }
     ],
@@ -83,7 +83,7 @@
       "sy": 14,
       "ox": 13,
       "oy": 15,
-      "snapOnGrid": true
+      "snapOnGrid": false
     }
   }
 }

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mcurrency:block/cash_register"
+    },
+    "facing=east": {
+      "model": "mcurrency:block/cash_register",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mcurrency:block/cash_register",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mcurrency:block/cash_register",
+      "y": 270
+    }
+  }
+}

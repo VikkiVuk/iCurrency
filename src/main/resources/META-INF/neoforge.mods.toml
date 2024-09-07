@@ -3,26 +3,26 @@ loaderVersion="[2,)"
 license="All Rights Reserved"
 
 [[mods]]
-modId="icurrency"
-version="1.20.41.0.0"
-displayName="iCurrency"
-displayURL="https://modrinth.com/project/icurrency"
+modId="mcurrency"
+version="1.20.61.0.0"
+displayName="MCurrency"
+displayURL="https://modrinth.com/project/mcurrency"
 logoFile="logo.png"
-credits="Thanks to my friend XMasterWoo for helping with some models and textures"
+credits="XMasterWoo for helping with some models and textures"
 authors="VikkiVuk"
-description="A minecraft banking mod"
+description="The most realistic banking mod for minecraft."
 
 # Start of user code block mod configuration
 # End of user code block mod configuration
 
-[[dependencies.icurrency]]
+[[dependencies.mcurrency]]
     modId="neoforge"
     type="required"
     versionRange="[20.6.117,)"
     ordering="AFTER"
     side="BOTH"
 
-[[dependencies.icurrency]]
+[[dependencies.mcurrency]]
     modId="minecraft"
     type="required"
     versionRange="[1.20.6]"
@@ -33,7 +33,7 @@ description="A minecraft banking mod"
 
 
 [[mixins]]
-    config="mixins.icurrency.json"
+    config="mixins.mcurrency.json"
 
 # Start of user code block dependencies configuration
 # End of user code block dependencies configuration
