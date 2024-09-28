@@ -1,6 +1,6 @@
 {
-  "gui.icurrency.enter_pin.pin": "Pin",
   "gui.icurrency.cash_register_pay_card.button_swipe_card": "Swipe Card",
+  "gui.icurrency.enter_pin.pin": "Pin",
   "gui.mcurrency.cash_register_checkout_gui.label_cash": "Cash",
   "gui.icurrency.card_overview.label_your_cards": "Your Cards",
   "gui.icurrency.cash_register_setup.password": "Password",
@@ -50,8 +50,8 @@
   "gui.icurrency.open_cash_register_check.pin": "Pin",
   "gui.mcurrency.cash_register_setup.tooltip_note_this_will_only_work_if_you": "This will only work if you are online when the transaction is made.",
   "gui.icurrency.cash_register_setup.tooltip_to_access_the_cash_registers_ea1": "To access the cash register\u0027s earnings, you will need to enter the password!",
-  "block.mcurrency.atm": "ATM",
   "gui.icurrency.set_card_pin.pin": "Pin",
+  "block.mcurrency.atm": "ATM",
   "gui.mcurrency.cash_register_setup.tooltip_to_access_the_cash_registers_ea2": "To access the cash register\u0027s earnings, you will need to enter the password!",
   "gui.icurrency.cash_register_setup.tooltip_to_access_the_cash_registers_ea4": "To access the cash register\u0027s earnings, you will need to enter the password!",
   "gui.mcurrency.cash_register_setup.tooltip_to_access_the_cash_registers_ea3": "To access the cash register\u0027s earnings, you will need to enter the password!",
