@@ -48,7 +48,7 @@ public class WithdrawMoneyScreen extends AbstractContainerScreen<WithdrawMoneyMe
 		return textstate;
 	}
 
-	private static final ResourceLocation texture = new ResourceLocation("mcurrency:textures/screens/withdraw_money.png");
+	private static final ResourceLocation texture = ResourceLocation.parse("mcurrency:textures/screens/withdraw_money.png");
 
 	@Override
 	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {

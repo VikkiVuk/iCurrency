@@ -49,7 +49,7 @@ public class CashRegisterPayCardScreen extends AbstractContainerScreen<CashRegis
 		return textstate;
 	}
 
-	private static final ResourceLocation texture = new ResourceLocation("mcurrency:textures/screens/cash_register_pay_card.png");
+	private static final ResourceLocation texture = ResourceLocation.parse("mcurrency:textures/screens/cash_register_pay_card.png");
 
 	@Override
 	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
@@ -96,7 +96,7 @@ public class CashRegisterPayCardScreen extends AbstractContainerScreen<CashRegis
 		}).bounds(this.leftPos + 50, this.topPos + 52, 77, 20).build();
 		guistate.put("button:button_swipe_card", button_swipe_card);
 		this.addRenderableWidget(button_swipe_card);
-		imagebutton_trash = new ImageButton(this.leftPos + 151, this.topPos + 7, 16, 16, new WidgetSprites(new ResourceLocation("mcurrency:textures/screens/trash.png"), new ResourceLocation("mcurrency:textures/screens/trash_hover.png")), e -> {
+		imagebutton_trash = new ImageButton(this.leftPos + 151, this.topPos + 7, 16, 16, new WidgetSprites(ResourceLocation.parse("mcurrency:textures/screens/trash.png"), ResourceLocation.parse("mcurrency:textures/screens/trash_hover.png")), e -> {
 			if (true) {
 				PacketDistributor.sendToServer(new CashRegisterPayCardButtonMessage(1, x, y, z, getEditBoxAndCheckBoxValues()));
 				CashRegisterPayCardButtonMessage.handleButtonAction(entity, 1, x, y, z, getEditBoxAndCheckBoxValues());

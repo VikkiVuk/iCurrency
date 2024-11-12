@@ -27,7 +27,7 @@ import com.vikkivuk.mcurrency.McurrencyMod;
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public record AcknowledgeTransactionResultCRButtonMessage(int buttonID, int x, int y, int z, HashMap<String, String> textstate) implements CustomPacketPayload {
 
-	public static final Type<AcknowledgeTransactionResultCRButtonMessage> TYPE = new Type<>(new ResourceLocation(McurrencyMod.MODID, "acknowledge_transaction_result_cr_buttons"));
+	public static final Type<AcknowledgeTransactionResultCRButtonMessage> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(McurrencyMod.MODID, "acknowledge_transaction_result_cr_buttons"));
 	public static final StreamCodec<RegistryFriendlyByteBuf, AcknowledgeTransactionResultCRButtonMessage> STREAM_CODEC = StreamCodec.of((RegistryFriendlyByteBuf buffer, AcknowledgeTransactionResultCRButtonMessage message) -> {
 		buffer.writeInt(message.buttonID);
 		buffer.writeInt(message.x);

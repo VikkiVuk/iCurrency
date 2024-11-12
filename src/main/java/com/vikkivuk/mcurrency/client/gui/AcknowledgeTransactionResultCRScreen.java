@@ -46,7 +46,7 @@ public class AcknowledgeTransactionResultCRScreen extends AbstractContainerScree
 		return textstate;
 	}
 
-	private static final ResourceLocation texture = new ResourceLocation("mcurrency:textures/screens/acknowledge_transaction_result_cr.png");
+	private static final ResourceLocation texture = ResourceLocation.parse("mcurrency:textures/screens/acknowledge_transaction_result_cr.png");
 
 	@Override
 	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {

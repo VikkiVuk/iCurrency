@@ -32,7 +32,7 @@ import com.vikkivuk.mcurrency.McurrencyMod;
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public record ATMEntryPointButtonMessage(int buttonID, int x, int y, int z, HashMap<String, String> textstate) implements CustomPacketPayload {
 
-	public static final Type<ATMEntryPointButtonMessage> TYPE = new Type<>(new ResourceLocation(McurrencyMod.MODID, "atm_entry_point_buttons"));
+	public static final Type<ATMEntryPointButtonMessage> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(McurrencyMod.MODID, "atm_entry_point_buttons"));
 	public static final StreamCodec<RegistryFriendlyByteBuf, ATMEntryPointButtonMessage> STREAM_CODEC = StreamCodec.of((RegistryFriendlyByteBuf buffer, ATMEntryPointButtonMessage message) -> {
 		buffer.writeInt(message.buttonID);
 		buffer.writeInt(message.x);

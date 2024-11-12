@@ -27,7 +27,7 @@ import com.vikkivuk.mcurrency.McurrencyMod;
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public record EnterPinButtonMessage(int buttonID, int x, int y, int z, HashMap<String, String> textstate) implements CustomPacketPayload {
 
-	public static final Type<EnterPinButtonMessage> TYPE = new Type<>(new ResourceLocation(McurrencyMod.MODID, "enter_pin_buttons"));
+	public static final Type<EnterPinButtonMessage> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(McurrencyMod.MODID, "enter_pin_buttons"));
 	public static final StreamCodec<RegistryFriendlyByteBuf, EnterPinButtonMessage> STREAM_CODEC = StreamCodec.of((RegistryFriendlyByteBuf buffer, EnterPinButtonMessage message) -> {
 		buffer.writeInt(message.buttonID);
 		buffer.writeInt(message.x);

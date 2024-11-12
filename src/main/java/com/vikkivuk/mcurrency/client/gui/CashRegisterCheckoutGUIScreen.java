@@ -68,7 +68,7 @@ public class CashRegisterCheckoutGUIScreen extends AbstractContainerScreen<CashR
 		CashRegisterCheckoutGUIButtonMessage.handleButtonAction(entity, -1, x, y, z, getEditBoxAndCheckBoxValues());
 	}
 
-	private static final ResourceLocation texture = new ResourceLocation("mcurrency:textures/screens/cash_register_checkout_gui.png");
+	private static final ResourceLocation texture = ResourceLocation.parse("mcurrency:textures/screens/cash_register_checkout_gui.png");
 
 	@Override
 	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
@@ -213,8 +213,8 @@ public class CashRegisterCheckoutGUIScreen extends AbstractContainerScreen<CashR
 		}).bounds(this.leftPos + 87, this.topPos + 93, 46, 20).build(builder -> new Button(builder) {
 			@Override
 			public void renderWidget(GuiGraphics guiGraphics, int gx, int gy, float ticks) {
-				if (ShowCardEnabledCRPProcedure.execute(entity))
-					super.renderWidget(guiGraphics, gx, gy, ticks);
+				this.visible = ShowCardEnabledCRPProcedure.execute(entity);
+				super.renderWidget(guiGraphics, gx, gy, ticks);
 			}
 		});
 		guistate.put("button:button_card", button_card);
@@ -227,14 +227,14 @@ public class CashRegisterCheckoutGUIScreen extends AbstractContainerScreen<CashR
 		}).bounds(this.leftPos + 14, this.topPos + 93, 46, 20).build(builder -> new Button(builder) {
 			@Override
 			public void renderWidget(GuiGraphics guiGraphics, int gx, int gy, float ticks) {
-				if (ShowCashEnabledCRPProcedure.execute(entity))
-					super.renderWidget(guiGraphics, gx, gy, ticks);
+				this.visible = ShowCashEnabledCRPProcedure.execute(entity);
+				super.renderWidget(guiGraphics, gx, gy, ticks);
 			}
 		});
 		guistate.put("button:button_cash", button_cash);
 		this.addRenderableWidget(button_cash);
 		imagebutton_cash_disabled = new ImageButton(this.leftPos + 14, this.topPos + 93, 46, 20,
-				new WidgetSprites(new ResourceLocation("mcurrency:textures/screens/cash_disabled.png"), new ResourceLocation("mcurrency:textures/screens/cash_disabled.png")), e -> {
+				new WidgetSprites(ResourceLocation.parse("mcurrency:textures/screens/cash_disabled.png"), ResourceLocation.parse("mcurrency:textures/screens/cash_disabled.png")), e -> {
 				}) {
 			@Override
 			public void renderWidget(GuiGraphics guiGraphics, int x, int y, float partialTicks) {
@@ -245,7 +245,7 @@ public class CashRegisterCheckoutGUIScreen extends AbstractContainerScreen<CashR
 		guistate.put("button:imagebutton_cash_disabled", imagebutton_cash_disabled);
 		this.addRenderableWidget(imagebutton_cash_disabled);
 		imagebutton_cash_disabled1 = new ImageButton(this.leftPos + 87, this.topPos + 93, 46, 20,
-				new WidgetSprites(new ResourceLocation("mcurrency:textures/screens/cash_disabled.png"), new ResourceLocation("mcurrency:textures/screens/cash_disabled.png")), e -> {
+				new WidgetSprites(ResourceLocation.parse("mcurrency:textures/screens/cash_disabled.png"), ResourceLocation.parse("mcurrency:textures/screens/cash_disabled.png")), e -> {
 				}) {
 			@Override
 			public void renderWidget(GuiGraphics guiGraphics, int x, int y, float partialTicks) {

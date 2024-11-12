@@ -24,9 +24,9 @@ public class SetCardPinConfirmProcedure {
 		boolean found_item = false;
 		ItemStack item = ItemStack.EMPTY;
 		double item_index = 0;
-		if (entity.getCapability(Capabilities.ItemHandler.ENTITY, null) instanceof IItemHandlerModifiable _modHandler) {
-			for (int _idx = 0; _idx < _modHandler.getSlots(); _idx++) {
-				ItemStack itemstackiterator = _modHandler.getStackInSlot(_idx).copy();
+		if (entity.getCapability(Capabilities.ItemHandler.ENTITY, null) instanceof IItemHandlerModifiable _modHandlerIter) {
+			for (int _idx = 0; _idx < _modHandlerIter.getSlots(); _idx++) {
+				ItemStack itemstackiterator = _modHandlerIter.getStackInSlot(_idx).copy();
 				item_index = item_index + 1;
 				if (itemstackiterator.getItem() == McurrencyModItems.DEBIT_CARD.get()) {
 					if ((new Vec3((itemstackiterator.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDouble("h1n")), (itemstackiterator.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDouble("h2n")),

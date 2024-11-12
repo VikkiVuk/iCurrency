@@ -29,7 +29,7 @@ import com.vikkivuk.mcurrency.McurrencyMod;
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public record CashRegisterSafeButtonMessage(int buttonID, int x, int y, int z, HashMap<String, String> textstate) implements CustomPacketPayload {
 
-	public static final Type<CashRegisterSafeButtonMessage> TYPE = new Type<>(new ResourceLocation(McurrencyMod.MODID, "cash_register_safe_buttons"));
+	public static final Type<CashRegisterSafeButtonMessage> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(McurrencyMod.MODID, "cash_register_safe_buttons"));
 	public static final StreamCodec<RegistryFriendlyByteBuf, CashRegisterSafeButtonMessage> STREAM_CODEC = StreamCodec.of((RegistryFriendlyByteBuf buffer, CashRegisterSafeButtonMessage message) -> {
 		buffer.writeInt(message.buttonID);
 		buffer.writeInt(message.x);

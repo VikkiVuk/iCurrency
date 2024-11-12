@@ -130,8 +130,8 @@
       "registry_name": "atm",
       "metadata": {
         "files": [
+          "src/main/resources/data/mcurrency/loot_table/blocks/atm.json",
           "src/main/resources/assets/mcurrency/blockstates/atm.json",
-          "src/main/resources/data/mcurrency/loot_tables/blocks/atm.json",
           "src/main/java/com/vikkivuk/mcurrency/block/entity/ATMBlockEntity.java",
           "src/main/resources/assets/mcurrency/models/item/atm.json",
           "src/main/resources/assets/mcurrency/models/block/atm.json",
@@ -1186,7 +1186,7 @@
       "metadata": {
         "files": [
           "src/main/java/com/vikkivuk/mcurrency/block/CashRegisterBlock.java",
-          "src/main/resources/data/mcurrency/loot_tables/blocks/cash_register.json",
+          "src/main/resources/data/mcurrency/loot_table/blocks/cash_register.json",
           "src/main/resources/assets/mcurrency/models/item/cash_register.json",
           "src/main/resources/assets/mcurrency/blockstates/cash_register.json",
           "src/main/java/com/vikkivuk/mcurrency/block/entity/CashRegisterBlockEntity.java",
@@ -2308,7 +2308,7 @@
       "registry_name": "acm",
       "metadata": {
         "files": [
-          "src/main/resources/data/mcurrency/loot_tables/blocks/acm.json",
+          "src/main/resources/data/mcurrency/loot_table/blocks/acm.json",
           "src/main/resources/assets/mcurrency/models/block/acm.json",
           "src/main/resources/assets/mcurrency/models/item/acm.json",
           "src/main/resources/assets/mcurrency/blockstates/acm.json",
@@ -2436,8 +2436,8 @@
   "tab_element_order": {},
   "language_map": {
     "en_us": {
-      "gui.icurrency.enter_pin.pin": "Pin",
       "gui.icurrency.cash_register_pay_card.button_swipe_card": "Swipe Card",
+      "gui.icurrency.enter_pin.pin": "Pin",
       "gui.mcurrency.cash_register_checkout_gui.label_cash": "Cash",
       "gui.icurrency.card_overview.label_your_cards": "Your Cards",
       "gui.icurrency.cash_register_setup.password": "Password",
@@ -2487,8 +2487,8 @@
       "gui.icurrency.open_cash_register_check.pin": "Pin",
       "gui.mcurrency.cash_register_setup.tooltip_note_this_will_only_work_if_you": "This will only work if you are online when the transaction is made.",
       "gui.icurrency.cash_register_setup.tooltip_to_access_the_cash_registers_ea1": "To access the cash register\u0027s earnings, you will need to enter the password!",
-      "block.mcurrency.atm": "ATM",
       "gui.icurrency.set_card_pin.pin": "Pin",
+      "block.mcurrency.atm": "ATM",
       "gui.mcurrency.cash_register_setup.tooltip_to_access_the_cash_registers_ea2": "To access the cash register\u0027s earnings, you will need to enter the password!",
       "gui.icurrency.cash_register_setup.tooltip_to_access_the_cash_registers_ea4": "To access the cash register\u0027s earnings, you will need to enter the password!",
       "gui.mcurrency.cash_register_setup.tooltip_to_access_the_cash_registers_ea3": "To access the cash register\u0027s earnings, you will need to enter the password!",
@@ -2685,7 +2685,7 @@
   "workspaceSettings": {
     "modid": "mcurrency",
     "modName": "MCurrency",
-    "version": "1.20.6-1.0.0",
+    "version": "1.21.1-1.0.0",
     "description": "The most realistic banking mod for minecraft.",
     "author": "VikkiVuk",
     "websiteURL": "https://modrinth.com/project/mcurrency",
@@ -2696,9 +2696,9 @@
     "dependencies": [],
     "dependants": [],
     "mcreatorDependencies": [],
-    "currentGenerator": "neoforge-1.20.6",
+    "currentGenerator": "neoforge-1.21.1",
     "credits": "XMasterWoo for helping with some models and textures",
     "modElementsPackage": "com.vikkivuk.mcurrency"
   },
-  "mcreatorVersion": 202400232117
+  "mcreatorVersion": 202400342716
 }

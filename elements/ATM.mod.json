@@ -1,5 +1,5 @@
 {
-  "_fv": 66,
+  "_fv": 69,
   "_type": "block",
   "definition": {
     "texture": "atm",
@@ -168,6 +168,7 @@
         "subtract": false
       }
     ],
+    "customProperties": [],
     "name": "ATM",
     "specialInformation": {
       "fixedValue": []

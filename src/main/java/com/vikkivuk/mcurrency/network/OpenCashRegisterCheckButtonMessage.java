@@ -27,7 +27,7 @@ import com.vikkivuk.mcurrency.McurrencyMod;
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public record OpenCashRegisterCheckButtonMessage(int buttonID, int x, int y, int z, HashMap<String, String> textstate) implements CustomPacketPayload {
 
-	public static final Type<OpenCashRegisterCheckButtonMessage> TYPE = new Type<>(new ResourceLocation(McurrencyMod.MODID, "open_cash_register_check_buttons"));
+	public static final Type<OpenCashRegisterCheckButtonMessage> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(McurrencyMod.MODID, "open_cash_register_check_buttons"));
 	public static final StreamCodec<RegistryFriendlyByteBuf, OpenCashRegisterCheckButtonMessage> STREAM_CODEC = StreamCodec.of((RegistryFriendlyByteBuf buffer, OpenCashRegisterCheckButtonMessage message) -> {
 		buffer.writeInt(message.buttonID);
 		buffer.writeInt(message.x);

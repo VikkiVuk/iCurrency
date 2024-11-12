@@ -48,7 +48,7 @@ public class OpenCashRegisterCheckScreen extends AbstractContainerScreen<OpenCas
 		return textstate;
 	}
 
-	private static final ResourceLocation texture = new ResourceLocation("mcurrency:textures/screens/open_cash_register_check.png");
+	private static final ResourceLocation texture = ResourceLocation.parse("mcurrency:textures/screens/open_cash_register_check.png");
 
 	@Override
 	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {

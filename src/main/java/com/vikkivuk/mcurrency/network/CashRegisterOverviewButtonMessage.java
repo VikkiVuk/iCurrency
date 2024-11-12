@@ -28,7 +28,7 @@ import com.vikkivuk.mcurrency.McurrencyMod;
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public record CashRegisterOverviewButtonMessage(int buttonID, int x, int y, int z, HashMap<String, String> textstate) implements CustomPacketPayload {
 
-	public static final Type<CashRegisterOverviewButtonMessage> TYPE = new Type<>(new ResourceLocation(McurrencyMod.MODID, "cash_register_overview_buttons"));
+	public static final Type<CashRegisterOverviewButtonMessage> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(McurrencyMod.MODID, "cash_register_overview_buttons"));
 	public static final StreamCodec<RegistryFriendlyByteBuf, CashRegisterOverviewButtonMessage> STREAM_CODEC = StreamCodec.of((RegistryFriendlyByteBuf buffer, CashRegisterOverviewButtonMessage message) -> {
 		buffer.writeInt(message.buttonID);
 		buffer.writeInt(message.x);

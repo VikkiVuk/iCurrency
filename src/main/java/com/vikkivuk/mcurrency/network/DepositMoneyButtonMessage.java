@@ -27,7 +27,7 @@ import com.vikkivuk.mcurrency.McurrencyMod;
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public record DepositMoneyButtonMessage(int buttonID, int x, int y, int z, HashMap<String, String> textstate) implements CustomPacketPayload {
 
-	public static final Type<DepositMoneyButtonMessage> TYPE = new Type<>(new ResourceLocation(McurrencyMod.MODID, "deposit_money_buttons"));
+	public static final Type<DepositMoneyButtonMessage> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(McurrencyMod.MODID, "deposit_money_buttons"));
 	public static final StreamCodec<RegistryFriendlyByteBuf, DepositMoneyButtonMessage> STREAM_CODEC = StreamCodec.of((RegistryFriendlyByteBuf buffer, DepositMoneyButtonMessage message) -> {
 		buffer.writeInt(message.buttonID);
 		buffer.writeInt(message.x);

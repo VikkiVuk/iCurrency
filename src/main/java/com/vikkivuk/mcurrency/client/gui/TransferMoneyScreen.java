@@ -50,7 +50,7 @@ public class TransferMoneyScreen extends AbstractContainerScreen<TransferMoneyMe
 		return textstate;
 	}
 
-	private static final ResourceLocation texture = new ResourceLocation("mcurrency:textures/screens/transfer_money.png");
+	private static final ResourceLocation texture = ResourceLocation.parse("mcurrency:textures/screens/transfer_money.png");
 
 	@Override
 	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {

@@ -27,7 +27,7 @@ import com.vikkivuk.mcurrency.McurrencyMod;
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public record SetCardPinButtonMessage(int buttonID, int x, int y, int z, HashMap<String, String> textstate) implements CustomPacketPayload {
 
-	public static final Type<SetCardPinButtonMessage> TYPE = new Type<>(new ResourceLocation(McurrencyMod.MODID, "set_card_pin_buttons"));
+	public static final Type<SetCardPinButtonMessage> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(McurrencyMod.MODID, "set_card_pin_buttons"));
 	public static final StreamCodec<RegistryFriendlyByteBuf, SetCardPinButtonMessage> STREAM_CODEC = StreamCodec.of((RegistryFriendlyByteBuf buffer, SetCardPinButtonMessage message) -> {
 		buffer.writeInt(message.buttonID);
 		buffer.writeInt(message.x);

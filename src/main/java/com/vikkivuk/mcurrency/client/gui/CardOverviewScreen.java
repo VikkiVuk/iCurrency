@@ -63,7 +63,7 @@ public class CardOverviewScreen extends AbstractContainerScreen<CardOverviewMenu
 		return textstate;
 	}
 
-	private static final ResourceLocation texture = new ResourceLocation("mcurrency:textures/screens/card_overview.png");
+	private static final ResourceLocation texture = ResourceLocation.parse("mcurrency:textures/screens/card_overview.png");
 
 	@Override
 	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
@@ -79,16 +79,16 @@ public class CardOverviewScreen extends AbstractContainerScreen<CardOverviewMenu
 		RenderSystem.defaultBlendFunc();
 		guiGraphics.blit(texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
 		if (COShowCardOneProcedure.execute(entity)) {
-			guiGraphics.blit(new ResourceLocation("mcurrency:textures/screens/card_tile.png"), this.leftPos + 6, this.topPos + 13, 0, 0, 80, 64, 80, 64);
+			guiGraphics.blit(ResourceLocation.parse("mcurrency:textures/screens/card_tile.png"), this.leftPos + 6, this.topPos + 13, 0, 0, 80, 64, 80, 64);
 		}
 		if (COShowCardTwoProcedure.execute(entity)) {
-			guiGraphics.blit(new ResourceLocation("mcurrency:textures/screens/card_tile.png"), this.leftPos + 87, this.topPos + 13, 0, 0, 80, 64, 80, 64);
+			guiGraphics.blit(ResourceLocation.parse("mcurrency:textures/screens/card_tile.png"), this.leftPos + 87, this.topPos + 13, 0, 0, 80, 64, 80, 64);
 		}
 		if (COShowCardThreeProcedure.execute(entity)) {
-			guiGraphics.blit(new ResourceLocation("mcurrency:textures/screens/card_tile.png"), this.leftPos + 6, this.topPos + 69, 0, 0, 80, 64, 80, 64);
+			guiGraphics.blit(ResourceLocation.parse("mcurrency:textures/screens/card_tile.png"), this.leftPos + 6, this.topPos + 69, 0, 0, 80, 64, 80, 64);
 		}
 		if (COShowCardFourProcedure.execute(entity)) {
-			guiGraphics.blit(new ResourceLocation("mcurrency:textures/screens/card_tile.png"), this.leftPos + 87, this.topPos + 69, 0, 0, 80, 64, 80, 64);
+			guiGraphics.blit(ResourceLocation.parse("mcurrency:textures/screens/card_tile.png"), this.leftPos + 87, this.topPos + 69, 0, 0, 80, 64, 80, 64);
 		}
 		RenderSystem.disableBlend();
 	}
@@ -150,7 +150,7 @@ public class CardOverviewScreen extends AbstractContainerScreen<CardOverviewMenu
 		}).bounds(this.leftPos + 9, this.topPos + 137, 156, 20).build();
 		guistate.put("button:button_empty", button_empty);
 		this.addRenderableWidget(button_empty);
-		imagebutton_trash = new ImageButton(this.leftPos + 64, this.topPos + 52, 16, 16, new WidgetSprites(new ResourceLocation("mcurrency:textures/screens/trash.png"), new ResourceLocation("mcurrency:textures/screens/trash_hover.png")), e -> {
+		imagebutton_trash = new ImageButton(this.leftPos + 64, this.topPos + 52, 16, 16, new WidgetSprites(ResourceLocation.parse("mcurrency:textures/screens/trash.png"), ResourceLocation.parse("mcurrency:textures/screens/trash_hover.png")), e -> {
 			if (COShowCardOneProcedure.execute(entity)) {
 				PacketDistributor.sendToServer(new CardOverviewButtonMessage(1, x, y, z, getEditBoxAndCheckBoxValues()));
 				CardOverviewButtonMessage.handleButtonAction(entity, 1, x, y, z, getEditBoxAndCheckBoxValues());
@@ -164,7 +164,7 @@ public class CardOverviewScreen extends AbstractContainerScreen<CardOverviewMenu
 		};
 		guistate.put("button:imagebutton_trash", imagebutton_trash);
 		this.addRenderableWidget(imagebutton_trash);
-		imagebutton_trash1 = new ImageButton(this.leftPos + 145, this.topPos + 52, 16, 16, new WidgetSprites(new ResourceLocation("mcurrency:textures/screens/trash.png"), new ResourceLocation("mcurrency:textures/screens/trash_hover.png")), e -> {
+		imagebutton_trash1 = new ImageButton(this.leftPos + 145, this.topPos + 52, 16, 16, new WidgetSprites(ResourceLocation.parse("mcurrency:textures/screens/trash.png"), ResourceLocation.parse("mcurrency:textures/screens/trash_hover.png")), e -> {
 			if (COShowCardTwoProcedure.execute(entity)) {
 				PacketDistributor.sendToServer(new CardOverviewButtonMessage(2, x, y, z, getEditBoxAndCheckBoxValues()));
 				CardOverviewButtonMessage.handleButtonAction(entity, 2, x, y, z, getEditBoxAndCheckBoxValues());
@@ -178,7 +178,7 @@ public class CardOverviewScreen extends AbstractContainerScreen<CardOverviewMenu
 		};
 		guistate.put("button:imagebutton_trash1", imagebutton_trash1);
 		this.addRenderableWidget(imagebutton_trash1);
-		imagebutton_trash2 = new ImageButton(this.leftPos + 64, this.topPos + 108, 16, 16, new WidgetSprites(new ResourceLocation("mcurrency:textures/screens/trash.png"), new ResourceLocation("mcurrency:textures/screens/trash_hover.png")), e -> {
+		imagebutton_trash2 = new ImageButton(this.leftPos + 64, this.topPos + 108, 16, 16, new WidgetSprites(ResourceLocation.parse("mcurrency:textures/screens/trash.png"), ResourceLocation.parse("mcurrency:textures/screens/trash_hover.png")), e -> {
 			if (COShowCardThreeProcedure.execute(entity)) {
 				PacketDistributor.sendToServer(new CardOverviewButtonMessage(3, x, y, z, getEditBoxAndCheckBoxValues()));
 				CardOverviewButtonMessage.handleButtonAction(entity, 3, x, y, z, getEditBoxAndCheckBoxValues());
@@ -192,12 +192,13 @@ public class CardOverviewScreen extends AbstractContainerScreen<CardOverviewMenu
 		};
 		guistate.put("button:imagebutton_trash2", imagebutton_trash2);
 		this.addRenderableWidget(imagebutton_trash2);
-		imagebutton_trash3 = new ImageButton(this.leftPos + 145, this.topPos + 108, 16, 16, new WidgetSprites(new ResourceLocation("mcurrency:textures/screens/trash.png"), new ResourceLocation("mcurrency:textures/screens/trash_hover.png")), e -> {
-			if (COShowCardFourProcedure.execute(entity)) {
-				PacketDistributor.sendToServer(new CardOverviewButtonMessage(4, x, y, z, getEditBoxAndCheckBoxValues()));
-				CardOverviewButtonMessage.handleButtonAction(entity, 4, x, y, z, getEditBoxAndCheckBoxValues());
-			}
-		}) {
+		imagebutton_trash3 = new ImageButton(this.leftPos + 145, this.topPos + 108, 16, 16, new WidgetSprites(ResourceLocation.parse("mcurrency:textures/screens/trash.png"), ResourceLocation.parse("mcurrency:textures/screens/trash_hover.png")),
+				e -> {
+					if (COShowCardFourProcedure.execute(entity)) {
+						PacketDistributor.sendToServer(new CardOverviewButtonMessage(4, x, y, z, getEditBoxAndCheckBoxValues()));
+						CardOverviewButtonMessage.handleButtonAction(entity, 4, x, y, z, getEditBoxAndCheckBoxValues());
+					}
+				}) {
 			@Override
 			public void renderWidget(GuiGraphics guiGraphics, int x, int y, float partialTicks) {
 				if (COShowCardFourProcedure.execute(entity))

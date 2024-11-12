@@ -25,6 +25,8 @@ public class McurrencyModBlockEntities {
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> ATM = register("atm", McurrencyModBlocks.ATM, ATMBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> CASH_REGISTER = register("cash_register", McurrencyModBlocks.CASH_REGISTER, CashRegisterBlockEntity::new);
 
+	// Start of user code block custom block entities
+	// End of user code block custom block entities
 	private static DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> register(String registryname, DeferredHolder<Block, Block> block, BlockEntityType.BlockEntitySupplier<?> supplier) {
 		return REGISTRY.register(registryname, () -> BlockEntityType.Builder.of(supplier, block.get()).build(null));
 	}

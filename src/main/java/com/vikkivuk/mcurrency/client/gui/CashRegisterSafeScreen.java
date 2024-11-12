@@ -53,7 +53,7 @@ public class CashRegisterSafeScreen extends AbstractContainerScreen<CashRegister
 		return textstate;
 	}
 
-	private static final ResourceLocation texture = new ResourceLocation("mcurrency:textures/screens/cash_register_safe.png");
+	private static final ResourceLocation texture = ResourceLocation.parse("mcurrency:textures/screens/cash_register_safe.png");
 
 	@Override
 	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
@@ -104,8 +104,8 @@ public class CashRegisterSafeScreen extends AbstractContainerScreen<CashRegister
 		}).bounds(this.leftPos + 96, this.topPos + 43, 72, 20).build(builder -> new Button(builder) {
 			@Override
 			public void renderWidget(GuiGraphics guiGraphics, int gx, int gy, float ticks) {
-				if (ShowLoadMoreEnabledProcedure.execute(entity))
-					super.renderWidget(guiGraphics, gx, gy, ticks);
+				this.visible = ShowLoadMoreEnabledProcedure.execute(entity);
+				super.renderWidget(guiGraphics, gx, gy, ticks);
 			}
 		});
 		guistate.put("button:button_load_more", button_load_more);
@@ -119,7 +119,7 @@ public class CashRegisterSafeScreen extends AbstractContainerScreen<CashRegister
 		guistate.put("button:button_empty", button_empty);
 		this.addRenderableWidget(button_empty);
 		imagebutton_load_more_disabled = new ImageButton(this.leftPos + 96, this.topPos + 43, 72, 20,
-				new WidgetSprites(new ResourceLocation("mcurrency:textures/screens/load_more_disabled.png"), new ResourceLocation("mcurrency:textures/screens/load_more_disabled.png")), e -> {
+				new WidgetSprites(ResourceLocation.parse("mcurrency:textures/screens/load_more_disabled.png"), ResourceLocation.parse("mcurrency:textures/screens/load_more_disabled.png")), e -> {
 				}) {
 			@Override
 			public void renderWidget(GuiGraphics guiGraphics, int x, int y, float partialTicks) {

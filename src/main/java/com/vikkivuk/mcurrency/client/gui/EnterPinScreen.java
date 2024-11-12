@@ -48,7 +48,7 @@ public class EnterPinScreen extends AbstractContainerScreen<EnterPinMenu> {
 		return textstate;
 	}
 
-	private static final ResourceLocation texture = new ResourceLocation("mcurrency:textures/screens/enter_pin.png");
+	private static final ResourceLocation texture = ResourceLocation.parse("mcurrency:textures/screens/enter_pin.png");
 
 	@Override
 	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {

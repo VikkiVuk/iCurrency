@@ -113,7 +113,7 @@ public class McurrencyMod {
 	}
 
 	public static record GuiSyncMessage(String editbox, String value) implements CustomPacketPayload {
-		public static final Type<GuiSyncMessage> TYPE = new Type<>(new ResourceLocation(McurrencyMod.MODID, "gui_sync"));
+		public static final Type<GuiSyncMessage> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(McurrencyMod.MODID, "gui_sync"));
 		public static final StreamCodec<RegistryFriendlyByteBuf, GuiSyncMessage> STREAM_CODEC = StreamCodec.of((RegistryFriendlyByteBuf buffer, GuiSyncMessage message) -> {
 			writeComponent(buffer, Component.literal(message.editbox));
 			writeComponent(buffer, Component.literal(message.value));

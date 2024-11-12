@@ -187,7 +187,7 @@ public class McurrencyModVariables {
 	}
 
 	public record PlayerVariablesSyncMessage(PlayerVariables data) implements CustomPacketPayload {
-		public static final Type<PlayerVariablesSyncMessage> TYPE = new Type<>(new ResourceLocation(McurrencyMod.MODID, "player_variables_sync"));
+		public static final Type<PlayerVariablesSyncMessage> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(McurrencyMod.MODID, "player_variables_sync"));
 		public static final StreamCodec<RegistryFriendlyByteBuf, PlayerVariablesSyncMessage> STREAM_CODEC = StreamCodec
 				.of((RegistryFriendlyByteBuf buffer, PlayerVariablesSyncMessage message) -> buffer.writeNbt(message.data().serializeNBT(buffer.registryAccess())), (RegistryFriendlyByteBuf buffer) -> {
 					PlayerVariablesSyncMessage message = new PlayerVariablesSyncMessage(new PlayerVariables());
